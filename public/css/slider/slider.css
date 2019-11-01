@@ -1,0 +1,26 @@
+.irs--flat .irs-handle>i:first-child {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    margin-left: -1px;
+    background-color: #EBC47F;
+}
+/* bar color*/
+.irs--flat .irs-bar {
+    top: 25px;
+    height: 12px;
+    background-color: #EBC47F;
+}
+/*number background*/
+.irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
+    color: white;
+    font-size: 10px;
+    line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background-color: #EBC47F;
+    border-radius: 4px;
+}
