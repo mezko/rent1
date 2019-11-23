@@ -46,6 +46,7 @@
         </td>
 
         @endforeach
+        {{ $flats->links() }}
         <!--------model of message box of delete-->
         <!-- Modal -->
 {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

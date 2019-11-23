@@ -1,71 +1,42 @@
 @extends('admin.admin-panel')
 @section('content')
-<!-- Horizontal Steppers -->
-<form id="regForm" action="" method="POST" enctype="multipart/form-data">
-@csrf
-        <h1>Flat:</h1>
+<!----------------css files of info box------------------------------------------------------------>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/css/AdminLTE.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/css/alt/AdminLTE-bootstrap-social.min.css" rel="stylesheet">
 
-        <!-- One "tab" for each step in the form: -->
-
-
-
-
-        <div class="tab">city:
-          <p><input placeholder="أسم الاعلان" oninput="this.className = ''" class="form-control" name="ar_name"></p>
-          <p><input placeholder="English name" oninput="this.className = ''" class="form-control" name="en_name"></p>
-          <p>
-          <select class="form-control" id="exampleFormControlSelect1" placeholder="city" oninput="this.className = ''" name="city">
-            @foreach ($cities as $city)
-            <option value="{{$city->id}}">{{$city->city}}</option>
-            @endforeach
-
-          </select>
-          </p>
-
-          <p><input placeholder="Area" oninput="this.className = ''"class="form-control" name="area"></p>
-          <p><input placeholder="Address" oninput="this.className = ''"class="form-control" name="address"></p>
-          <p><input type="number" placeholder="Price" oninput="this.className = ''"class="form-control" name="Price"></p>
+<div class="container">
+        <div class="row">
+                <div class="info-box col-sm" >
+                        <!-- Apply any bg-* class to to the icon to color it -->
+                        <span class="info-box-icon " style="background-color: white ;color: #CFB579"><i class="fas fa-user fas-2x"></i></span>
+                        <div class="info-box-content">
+                          <span class="info-box-text">Users</span>
+                          <span class="info-box-number">93,139</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                      </div>
+                      &nbsp
+                      <!----------------second div------------>
+                      <div class="info-box col-sm">
+                            <!-- Apply any bg-* class to to the icon to color it -->
+                            <span class="info-box-icon " style="background-color: #CFB579 ;color: white"><i class="fas fa-user fas-2x"></i></span>
+                            <div class="info-box-content">
+                              <span class="info-box-text">Users</span>
+                              <span class="info-box-number">93,139</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                          </div>
+                                 &nbsp
+                      <!----------------second div------------>
+                      <div class="info-box col-sm">
+                            <!-- Apply any bg-* class to to the icon to color it -->
+                            <span class="info-box-icon " style="background-color: white ;color: #CFB579"><i class="fas fa-user fas-2x"></i></span>
+                            <div class="info-box-content">
+                              <span class="info-box-text">Users</span>
+                              <span class="info-box-number">93,139</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                          </div>
         </div>
-
-        <div class="tab">type:
-          <p>
-                <select name="type" class="form-control">
-                        <option value="Hire">Hire</option>
-                        <option value="Buy">Buy</option>
-                </select>
-          </p>
-          <p><input type="file" placeholder="upload image" oninput="this.className = ''" class="form-control" name="img"></p>
-        </div>
-
-        <div class="tab">Flat Information:
-          <p><input type="number" placeholder="Room" oninput="this.className = ''"class="form-control" name="room"></p>
-          <p><input type="number" placeholder="Bath" oninput="this.className = ''"class="form-control" name="bath"></p>
-          <p><input type="number" placeholder="Area" oninput="this.className = ''"class="form-control" name="area"></p>
-          <p>
-              <input type="checkbox" class="form-check-input" id="exampleCheck1" name="vip" value="1">
-               <label class="form-check-label" for="exampleCheck1">VIP</label>
-         </p>
-        </div>
-
-        <div class="tab">Info:
-          <p><textarea class = "form-control" rows = "3" placeholder="info" name="info"></textarea></p>
-
-        </div>
-
-        <div style="overflow:auto;">
-          <div style="float:right;">
-            <button type="button" class="btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" class="btn" id="nextBtn" onclick="nextPrev(1)">Next</button>
-          </div>
-        </div>
-
-        <!-- Circles which indicates the steps of the form: -->
-        <div style="text-align:center;margin-top:40px;">
-          <span class="step"></span>
-          <span class="step"></span>
-          <span class="step"></span>
-          <span class="step"></span>
-        </div>
-
-        </form>
+</div>
 @endsection

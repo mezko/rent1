@@ -17,7 +17,13 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <!---------------summer note----->
 
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.0.6/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.0.6/js/froala_editor.pkgd.min.js"></script>
 
 </head>
 
@@ -53,9 +59,11 @@
       <div class="sidebar-heading">
         Interface
       </div>
-<!--Add courses-->
+<!--Add flat-->
+    @if(Auth::user()->premission==1 or Auth::user()->premission==2)
       <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+
             <i class="fas fa-building"></i>
           <span>flats</span>
         </a>
@@ -63,6 +71,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="/Allflats">All flats</a>
+            <a class="collapse-item" href="/add/flat">Add flats </a>
           </div>
         </div>
       </li>
@@ -79,11 +88,10 @@
             <a class="collapse-item" href="/city">Add City</a>
           </div>
         </div>
-
-
       </li>
+      @endif
 
-
+      @if(Auth::user()->premission==1 or Auth::user()->premission==3)
       <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-globe-americas"></i>
@@ -96,9 +104,24 @@
                 <a class="collapse-item" href="/Add/blog">Add Blog</a>
               </div>
             </div>
-
-
           </li>
+          @endif
+
+          @if(Auth::user()->premission==1)
+      <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsfour" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-user"></i>
+              <span>Users</span>
+            </a>
+            <div id="collapsfour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header" href="buttons.html">Blogs:</h6>
+                <a class="collapse-item" href="/All/blog">All Users</a>
+                <a class="collapse-item" href="/Add/user">Add users</a>
+              </div>
+            </div>
+          </li>
+          @endif
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -127,13 +150,13 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="form-inline md-form mr-auto mb-4" method="POST" action="Searchfor">
+          {{-- <form class="form-inline md-form mr-auto mb-4" method="POST" action="Searchfor">
             @csrf
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
 
             <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
 
-          </form>
+          </form> --}}
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -212,6 +235,7 @@
 
 
         @endif
+
         @yield('content')
 
 
@@ -269,8 +293,17 @@
   <script src="{{asset('js/app.js')}}"></script>
   <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
+
   <!-- Core plugin JavaScript-->
   <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+  <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+      </script>
+
+
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
@@ -295,7 +328,8 @@ function showTab(n) {
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
-  } else {
+  }
+else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
   // ... and run a function that displays the correct step indicator:
@@ -353,6 +387,12 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
       </script>
+  <script>
+    new FroalaEditor('textarea#froala-editor')
+    new FroalaEditor('.selector', {
+imageUploadMethod: 'PUT'
+});
+  </script>
 
 
 </body>
@@ -384,7 +424,12 @@ input.invalid {
 .tab {
   display: none;
 }
-
+/***************logo of text area*/
+#logo {
+    display: none;
+    float: left;
+    outline: none;
+}
 /* Make circles that indicate the steps of the form: */
 .step {
   height: 15px;
@@ -406,6 +451,8 @@ input.invalid {
 .step.finish {
   background-color: #4CAF50;
 }
+
+
     </style>
 
 </html>

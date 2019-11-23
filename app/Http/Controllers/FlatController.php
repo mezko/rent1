@@ -7,6 +7,9 @@ use App\flat;
 use App\slider;
 use App\city;
 use App\blog;
+use App\user;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Image;
 use DB;
 class FlatController extends Controller
@@ -16,6 +19,14 @@ class FlatController extends Controller
         $this->middleware('auth');
     }
     //////////////////////////////////////////////////add Falt /////////////////////////////////////////////////////////////////
+    /////////////////////add flat page/////////////
+    public function add_flat_page()
+    {
+        $cities=DB::table('cities')->get();
+
+        return view('admin.Addflat')->with('cities',$cities);
+    }
+    ///////////////////////////add_flat_function///////////////
    public function add_flat(Request $request)
    {
 
@@ -26,12 +37,22 @@ class FlatController extends Controller
     $flat->en_name=$request->en_name;
     $flat->price=$request->Price;
     $flat->address=$request->address;
+    $flat->address_ar=$request->address_ar;
     $flat->info=$request->info;
+    $flat->info_ar=$request->info_ar;
     $flat->area=$request->area;
+    //distinic
+    $flat->distinic=$request->distinic;
+    $flat->area_ar=$request->area_ar;
     $flat->type=$request->type;
     $flat->room=$request->room;
     $flat->bath=$request->bath;
-    $flat->vip=$request->vip;
+    if($request->vip==null){
+        $flat->vip=0;
+    }else{
+        $flat->vip=1;
+    }
+
     /////file
     $file=$request->file('img');
       $name=time().$file->getClientOriginalName();
@@ -59,7 +80,7 @@ class FlatController extends Controller
     ////////////////////////////////////////// Show All flats in admin panel ////////////////////////////////////////
     public function all_flats_table()
     {
-        $flats=DB::table('flats')->get();
+        $flats=DB::table('flats')->paginate(7);
         return view('admin.AllFlats')->with('flats',$flats);
     }
          //////////////////////////////////////////////////End Flat table ///////////////////////////////////////////////////////////////////////////
@@ -70,10 +91,24 @@ class FlatController extends Controller
     ///////////////////////////////delete flat
     public function delete_flat($id)
 {
+    $delflat=flat::find($id);
+  ///////////////////////delet all slider //////////////
+    $sliders=DB::table('sliders')->where('flat_id',$delflat->f_id)->get();
+
+    if(count($sliders)>1){
+        foreach($sliders as $delslid ){
+            unlink(public_path('/upload pic/'.$delslid->name));
+        }
+    }
+    else{
+        unlink(public_path('/upload pic/'.$delslid->name));
+    }
+    ///////////////////////////////After Delete sliders////////////////////
+    unlink(public_path('/flat/'.$delflat->img));
     flat::find($id)->delete();
     return back()->with('delete-message', 'course Removed');
 }
-         //////////////////////////////////////////////////End Edit Flat ///////////////////////////////////////////////////////////////////////////
+         /////////////////////////////////////////////////End Edit Flat ///////////////////////////////////////////////////////////////////////////
    /*////////////////////////////////////////////////////////////////////////*///////////////////////////////////////////////////////////////
       /*////////////////////////////////////////////////////////////////////////*///////////////////////////////////////////////////////////////
       /*////////////////////////////////////////////////////////////////////////*///////////////////////////////////////////////////////////////
@@ -82,7 +117,8 @@ class FlatController extends Controller
     public function Edit_flat_page($id)
     {
         $flats=DB::table('flats')->where('f_id',$id)->first();
-        return view('admin.EditFlat')->with('flats',$flats);
+        $cities=DB::table('cities')->get();
+        return view('admin.EditFlat')->with('flats',$flats)->with('cities',$cities);
     }
     ////////////////////////////////////////Edit Flat
     public function Edit_flat($id ,Request $request)
@@ -91,12 +127,20 @@ class FlatController extends Controller
 
     $flat->city=$request->city;
     $flat->address=$request->address;
+    $flat->address_ar=$request->address_ar;
     $flat->info=$request->info;
+    $flat->info_ar=$request->info_ar;
     $flat->area=$request->area;
+    $flat->area_ar=$request->area_ar;
+    $flat->distinic=$request->distinic;
     $flat->type=$request->type;
     $flat->room=$request->room;
     $flat->bath=$request->bath;
-    $flat->vip=$request->vip;
+    if($request->vip==null){
+        $flat->vip=0;
+    }else{
+        $flat->vip=1;
+    }
     /////file
     $file=$request->file('img');
       $name=time().$file->getClientOriginalName();
@@ -168,7 +212,10 @@ class FlatController extends Controller
     }
 
     public function deletslide($id)
-    {
+    {    $delslid=slider::find($id);
+        //////////////////////////////////////////////////
+        // dd($delslid->name);
+        unlink(public_path('/upload pic/'.$delslid->name));
         slider::find($id)->delete();
         return back()->with('delete-message', 'slider Removed');
     }
@@ -214,6 +261,7 @@ class FlatController extends Controller
 public function deletcity($id)
 {
     city::find($id)->delete();
+
     return back()->with('delete-message', 'city Removed');
 }
 /////////////////////////////////////////////////////////////////////////////////////Blog
@@ -242,7 +290,7 @@ public function addBlogfun(Request $request)
  /////////////////////////////////////all Blogs
  public function Blogs()
  {
-     $blogs =DB::table('news')->get();
+     $blogs =DB::table('news')->paginate(7);
      return view('admin.News')->with('blogs',$blogs);
  }
  ///////////////////////////delet_Blog
@@ -276,5 +324,33 @@ public function addBlogfun(Request $request)
     return back()->with('success-message', 'Blog Added');
  }
 
+ /////////////////////////////////////////////////////////users///////////////////////////////////
+ //////////////add user//////////////////////////////////////////
+ public function AddUserPage()
+ {
+     return view("admin.AddUser");
+ }
+////////////////////////////////////////////////////
+////////////////////add user function//////////////
+public function Adduser(Request $request)
+{
+    /////////////////Request validation
+    $this->validate($request, [
+        'name' => 'required|min:3|max:50',
+        'email' => 'email',
+        'vat_number' => 'max:13',
+        'password' => 'required|confirmed|min:6',
+    ]);
+    /////////////////////////////////
+   $user= new user();
+   $user->name=$request->name;
+   $user->email=$request->email;
+   $user->premission=$request->premission;
+   $password = Hash::make($request->password);
+   $user->password=$password;
+   $user->save();
+   return back()->with('success-message', 'Account Added');
+
+}
 }
 

@@ -77,7 +77,7 @@
                 <div class="single_appartment_content">
                    {{-- <a href="" class="love_us"> <span class="ti-heart"></span> </a> --}}
                    <p>Home, {{$flat->type}}</p>
-                   <a href="flatnum/{{$flat->f_id}}"><h4>{{$flat->en_name}}</h4></a>
+                   <a href="/flatnum/{{$flat->f_id}}"><h4>{{$flat->en_name}}</h4></a>
                    <ul class="list-unstyled">
                       <li><a href=""><span class="flaticon-bath"></span></a> {{$flat->bath}}</li>
                       <li><a href=""><span class="flaticon-bed"></span></a> {{$flat->room}}</li>

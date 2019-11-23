@@ -13,15 +13,31 @@
                                       <img  class="mx-auto d-block" alt="Responsive image" src="/flat/{{$flat->img}}"  alt="" style="width:320px; height 320px;">
 
                    <div class="col-lg-12 text-center my-2">
-                      <h4 class="border-bottom border-dark p-2">Isotope filter magical layouts with Bootstrap 4</h4>
+                        @if (App::getLocale()=="en")
+                   <h4 class="border-bottom border-dark p-2">{{$flat->en_name}}</h4>
+                   @else
+                   <h4 class="border-bottom border-dark p-2">{{$flat->ar_name}}</h4>
+                   @endif
+                   <h4><i class="fas fa-lira-sign "></i>{{$flat->price}}</h4>
+
+
                    </div>
+
                 </div>
                 <div class="portfolio-menu mt-2 mb-4">
                    <ul>
+                        @if (App::getLocale()=="en")
                       <li class="btn btn-outline-dark active" data-filter="*">All</li>
                       <li class="btn btn-outline-dark" data-filter=".3">Engineering Buliding</li>
                       <li class="btn btn-outline-dark" data-filter=".2">Outside</li>
                       <li class="btn btn-outline-dark text" data-filter=".1">Inside</li>
+                      @else
+                      <li class="btn btn-outline-dark active" data-filter="*">الكل</li>
+                      <li class="btn btn-outline-dark" data-filter=".3">التصميم الهندسى</li>
+                      <li class="btn btn-outline-dark" data-filter=".2">من الخارج</li>
+                      <li class="btn btn-outline-dark text" data-filter=".1">من الداخل</li>
+                      @endif
+
                    </ul>
                 </div>
                 <div class="portfolio-item row">
@@ -44,36 +60,88 @@
              <!-------------------------------------------Data Of Flat --------------------------------------->
              <div class="col-lg-12 text-center my-2">
                     <h4 class="border-bottom border-dark p-2">Flat</h4>
+
                  </div>
              <!----------------------------------------------------table Which Have The Data ------------------------------------------->
              <table class="table">
                     <thead class="thead-dark">
                       <tr>
-
+                            @if (App::getLocale()=="en")
                         <th scope="col">Details</th>
                         <th scope="col">Details</th>
+                        <th scope="col">Details</th>
+                        <th scope="col">Details</th>
+                        @else
+                        <th scope="col">التفاصيل</th>
+                        <th scope="col">التفاصيل</th>
+                        <th scope="col">التفاصيل</th>
+                        <th scope="col">التفاصيل</th>
+                        @endif
 
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
+                            @if (App::getLocale()=="en")
+                            <td><i class="fas fa-city"></i> </td>
+                            <td>{{$city->city_en}}</td>
+                        <td><i class="fas fa-city"></i> </td>
+                        <td>{{$flat->distinic}}</td>
 
-                        <td><i class="fas fa-city"></i> City</td>
-                        <td>{{$flat->city}}</td>
+                     @else
+                        <td><i class="fas fa-city"></i> </td>
+                        <td>{{$city->city }}</td>
+                        <td><i class="fas fa-city"></i> </td>
+                        <td>{{$flat->area_ar}}</td>
+                        @endif
+
 
                       </tr>
                       <tr>
+                            @if (App::getLocale()=="en")
+                            <td><span class="fas fa-city"></span></td>
+                            <td>{{$flat->address}}</td>
+                            <td><span class="flaticon-frame"> </span></td>
+                            <td>{{$flat->area}}</td>
+                            @else
+                            <td><span class="fas fa-city"></span></td>
+                            <td>{{$flat->address_ar}}</td>
+                            <td><span class="flaticon-frame"> </span></td>
+                            <td>{{$flat->area}}</td>
 
-                            <td><span class="flaticon-bath"> &nbsp  Bath </span></td>
-                            <td>{{$flat->bath}}</td>
+                            @endif
+
+
+
 
                           </tr>
+
+
+                          <tr>
+                                @if (App::getLocale()=="en")
+                                <td><span class="flaticon-bed"> </span></td>
+                                <td><span>{{$flat->room}}</span></td>
+                                <td><span class="flaticon-bath"> </span></td>
+                                <td><span>{{$flat->bath}}</span></td>
+                                @else
+                                <td><span>{{$flat->room}}</span></td>
+                                <td><span class="flaticon-bed"> </span></td>
+                                <td><span>{{$flat->bath}}</span></td>
+                                <td><span class="flaticon-bath"> </span></td>
+
+                                @endif
+
+                              </tr>
+
+
 
                     </tbody>
                   </table>
 
 
+
 </div>
+
 <!------------------------------------------------ new Dev ----------------------------------------->
 <h4 class="border-bottom border-dark p-2"></h4>
 <!-------------------------------------------Data Of Flat --------------------------------------->
@@ -87,9 +155,16 @@
 
         <p class="excert">
                 <h3>
+                        @if (App::getLocale()=="en")
         @php
             echo nl2br($flat->info);
          @endphp
+         @else
+         @php
+         echo nl2br($flat->info_ar);
+      @endphp
+
+         @endif
                 </h3>
         </p>
 

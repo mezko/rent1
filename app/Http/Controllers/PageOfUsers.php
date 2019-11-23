@@ -27,8 +27,9 @@ class PageOfUsers extends Controller
     public function show_ur_flat($id)
     {
         $flats=DB::table('flats')->where('f_id',$id)->first();
+        $city=DB::table('cities')->where('id',$flats->city)->first();
         $sliders=DB::table('sliders')->where('flat_id',$id)->get();
-       return view('FlatPage')->with('flat',$flats)->with('sliders',$sliders);
+       return view('FlatPage')->with('flat',$flats)->with('sliders',$sliders)->with('city',$city);
     }
     ////////////////////////////SearchFlat
     public function SearchFlat(Request $request)

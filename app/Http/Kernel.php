@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\lang::class,
+
         ],
 
         'api' => [
@@ -61,7 +62,11 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'blogpremission'=>\App\Http\Middleware\blogwriter::class,
+        'offerswriter'=>\App\Http\Middleware\offerswriter::class,
+         'useradmin'=>\App\Http\Middleware\useradmin::class
     ];
+
 
     /**
      * The priority-sorted list of middleware.

@@ -27,9 +27,22 @@
 
             <!-- One "tab" for each step in the form: -->
             <div class="tab">city:
-              <p><input placeholder="city" oninput="this.className = ''" class="form-control" name="city" value="{{$flats->city}}"></p>
-              <p><input placeholder="Area" oninput="this.className = ''"class="form-control" name="area"  value="{{$flats->area}}"></p>
+                <!------------city--------------->
+                 <p>   <select class="form-control" id="exampleFormControlSelect1" placeholder="city" oninput="this.className = ''" name="city" required>
+                            @foreach ($cities as $city)
+                            <option value="{{$city->id}}">{{$city->city}}</option>
+                            @endforeach
+
+                          </select>
+                          </p>
+
+                         <p><input placeholder="Area" oninput="this.className = ''"class="form-control" name="distinic"  value="{{$flats->distinic}}"></p>
               <p><input placeholder="Address" oninput="this.className = ''"class="form-control" name="address"  value="{{$flats->address}}"></p>
+             <!-------------ar----------------------------->
+          <p><input placeholder="الحى" required oninput="this.className = ''"class="form-control" name="area_ar"  value="{{$flats->area_ar}}"></p>
+          <p><input placeholder="العنوان" required oninput="this.className = ''"class="form-control" name="address_ar"  value="{{$flats->address_ar}}"></p>
+          <p><input type="number"  min="0" required placeholder="Price" oninput="this.className = ''"class="form-control" name="Price" value="{{$flats->price}}"></p>
+
             </div>
 
             <div class="tab">type:
@@ -45,15 +58,24 @@
             <div class="tab">Flat Information:
               <p><input placeholder="Room" oninput="this.className = ''"class="form-control" name="room"  value="{{$flats->room}}"></p>
               <p><input placeholder="Bath" oninput="this.className = ''"class="form-control" name="bath" value="{{$flats->bath}}"></p>
-              <p><input placeholder="Area" oninput="this.className = ''"class="form-control" name="area"  value="{{nl2br($flats->area)}}"></p>
+              <p><input placeholder="Area" oninput="this.className = ''"class="form-control" name="area"  value="{{$flats->area}}"></p>
+
              <p> <input type="checkbox" class="form-check-input" id="exampleCheck1" name="vip" value="1">
                <label class="form-check-label" for="exampleCheck1">VIP</label>
              </p>
             </div>
 
             <div class="tab">Info:
-              <p><textarea class = "form-control" rows = "3" placeholder="info" name="info"  value="{{$flats->info}}"></textarea></p>
-
+                <h6>Arabic</h6>
+                <textarea id="summernote"required class = "form-control" rows = "3" placeholder="info_ar" name="info_ar">
+                        {{$flats->info_ar}}
+                </textarea>
+               <hr>
+               <h6>English</h6>
+               <textarea id="froala-editor"required name="info">
+                    {{$flats->info}}
+               </textarea>
+                <input type="submit">
             </div>
 
             <div style="overflow:auto;">

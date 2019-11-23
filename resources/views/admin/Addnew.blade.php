@@ -1,5 +1,13 @@
 @extends('admin.admin-panel')
 @section('content')
+
+  <!---------summernote--->
+
+{{--
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script> --}}
+  <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+
+
 <form id="regForm" action="" method="POST" enctype="multipart/form-data">
     @csrf
             <h3>Blog:</h3>
@@ -8,43 +16,56 @@
 
 
             <div class="tab">Image:
-                    <p> <input type="file" placeholder="image" oninput="this.className = ''" class="form-control file" name="img">
+                    <p> <input type="file" placeholder="image"  class="form-control file" name="img">
                     </p>
 
+    <!-------------Arabic------------------>
+    <div class="tab-pane fade show active" id="Arabic" role="tabpanel" aria-labelledby="Arabic-tab">
+
+            <h5>Arabic Blog:</h5>
+            <p> <input type="text" placeholder="heading_ar"  class="form-control file" name="heading_ar">
+            </p>
+            <div class="summernote">
+        <p>
+                <textarea id="summernote" name="p_ar"></textarea>
+
+        </p>
+            </div>
+  <!--------------------English---------------------->
+
+
+     <p>
+          English Blog:
+</p>
+ <p> <input type="text" placeholder="heading_en"  class="form-control file" name="heading_en">
+ </p>
+
+ <p>
+     {{-- <textarea name="p_en" id="editor" ></textarea> --}}
+     <textarea id="froala-editor" name="p_en"></textarea>
+     {{-- <textarea id="summernote" name="p_en"></textarea> --}}
+
+
+
+    </p>
+
+                          <hr>
+                          <input type="submit">
+            </div>
+            </div>
                    </div>
+                </div>
 
-            <div class="tab">Arabic Blog:
-             <p> <input type="text" placeholder="heading_ar" oninput="this.className = ''" class="form-control file" name="heading_ar">
-                <p><textarea class = "form-control" rows = "3" placeholder="info" name="p_ar"></textarea></p>
-
-             </p>
-
-            </div>
-            <div class="tab">English Blog:
-                    <p> <input type="text" placeholder="heading_en" oninput="this.className = ''" class="form-control file" name="heading_en">
-                       <p><textarea class = "form-control" rows = "3" placeholder="info" name="p_en"></textarea></p>
-
-                    </p>
-
-                   </div>
-
-
-
-
-
-            <div style="overflow:auto;">
-              <div style="float:right;">
-                <button type="button" class="btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button type="button" class="btn" id="nextBtn" onclick="nextPrev(1)">Next</button>
-              </div>
-            </div>
-
-            <!-- Circles which indicates the steps of the form: -->
-            <div style="text-align:center;margin-top:40px;">
-              <span class="step"></span>
-              <span class="step"></span>
-              <span class="step"></span>
-            </div>
-
+<!--<textarea class = "form-control" rows = "3" placeholder="info" name="p_en">-->
             </form>
+
+                <script>
+                        new FroalaEditor('textarea#froala-editor')
+                        new FroalaEditor('.selector', {
+  imageUploadMethod: 'PUT'
+});
+                      </script>
+
+
 @endsection
+

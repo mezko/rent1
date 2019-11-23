@@ -35,6 +35,7 @@
         </td>
 
         @endforeach
+
         <!--------model of message box of delete-->
         <!-- Modal -->
 
@@ -44,7 +45,7 @@
   </table>
 
 
-
+  {{$blogs->links()}}
 
 
 
