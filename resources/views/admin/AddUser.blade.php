@@ -12,32 +12,20 @@
             <div class="tab">Fill The Form:
                 <hr>
              <p>
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                 
                 <!--------------------------------------------------------------------------->
                 <input type="text" placeholder="name"  class="form-control file" name="name">
              </p>
              <!--email--------->
              <p>
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                
                 <!---------------------------------------------------------------------->
                 <input type="text" placeholder="email"  class="form-control file" name="email">
              </p>
              <!---password-->
              <p>
 
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+             
                 <!---------------------------------------------------------------->
                 <input type="password"   class="form-control file" name="password">
              </p>

@@ -8,6 +8,7 @@ use App\slider;
 use App\city;
 use App\blog;
 use App\user;
+use App\establish_company;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Image;
@@ -337,7 +338,7 @@ public function Adduser(Request $request)
     /////////////////Request validation
     $this->validate($request, [
         'name' => 'required|min:3|max:50',
-        'email' => 'email',
+        'email' => 'email|unique:users,email',
         'vat_number' => 'max:13',
         'password' => 'required|confirmed|min:6',
     ]);
@@ -351,6 +352,96 @@ public function Adduser(Request $request)
    $user->save();
    return back()->with('success-message', 'Account Added');
 
+}
+/////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+//////////////All User/////////////////////////////////
+public function AllUser()
+{
+    $users=DB::table("users")->get();
+    return view("admin.Alluser")->with("users",$users);
+}
+///////////////////////delete user
+public function DeleteUser($id)
+{
+    $userinfo=user::find($id);
+    if($userinfo['id']==1){
+        return back()->with('delete-message', 'Cant removed the super admin ');
+    }
+    $userinfo->delete();
+
+    return back()->with('delete-message', 'user Removed');
+
+}
+///////////update user page
+public function EditUserPage($id)
+{
+    $user=DB::table("users")->where('id',$id)->first();
+    return view("admin.EditUser")->with("user",$user);
+}
+///////////update user
+public function EditUser(Request $request ,$id)
+{
+
+
+    $user=user::find($id);
+      /////////////////Request validation
+      $this->validate($request, [
+        'name' => 'required|min:3|max:50',
+        'email' => 'email|unique:users,email',
+        'vat_number' => 'max:13',
+        'password' => 'required|confirmed|min:6',
+    ]);
+    $user->name=$request->name;
+    $user->email=$request->email;
+    $user->premission=$request->premission;
+    $password = Hash::make($request->password);
+    $user->password=$password;
+    $user->save();
+    return back()->with('success-message', 'Account Edited');
+
+}
+/////////////////////pages page
+public function pages()
+{
+  return view("admin.page1");
+}
+//////show edit page
+public function edit_page($ln)
+{
+  return view("admin.Addpage")->with('ln',$ln);
+}
+//fill establish company
+public function establish_company(Request $request , $ln)
+{
+    $establish_company=DB::table('establish_companies')->first();
+    ///1 - check if my table have any data because i used only 1 row
+
+////if have a data i will edit
+    if($establish_company==NULL){
+    $establish_company=new establish_company;
+}
+else {
+    $establish_company=establish_company::find($establish_company->id);
+
+}
+
+    if($ln=="ar"){
+
+        $establish_company->p_ar=$request->Page_ar;
+        $establish_company->ar_state=1;
+        $establish_company->save();
+        return redirect("/pages")->with('success-message', 'Done');
+       }
+       else if($ln=="en"){
+
+        $establish_company->p_en=$request->page_en;
+        $establish_company->en_state=1;
+        $establish_company->save();
+        return redirect("/pages")->with('success-message', 'Done');
+
+       }
 }
 }
 

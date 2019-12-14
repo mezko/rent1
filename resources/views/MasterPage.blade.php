@@ -51,79 +51,77 @@
 
 <body>
    <!--::menu part start::-->
-   <header class="main_menu home_menu">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<nav class="navbar navbar-expand-lg navbar-light">
-						<a class="navbar-brand" href="/index"> <img src="{{asset('img/logo.png')}}" alt="logo"> </a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-							aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse main-menu-item" id="navbarNav">
-							<ul class="navbar-nav">
-								<li class="nav-item active">
-									<a class="nav-link" href="/index">{{ __('langu.Home') }}<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										{{ __('langu.Our Services')}}
-									</a>
-									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a  href="/Properties/{{App::getLocale()}}" class="dropdown-item" >{{ __('langu.Reception & Real Estate Tours')}}</a>
-                                    <a class="dropdown-item" href="/PropertiesVip/{{App::getLocale()}}">{{ __('langu.Property Consulting')}}</a>
-									</div>
-								</li>
 
-                                <li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										{{ __('langu.Services')}}
-									</a>
-									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="single-blog.html">{{ __('langu.Establishing companies')}}</a>
-										<a class="dropdown-item" href="elements.html">{{ __('langu.Residence and nationality')}}</a>
-									</div>
-                                </li>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
-								<li class="nav-item">
-									<a class="nav-link page-scroll" href="blog.html">{{ __('langu.News')}}</a>
-                                </li>
+                    <a class="navbar-brand" href="/index"  style="padding-left: 30px"> <img src="{{asset('img/logo.png')}}" alt="logo"> </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/index">{{ __('langu.Home') }}<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ __('langu.Our Services')}}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a  href="/Properties/{{App::getLocale()}}" class="dropdown-item" >{{ __('langu.Reception & Real Estate Tours')}}</a>
+                                <a class="dropdown-item" href="/PropertiesVip/{{App::getLocale()}}">{{ __('langu.Property Consulting')}}</a>
+                                </div>
+                            </li>
 
-                                <li class="nav-item">
-									<a class="nav-link" href="about.html">{{ __('langu.About US')}}</a>
-                                </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ __('langu.Services')}}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="single-blog.html">{{ __('langu.Establishing companies')}}</a>
+                                    <a class="dropdown-item" href="elements.html">{{ __('langu.Residence and nationality')}}</a>
+                                </div>
+                            </li>
 
-								<li class="nav-item">
-									<a class="nav-link" href="contact.html">{{ __('langu.Contact us')}}</a>
-								</li>
-                            </ul>
+                            <li class="nav-item">
+                                <a class="nav-link page-scroll" href="blog.html">{{ __('langu.News')}}</a>
+                            </li>
 
-						</div>
-						<div class="btn_1 d-none d-lg-block">
-                                @if (App::getLocale()=="ar")
-                            <a href="/index/en" class="float-right">{{ __('langu.lang')}}</a>
-                            @else
-                            <a href="/index/ar" class="float-right">{{ __('langu.lang')}}</a>
-                            @endif
-						</div>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">{{ __('langu.About US')}}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">{{ __('langu.Contact us')}}</a>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <div class="btn_1 d-none d-lg-block" style="margin-right: 30px">
+                        @if (App::getLocale()=="ar")
+                    <a href="/index/en" class="float-right"  >{{ __('langu.lang')}}</a>
+                    @else
+                    <a href="/index/ar" class="float-right" >{{ __('langu.lang')}}</a>
+                    @endif
+                </div>
+
+                </nav>
+
+
+
    <!--::menu part end::-->
 
    <!--::banner part start::-->
-   <section >
+
 
 
         @yield('content')
 
 
-   </section>
 
    <!--::footer_part start::-->
    <footer class="footer_part">

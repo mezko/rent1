@@ -23,9 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cities=DB::table('cities')->get();
-
-        return view('home')->with('cities',$cities);
+        $users=DB::table('users')->count();
+        $flat=DB::table('flats')->count();
+        $blog=DB::table('news')->count();
+        return view('home')->with('users',$users)->with('flat',$flat)->with('blog',$blog);
     }
 
 }

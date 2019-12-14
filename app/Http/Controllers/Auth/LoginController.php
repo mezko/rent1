@@ -44,6 +44,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
 
     }
+
+    public function logout () {
+        //logout user
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/login');
+    }
 //     protected function redirectTo()
 //     {
 //         if (Auth::user()->premission==3){

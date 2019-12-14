@@ -116,7 +116,7 @@
             <div id="collapsfour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header" href="buttons.html">Blogs:</h6>
-                <a class="collapse-item" href="/All/blog">All Users</a>
+                <a class="collapse-item" href="/All/user">All Users</a>
                 <a class="collapse-item" href="/Add/user">Add users</a>
               </div>
             </div>
@@ -235,6 +235,16 @@
 
 
         @endif
+        
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
         @yield('content')
 
@@ -280,7 +290,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="/admin/logout">Logout</a>
+          <a class="btn btn-primary" href="{{ url('/logout') }}">Logout</a>
         </div>
       </div>
     </div>
