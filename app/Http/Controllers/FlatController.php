@@ -8,6 +8,7 @@ use App\slider;
 use App\city;
 use App\blog;
 use App\user;
+use App\homeslider;
 use App\establish_company;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -443,5 +444,94 @@ else {
 
        }
 }
+////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////Home slider/////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+public function HomeSliderPage()
+{
+   $homesliders=DB::table("homesliders")->get();
+   return view("admin.AllHomeSlider")->with('homesliders',$homesliders); 
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+/////add home slider 
+//add home slider page
+public function AddHomeSliderPage()
+{
+    return view("admin.Addhomeslider");
+}
+//home slider fun
+public function HomeSlider(Request $request)
+{
+    $homeslider=new HomeSlider();
+            $path=public_path("homepic");
+             /////Arabic slider
+             $pic1=$request->file('AR_slider');
+             $picname1=time()."ar".$pic1->getClientOriginalName();
+             $homeslider->AR_slider=$picname1;
+
+             /////english slider
+             $pic2=$request->file('EN_slider');
+             $picname2=time()."En".$pic2->getClientOriginalName();
+             $homeslider->EN_slider=$picname2;
+
+             //upload
+             $pic1->move($path,$picname1);
+             $pic2->move($path,$picname2);
+  
+ 
+    $homeslider->save();
+    return redirect("/homeslider")->with('success-message', 'Slider Added');
+
+
+}
+/////Edit Home Slider Page
+public function EditHomeSliderPage($id)
+{
+    $homeslider=HomeSlider::find($id);
+    return view("admin.Edithomeslider")->with('homeslider',$homeslider);
+}
+
+ ////Edit Home Slider
+ public function EdiHomeSlider($id,Request $request)
+ {
+     $homeslider=HomeSlider::find($id);
+     $path=public_path("homepic");
+          /////Arabic slider
+          $pic1=$request->file('AR_slider');
+          $picname1=time()."ar".$pic1->getClientOriginalName();
+          $homeslider->AR_slider=$picname1;
+
+          /////english slider
+          $pic2=$request->file('EN_slider');
+          $picname2=time()."En".$pic2->getClientOriginalName();
+          $homeslider->EN_slider=$picname2;
+
+          //upload
+          $pic1->move($path,$picname1);
+          $pic2->move($path,$picname2);
+
+
+         $homeslider->save();
+         return redirect("/homeslider")->with('success-message', 'Slider Edited');
+
+ }
+ //// Delete Slider
+ public function DeleteSlider($id)
+ {
+     $delhomeslider=HomeSlider::find($id);
+     unlink(public_path('/homepic/'.$delhomeslider->AR_slider));
+     unlink(public_path('/homepic/'.$delhomeslider->EN_Slider));
+     $delhomeslider->delete();
+     
+
+     return redirect("/homeslider")->with('delete-message', 'Slider Edited');
+
+ }
+
+
+
+
+
+
 }
 

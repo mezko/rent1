@@ -121,6 +121,20 @@
               </div>
             </div>
           </li>
+          <!--------home slider------->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsfive" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-user"></i>
+              <span>Home Slider</span>
+            </a>
+            <div id="collapsfive" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header" href="buttons.html">Sliders:</h6>
+                <a class="collapse-item" href="/homeslider">All Sliders</a>
+                <a class="collapse-item" href="/AddHomeSliderPage">Add Slider</a>
+              </div>
+            </div>
+          </li>
           @endif
 
       <!-- Divider -->

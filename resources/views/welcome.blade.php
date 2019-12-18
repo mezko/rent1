@@ -5,20 +5,43 @@
 
    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+       @for ($i = 0; $i < $count_homesliders; $i++)
+       @if ($i==0)
+
+                  <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}" class="active"></li>
+       @else
+                  <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}"></li>
+       @endif
+       @endfor
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-      <img class="d-block w-100" src="{{asset('img/slider1.jpg')}}" height="650px" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="{{asset('img/slider2.jpg')}}" height="650px" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="{{asset('img/slider3.jpg')}}" height="650px" alt="Third slide">
-      </div>
+       @for ($i = 0; $i < $count_homesliders; $i++)
+       <!--active carouser-------------------------------->
+       @if ($i==0)
+       <div class="carousel-item active">
+          <!--Arabic Slider-------------------------------->
+         @if (App::getLocale()=="ar")
+         <img class="d-block w-100" src="{{asset('/homepic/'.$homesliders[$i]->AR_slider)}}" height="650px" alt="First slide">
+         @else 
+           <!--English Slider-------------------------------->
+         <img class="d-block w-100" src="{{asset('/homepic/'.$homesliders[$i]->EN_Slider)}}" height="650px" alt="First slide">
+          @endif   
+       </div>
+       @else
+
+      <!--other carouser-------------------------------->
+       <div class="carousel-item">
+         <!--Arabic Slider-------------------------------->
+         @if (App::getLocale()=="ar")
+         <img class="d-block w-100" src="{{asset('/homepic/'.$homesliders[$i]->AR_slider)}}" height="650px" alt="First slide">
+         @else
+         <!--English Slider-------------------------------->
+         <img class="d-block w-100" src="{{asset('/homepic/'.$homesliders[$i]->EN_Slider)}}" height="650px" alt="First slide">
+         @endif
+         </div>
+       @endif
+       
+       @endfor
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -35,7 +58,7 @@
     <!--::apartment_part end::-->
     <div class="apartment_part">
      <div class="container">
-         <form method="POST">
+         <form method="POST" action="/Properties">
              @csrf
              <h3> Fliter Your Flat </h3>
                  <div class="row  border rounded" style="border-width : 100px" >

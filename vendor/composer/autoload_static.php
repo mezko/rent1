@@ -443,6 +443,7 @@ class ComposerStaticInit40bedd1d4c37734d193f825f2df01113
         'App\\city' => __DIR__ . '/../..' . '/app/city.php',
         'App\\establish_company' => __DIR__ . '/../..' . '/app/establish_company.php',
         'App\\flat' => __DIR__ . '/../..' . '/app/flat.php',
+        'App\\homeslider' => __DIR__ . '/../..' . '/app/homeslider.php',
         'App\\slider' => __DIR__ . '/../..' . '/app/slider.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',

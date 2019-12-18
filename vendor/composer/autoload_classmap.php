@@ -43,6 +43,7 @@ return array(
     'App\\city' => $baseDir . '/app/city.php',
     'App\\establish_company' => $baseDir . '/app/establish_company.php',
     'App\\flat' => $baseDir . '/app/flat.php',
+    'App\\homeslider' => $baseDir . '/app/homeslider.php',
     'App\\slider' => $baseDir . '/app/slider.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',

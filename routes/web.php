@@ -21,6 +21,9 @@ Route::get('/PropertiesVip/{lang?}','PageOfUsers@show_flat_vip');
 Route::get('/Blog/{id}/{lang?}','PageOfUsers@show_blog');
 ///////////////////////////////////////////////////////
 Route::get('/flatnum/{id}/{lang?}','PageOfUsers@show_ur_flat');
+/////////////////////Establish company page
+Route::get('/Establish company/{lang?}','PageOfUsers@Establishing');
+
 //////////////////////////////////////////////////////////////////////////////search bar
 // Route::post('/Searchfor','FlatController@all_search_table');
 Auth::routes();
@@ -93,6 +96,26 @@ Route::post('/Establish/{ln}','FlatController@establish_company');
 //Residence_&_nationality
 Route::get('/Residence_&_nationality/{ln}','FlatController@edit_page');
 
+/////////////////////////////////////////////////////////
+///home slider
+//homeslider page
+Route::get('/homeslider','FlatController@HomeSliderPage');
+
+//AddHomeSliderPage
+Route::get('/AddHomeSliderPage','FlatController@AddHomeSliderPage');
+Route::post('/AddHomeSliderPage','FlatController@HomeSlider');
+///Edithomesliderpage
+// Route::get('/EditHomeSliderPage/{id}','FlatController@EditHomeSliderPage');
+// Route::post('/EditHomeSliderPage/{id}','FlatController@EdiHomeSlider');
+//DeleteSlider
+Route::get('/DeleteSlider/{id}','FlatController@DeleteSlider');
+
+
+
+
+
+
+
 
 });
 ///////////////////logout
@@ -103,4 +126,6 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 /////////////////////////////////////////////////////////
 // Route::get('/test/{lang?}', function () {
 //     return view('textarea');
+
 // });
+

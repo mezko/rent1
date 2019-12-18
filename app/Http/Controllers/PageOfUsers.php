@@ -59,6 +59,19 @@ class PageOfUsers extends Controller
         $cities=DB::table('cities')->get();
         $blog=DB::table('news')->orderBy('created_at', 'desc')->first();
         $blogs=DB::table('news')->orderBy('created_at', 'desc')->skip(1)->take(3)->get();
-        return view('welcome')->with('blog',$blog)->with('blogs',$blogs)->with('flats',$flats)->with('cities',$cities);
+        $homesliders=DB::table("homesliders")->get();
+        $count_homeslider=DB::table("homesliders")->count();
+        // dd($count_homeslider)
+        return view('welcome')
+        ->with('blog',$blog)->with('blogs',$blogs)
+        ->with('flats',$flats)->with('cities',$cities)
+        ->with('homesliders',$homesliders)
+        ->with('count_homesliders',$count_homeslider);
+    }
+    ////////////////////////////////////////////////////////////////////
+    public function Establishing()
+    {
+        $Establishing=DB::table("establish_companies")->first();
+        return view("Establishing")->with('Establishing',$Establishing);
     }
 }
