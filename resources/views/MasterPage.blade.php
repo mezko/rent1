@@ -51,9 +51,12 @@
 
 <body>
    <!--::menu part start::-->
-
+   
+   
+             
                 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-
+                  <!-- Search form -->
+                  
                     <a class="navbar-brand" href="/index"  style="padding-left: 30px"> <img src="{{asset('img/logo.png')}}" alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -96,11 +99,17 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.html">{{ __('langu.Contact us')}}</a>
                             </li>
-
-
                         </ul>
+                         
+                        <form class="form-inline my-2 my-lg-0" method="POST">
+                           @csrf
+                           <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                           <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                         </form> 
 
                     </div>
+                  
+
                     <div class="btn_1 d-none d-lg-block" style="margin-right: 30px">
                         @if (App::getLocale()=="ar")
                     <a href="/index/en" class="float-right"  >{{ __('langu.lang')}}</a>
@@ -110,6 +119,7 @@
                 </div>
 
                 </nav>
+                
 
 
 

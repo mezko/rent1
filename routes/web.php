@@ -12,6 +12,9 @@
 */
 
 Route::get('/index/{lang?}', 'PageOfUsers@welcome');
+//nav_search
+Route::post('/index/{lang?}', 'PageOfUsers@nav_search');
+
 ///////////flat///////////////
 Route::get('/Properties/{lang?}','PageOfUsers@show_flat');
 Route::post('/Properties/{lang?}','PageOfUsers@SearchFlat');

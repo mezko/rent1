@@ -68,6 +68,26 @@ class PageOfUsers extends Controller
         ->with('homesliders',$homesliders)
         ->with('count_homesliders',$count_homeslider);
     }
+    //////////////////////navbar search
+    public function nav_search(Request $request)
+    {
+       
+         $cities=DB::table('cities')->where('city','like',$request->search.'%')->orwhere('city_en','like',$request->search.'%')->first();
+         if($cities !=null){
+            $flats=DB::table('flats')->where('city',$cities->id)->get();
+
+        }else{
+            return back();
+        }
+       
+        // dd($flats);
+        $city=DB::table('cities')->get();
+
+          return view('SearchProperty')->with('flats',$flats)->with('cities',$city);
+
+     
+
+    }
     ////////////////////////////////////////////////////////////////////
     public function Establishing()
     {
