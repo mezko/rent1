@@ -527,6 +527,15 @@ public function EditHomeSliderPage($id)
      return redirect("/homeslider")->with('delete-message', 'Slider Edited');
 
  }
+    //////////////////////////////homeflat//////////////////////////////
+    ////////////////////////////////////////////////////////////////////
+    public function ShowHomeFlat()
+    {
+        $flats=DB::table("flats")->paginate(15);
+        return view("admin.homeflat")->with('flats',$flats);
+
+    }
+
 
 
 

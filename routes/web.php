@@ -112,6 +112,8 @@ Route::post('/AddHomeSliderPage','FlatController@HomeSlider');
 // Route::post('/EditHomeSliderPage/{id}','FlatController@EdiHomeSlider');
 //DeleteSlider
 Route::get('/DeleteSlider/{id}','FlatController@DeleteSlider');
+//ShowHomeFlat
+Route::get('/ShowHomeFlat','FlatController@ShowHomeFlat');
 
 
 
