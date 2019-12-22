@@ -98,6 +98,9 @@ Route::get('/Establish/{ln}','FlatController@edit_page');
 Route::post('/Establish/{ln}','FlatController@establish_company');
 //Residence_&_nationality
 Route::get('/Residence_&_nationality/{ln}','FlatController@edit_page');
+//Residence
+Route::post('/Residence_&_nationality/{ln}','FlatController@Residence');
+
 
 /////////////////////////////////////////////////////////
 ///home slider
@@ -114,6 +117,9 @@ Route::post('/AddHomeSliderPage','FlatController@HomeSlider');
 Route::get('/DeleteSlider/{id}','FlatController@DeleteSlider');
 //ShowHomeFlat
 Route::get('/ShowHomeFlat','FlatController@ShowHomeFlat');
+//FunHomeFlat
+Route::post('/ShowHomeFlat','FlatController@FunHomeFlat');
+
 
 
 

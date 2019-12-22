@@ -55,7 +55,7 @@ class PageOfUsers extends Controller
     ////////////////////////////////////////////////////////welcome page //////////////////
     public function welcome()
     {
-        $flats=DB::table('flats')->where('vip','0')->join('cities', 'flats.city', '=', 'cities.id')->get();
+        $flats=DB::table('flats')->where('home_state','1')->join('cities', 'flats.city', '=', 'cities.id')->get();
         $cities=DB::table('cities')->get();
         $blog=DB::table('news')->orderBy('created_at', 'desc')->first();
         $blogs=DB::table('news')->orderBy('created_at', 'desc')->skip(1)->take(3)->get();

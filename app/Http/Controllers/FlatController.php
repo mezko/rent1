@@ -10,6 +10,7 @@ use App\blog;
 use App\user;
 use App\homeslider;
 use App\establish_company;
+use App\residence;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Image;
@@ -445,6 +446,40 @@ else {
        }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////Residence_//////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+public function Residence(Request $request , $ln)
+{
+    $residence=DB::table('residences')->first();
+    ///1 - check if my table have any data because i used only 1 row
+
+////if have a data i will edit
+    if($residence==NULL){
+    $residence=new residence;
+}
+else {
+    $residence=residence::find($residence->id);
+
+}
+
+    if($ln=="ar"){
+
+        $residence->p_ar=$request->Page_ar;
+        $residence->ar_state=1;
+        $residence->save();
+        return redirect("/pages")->with('success-message', 'Done');
+       }
+       else if($ln=="en"){
+
+        $residence->p_en=$request->page_en;
+        $residence->en_state=1;
+        $residence->save();
+        return redirect("/pages")->with('success-message', 'Done');
+
+       }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////Home slider/////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
 public function HomeSliderPage()
@@ -531,11 +566,29 @@ public function EditHomeSliderPage($id)
     ////////////////////////////////////////////////////////////////////
     public function ShowHomeFlat()
     {
-        $flats=DB::table("flats")->paginate(15);
+        $flats=DB::table("flats")->get();
         return view("admin.homeflat")->with('flats',$flats);
 
     }
+    ////////fun of homeflat////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
+   public function FunHomeFlat(Request $request)
+   {
+       if(count($request->home)>3){
+        return back()->with('delete-message', 'You Should Select only 3 flats');
+       }
+       else{
+           $f_ids=$request->home;
+           $flat=DB::table('flats')->update(array('home_state' => '0'));
+        //    dd("hhhhh");
+           foreach($f_ids as $f_id){
+           flat::where('f_id',$f_id)->update(['home_state' => '1']);
+           }
+        
+           return redirect("/home")->with('success-message', 'Done');
 
+       }
+   }
 
 
 

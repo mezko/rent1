@@ -38,6 +38,7 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\Residence' => $baseDir . '/app/Residence.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\blog' => $baseDir . '/app/blog.php',
     'App\\city' => $baseDir . '/app/city.php',

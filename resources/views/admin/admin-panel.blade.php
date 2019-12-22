@@ -124,7 +124,7 @@
           <!--------home slider------->
           <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsfive" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-images"></i>
               <span>Home Slider</span>
             </a>
             <div id="collapsfive" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
@@ -135,6 +135,20 @@
               </div>
             </div>
           </li>
+          <!-----------------------pages--------------------------------------------->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/pages">
+                    <i class="fas fa-sticky-note"></i>
+              <span>Pages</span>
+            </a>
+          </li>
+            <!-----------------------Home Flat--------------------------------------------->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/ShowHomeFlat" >
+                      <i class="fas fa-building"></i>
+                <span>HomeFlat</span>
+              </a>
+            </li>
           @endif
 
       <!-- Divider -->
