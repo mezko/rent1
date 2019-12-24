@@ -45,8 +45,10 @@
                 @foreach ($sliders as $slider)
 <!---->
                 <div class="item {{$slider->catagory}} col-lg-3 col-md-4 col-6 col-sm">
-                        <a href="/upload pic/{{$slider->name}}" class="fancylight popup-btn" data-fancybox-group="light">
-                        <img class="img-fluid" src="/upload pic/{{$slider->name}}"alt="">
+                  
+                           <a href="/upload pic/{{$slider->name}}" class="fancylight popup-btn" data-fancybox-group="light">
+                           
+                        <img class="image-popup-vertical-fit"  src="/upload pic/{{$slider->name}}"alt="">
                         </a>
                      </div>
 
@@ -90,7 +92,7 @@
 
                      @else
                         <td><i class="fas fa-city"></i> </td>
-                        <td>{{$city->city }}</td>
+                        <td>{{$city->city}}</td>
                         <td><i class="fas fa-city"></i> </td>
                         <td>{{$flat->area_ar}}</td>
                         @endif
@@ -173,7 +175,6 @@
      </div>
   </div>
 </div>
-
 @endsection
 
 

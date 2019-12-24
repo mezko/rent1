@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\flat;
 use App\slider;
@@ -32,7 +32,12 @@ class FlatController extends Controller
     ///////////////////////////add_flat_function///////////////
    public function add_flat(Request $request)
    {
-
+    //    dd(count($request.length));
+    // if(count($request->all())>1){
+    //     return back()->with('delete-message', 'You ordered More Requestes And That’s Not Allowed !')->withInput(Input::all());
+    
+    // }
+    // else{
     //    dd($request->img);
     $flat=new flat();
     $flat->city=$request->city;
@@ -67,6 +72,7 @@ class FlatController extends Controller
     //save to DB
    $flat->save();
     return back()->with('success-message', 'Done');
+
    }
    //////////////////////////////////////////////////End Add Flat ///////////////////////////////////////////////////////////////////////////
    /*////////////////////////////////////////////////////////////////////////*///////////////////////////////////////////////////////////////
@@ -98,17 +104,16 @@ class FlatController extends Controller
   ///////////////////////delet all slider //////////////
     $sliders=DB::table('sliders')->where('flat_id',$delflat->f_id)->get();
 
-    if(count($sliders)>1){
+    if(count($sliders)>=1){
         foreach($sliders as $delslid ){
             unlink(public_path('/upload pic/'.$delslid->name));
         }
     }
-    else{
-        unlink(public_path('/upload pic/'.$delslid->name));
-    }
+    
     ///////////////////////////////After Delete sliders////////////////////
+    // dd($delflat->img);
     unlink(public_path('/flat/'.$delflat->img));
-    flat::find($id)->delete();
+    $delflat->delete();
     return back()->with('delete-message', 'course Removed');
 }
          /////////////////////////////////////////////////End Edit Flat ///////////////////////////////////////////////////////////////////////////
@@ -126,8 +131,9 @@ class FlatController extends Controller
     ////////////////////////////////////////Edit Flat
     public function Edit_flat($id ,Request $request)
     {
-        $flat=flat::find($id);
-
+    $flat=flat::find($id);
+    $flat->ar_name=$request->ar_name;
+    $flat->en_name=$request->en_name;
     $flat->city=$request->city;
     $flat->address=$request->address;
     $flat->address_ar=$request->address_ar;
@@ -144,6 +150,9 @@ class FlatController extends Controller
     }else{
         $flat->vip=1;
     }
+       ///////////////////////////////
+    //delete img file 
+    unlink(public_path('/flat/'.$flat->img));
     /////file
     $file=$request->file('img');
       $name=time().$file->getClientOriginalName();
@@ -151,7 +160,8 @@ class FlatController extends Controller
     //upload
    Image::make($file->getRealPath())->resize(361, 436)->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
    $flat->img=$name;
-    ///////////////////////////////
+ 
+    /////////////////////
     //save to DB
    $flat->save();
     return back()->with('success-message', 'Edit Done');
@@ -391,7 +401,7 @@ public function EditUser(Request $request ,$id)
       /////////////////Request validation
       $this->validate($request, [
         'name' => 'required|min:3|max:50',
-        'email' => 'email|unique:users,email',
+        'email' => 'email',
         'vat_number' => 'max:13',
         'password' => 'required|confirmed|min:6',
     ]);

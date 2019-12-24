@@ -26,7 +26,15 @@
             <h1>Edit Flat:</h1>
 
             <!-- One "tab" for each step in the form: -->
-            <div class="tab">city:
+            <div class="tab">
+              <p> <input type="text" placeholder="Arabic" value="{{$flats->ar_name}}" class="form-control file" name="ar_name">
+              </p>
+ 
+           
+            
+                 <p> <input type="text" placeholder="English" value="{{$flats->en_name}}" class="form-control file" name="en_name">
+                 </p>
+              
                 <!------------city--------------->
                  <p>   <select class="form-control" id="exampleFormControlSelect1" placeholder="city" oninput="this.className = ''" name="city" required>
                             @foreach ($cities as $city)

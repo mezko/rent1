@@ -40,7 +40,7 @@
 
 <form id="regForm" action="" method="POST" enctype="multipart/form-data">
     @csrf
-            <h1>Add User:</h1>
+            <h1>Edit User:</h1>
 
             <!-- One "tab" for each step in the form: -->
 

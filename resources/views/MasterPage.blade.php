@@ -232,6 +232,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
      <script src="{{asset('js/test.js')}}"></script>
      <script src="{{asset('js/gallery.js')}}"></script>
      <!------------------slider bar----------------->
+     
 
 
 

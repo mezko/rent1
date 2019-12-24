@@ -11,10 +11,10 @@
 
 
         <div class="tab">city:
-          <p><input placeholder="أسم الاعلان" oninput="this.className = ''" class="form-control" name="ar_name" required></p>
-          <p><input placeholder="English name" oninput="this.className = ''" class="form-control" name="en_name" required></p>
+          <p><input placeholder="أسم الاعلان" oninput="this.className = ''" class="form-control" value="{{ old('ar_name') }}" name="ar_name" required></p>
+          <p><input placeholder="English name" oninput="this.className = ''" class="form-control" value="{{ old('en_name') }}" name="en_name" required></p>
           <p>
-          <select class="form-control" id="exampleFormControlSelect1" placeholder="city" oninput="this.className = ''" name="city" required>
+          <select class="form-control" id="exampleFormControlSelect1" placeholder="city" oninput="this.className = ''" value="{{ old('city') }}" name="city" required>
             @foreach ($cities as $city)
             <option value="{{$city->id}}">{{$city->city}}</option>
             @endforeach
@@ -22,42 +22,46 @@
           </select>
           </p>
 
-          <p><input placeholder="Distinic" required oninput="this.className = ''"class="form-control" name="distinic"></p>
-          <p><input placeholder="Address" required oninput="this.className = ''"class="form-control" name="address"></p>
+          <p><input placeholder="Distinic" required oninput="this.className = ''"class="form-control" value="{{ old('distinic') }}" name="distinic"></p>
+          <p><input placeholder="Address" required oninput="this.className = ''"class="form-control" value="{{ old('address') }}" name="address"></p>
          <!-------------ar----------------------------->
-          <p><input placeholder="الحى" required oninput="this.className = ''"class="form-control" name="area_ar"></p>
-          <p><input placeholder="العنوان" required oninput="this.className = ''"class="form-control" name="address_ar"></p>
+          <p><input placeholder="الحى" required oninput="this.className = ''"class="form-control" value="{{ old('area_ar') }}"  name="area_ar"></p>
+          <p><input placeholder="العنوان" required oninput="this.className = ''"class="form-control"  value="{{ old('address_ar') }}" name="address_ar"></p>
 
-          <p><input type="number"  min="0" required placeholder="Price" oninput="this.className = ''"class="form-control" name="Price"></p>
+          <p><input type="number"  min="0" required placeholder="Price" oninput="this.className = ''"class="form-control" value="{{ old('Price') }}"    name="Price"></p>
         </div>
 
         <div class="tab">type:
           <p>
-                <select name="type" class="form-control custom-select" >
+                <select name="type" value="{{ old('type') }}" class="form-control custom-select" >
                         <option value="Hire">Hire</option>
                         <option value="Buy">Buy</option>
                 </select>
           </p>
-          <p><input type="file" placeholder="upload image" required oninput="this.className = ''" class="form-control" name="img"></p>
+          <p><input type="file" value="{{ old('file') }}" placeholder="upload image" required oninput="this.className = ''" class="form-control" name="img"></p>
         </div>
 
         <div class="tab">Flat Information:
-          <p><input type="number" min="0"  placeholder="Room" required oninput="this.className = ''"class="form-control" name="room"></p>
-          <p><input type="number" min="0"  placeholder="Bath" required oninput="this.className = ''"class="form-control" name="bath"></p>
-          <p><input type="number" min="0"  placeholder="Area" required oninput="this.className = ''"class="form-control" name="area"></p>
+          <p><input type="text" min="0"  placeholder="Room" required oninput="this.className = ''"class="form-control" value="{{ old('room') }}" name="room"></p>
+          <p><input type="number" min="0"  placeholder="Bath" required oninput="this.className = ''"class="form-control" value="{{ old('bath') }}" name="bath"></p>
+          <p><input type="text" min="0"  placeholder="Area" required oninput="this.className = ''"class="form-control" value="{{ old('area') }}" name="area"></p>
           <p>
-              <input type="checkbox" class="form-check-input" id="exampleCheck1" name="vip" value="1">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1"  name="vip" value="1">
                <label class="form-check-label" for="exampleCheck1">VIP</label>
          </p>
         </div>
 
         <div class="tab">info:
                <h6>Arabic</h6>
-                <textarea id="summernote"required class = "form-control" rows = "3" name="info_ar"></textarea>
+                <textarea id="summernote"required class = "form-control" rows = "3"  name="info_ar">
+                  {{ old('info_ar') }}
+                </textarea>
                <hr>
                <h6>English</h6>
-               <textarea id="froala-editor"required name="info"></textarea>
-                <input type="submit">
+               <textarea id="froala-editor"required  name="info">
+                {{ old('info') }}
+               </textarea>
+                <input type="submit" id="sub">
 
         </div>
 
@@ -77,5 +81,6 @@
         </div>
 
         </form>
+      
 
 @endsection

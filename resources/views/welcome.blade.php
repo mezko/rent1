@@ -63,17 +63,7 @@
              <h3> Fliter Your Flat </h3>
                  <div class="row  border rounded" style="border-width : 100px" >
 
-                   <div class="col-sm" >
-                     <div class="form-group">
-                         <label for="exampleFormControlSelect1">Type:</label>
-
-                         <select class="form-control" id="exampleFormControlSelect1" name="type">
-                           <option>Hire</option>
-                           <option>Buy</option>
-
-                         </select>
-                       </div>
-                   </div>
+            
                    <div class="col-sm">
 
                          <br>

@@ -65,13 +65,13 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
 
             <i class="fas fa-building"></i>
-          <span>flats</span>
+          <span>projects</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="/Allflats">All flats</a>
-            <a class="collapse-item" href="/add/flat">Add flats </a>
+            <a class="collapse-item" href="/Allflats">All projects</a>
+            <a class="collapse-item" href="/add/flat">Add project </a>
           </div>
         </div>
       </li>
@@ -431,6 +431,16 @@ function fixStepIndicator(n) {
 imageUploadMethod: 'PUT'
 });
   </script>
+    <script type="text/javascript">
+   
+      $('#regForm').submit(function(){
+          $("#sub", this)
+            .html("Please Wait...")
+            .attr('disabled', 'disabled');
+          return true;
+      });
+         
+      </script>
 
 
 </body>
