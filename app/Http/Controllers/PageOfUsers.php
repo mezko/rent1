@@ -9,6 +9,7 @@ class PageOfUsers extends Controller
     //////////////////show Properties page
     public function show_flat()
     {
+        
         $flats=DB::table('flats')->where('vip','0')->join('cities', 'flats.city', '=', 'cities.id')->get();
         $cities=DB::table('cities')->get();
 
@@ -26,6 +27,7 @@ class PageOfUsers extends Controller
     ////////////////////show flat page //////////////////////
     public function show_ur_flat($id)
     {
+        // dd(str_replace('en', 'ar', url()->current()));/
         $flats=DB::table('flats')->where('f_id',$id)->first();
         $city=DB::table('cities')->where('id',$flats->city)->first();
         $sliders=DB::table('sliders')->where('flat_id',$id)->get();

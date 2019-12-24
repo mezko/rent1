@@ -18,7 +18,7 @@
                    @else
                    <h4 class="border-bottom border-dark p-2">{{$flat->ar_name}}</h4>
                    @endif
-                   <h4><i class="fas fa-lira-sign "></i>{{$flat->price}}</h4>
+                   <h4><i class="fas fa-dollar-sign "></i>{{$flat->price}}</h4>
 
 
                    </div>
@@ -46,12 +46,15 @@
 <!---->
                 <div class="item {{$slider->catagory}} col-lg-3 col-md-4 col-6 col-sm">
                   
-                           <a href="/upload pic/{{$slider->name}}" class="fancylight popup-btn" data-fancybox-group="light">
-                           
+                           <a href="/upload pic/{{$slider->name}}" class="image-link example-image-link" data-lightbox="example-1" >
                         <img class="image-popup-vertical-fit"  src="/upload pic/{{$slider->name}}"alt="">
                         </a>
-                     </div>
-
+                 
+                                             
+                            {{-- <a class="example-image-link" href="/upload pic/{{$slider->name}}" >
+                              <img  src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-1.jpg" /></a> --}}
+                    
+                </div>
                 @endforeach
 
 
@@ -61,8 +64,11 @@
              <h4 class="border-bottom border-dark p-2"></h4>
              <!-------------------------------------------Data Of Flat --------------------------------------->
              <div class="col-lg-12 text-center my-2">
+               @if (App::getLocale()=="en")
                     <h4 class="border-bottom border-dark p-2">Flat</h4>
-
+                    @else
+                    <h4 class="border-bottom border-dark p-2">مشروع</h4>
+                    @endif
                  </div>
              <!----------------------------------------------------table Which Have The Data ------------------------------------------->
              <table class="table">
@@ -148,8 +154,13 @@
 <h4 class="border-bottom border-dark p-2"></h4>
 <!-------------------------------------------Data Of Flat --------------------------------------->
 <div class="col-lg-12 text-center my-2">
+   @if (App::getLocale()=="en")
        <h4 class="border-bottom border-dark p-2">Plus Information</h4>
-    </div>
+       @else
+       <h4 class="border-bottom border-dark p-2">معلومات اضافية</h4>
+
+      @endif 
+      </div>
 <!----------------------------------------------------table Which Have The Data ------------------------------------------->
 <div class="blog_details">
         <h2>Extra Information About The Flat
@@ -175,6 +186,7 @@
      </div>
   </div>
 </div>
+
 @endsection
 
 

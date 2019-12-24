@@ -30,6 +30,9 @@
    <link rel="stylesheet" href="{{asset('css/slider/slider.css')}}">
    <!----------------------------gallery -------------------------------------------------------->
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!------------------------lightbox---------------------------->
+    <link rel="stylesheet" href="{{asset('css/lightbox.min.css')}}">
+<!-------------------------------------------------------------------------------------->
    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <!------ Include the above in your HEAD tag ---------->
@@ -111,10 +114,14 @@
                   
 
                     <div class="btn_1 d-none d-lg-block" style="margin-right: 30px">
+      
                         @if (App::getLocale()=="ar")
-                    <a href="/index/en" class="float-right"  >{{ __('langu.lang')}}</a>
+                        
+                    <a href="{{str_replace('ar', 'en', url()->current())}}" class="float-right"  >{{ __('langu.lang')}}</a>
                     @else
-                    <a href="/index/ar" class="float-right" >{{ __('langu.lang')}}</a>
+                    
+                  
+                    <a href="{{str_replace('en', 'ar', url()->current())}}" class="float-right" >{{ __('langu.lang')}}</a>
                     @endif
                 </div>
 
@@ -202,6 +209,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
  <!--::footer_part end::-->
  <!-- jquery plugins here-->
  <script src="{{asset('js/app.js')}}"></script>
+<!--lightbox-->
+ <script src="{{asset('js/lightbox-plus-jquery.min.js')}}"></script>
  <!-- jquery -->
  <script src="{{asset('js/jquery-1.12.1.min.js')}}"></script>
  <!-- popper js -->
@@ -231,7 +240,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
      <script src="{{asset('js/custom.js')}}"></script>
      <script src="{{asset('js/test.js')}}"></script>
      <script src="{{asset('js/gallery.js')}}"></script>
-     <!------------------slider bar----------------->
+     <!------------------lightbox----------------->
+
+
      
 
 
