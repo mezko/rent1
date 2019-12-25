@@ -93,15 +93,15 @@
 
       @if(Auth::user()->premission==1 or Auth::user()->premission==3)
       <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-globe-americas"></i>
               <span>Blogs</span>
             </a>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header" href="buttons.html">Blogs:</h6>
-                <a class="collapse-item" href="/All/blog">All Blogs</a>
-                <a class="collapse-item" href="/Add/blog">Add Blog</a>
+                <h6 class="collapse-header" href="buttons.html">Messages:</h6>
+                <a class="collapse-item" href="/All/blog">Not Replied Messages</a>
+                <a class="collapse-item" href="/Add/blog">Replied Messages</a>
               </div>
             </div>
           </li>
@@ -149,6 +149,21 @@
                 <span>HomeFlat</span>
               </a>
             </li>
+            <!-----------------------messages---------------------->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapssex" aria-expanded="true" aria-controls="collapseTwo">
+                      <i class="fas fa-comment-dots"></i>
+                <span>Messages</span>
+              </a>
+              <div id="collapssex" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header" href="buttons.html">Messages:</h6>
+                  <a class="collapse-item" href="/messages">Replied Messages</a>
+                  <a class="collapse-item" href="/Add/user">Not Replied Messages</a>
+                </div>
+              </div>
+            </li>
+        
           @endif
 
       <!-- Divider -->

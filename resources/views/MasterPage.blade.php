@@ -86,8 +86,8 @@
                                     {{ __('langu.Services')}}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="single-blog.html">{{ __('langu.Establishing companies')}}</a>
-                                    <a class="dropdown-item" href="elements.html">{{ __('langu.Residence and nationality')}}</a>
+                                    <a class="dropdown-item" href="/Establish company/{{App::getLocale()}}">{{ __('langu.Establishing companies')}}</a>
+                                    <a class="dropdown-item" href="/residences/{{App::getLocale()}}">{{ __('langu.Residence and nationality')}}</a>
                                 </div>
                             </li>
 
@@ -96,7 +96,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">{{ __('langu.About US')}}</a>
+                                <a class="nav-link" href="/About US/{{App::getLocale()}}">{{ __('langu.About US')}}</a>
                             </li>
 
                             <li class="nav-item">
@@ -104,14 +104,22 @@
                             </li>
                         </ul>
                          
-                        <form class="form-inline my-2 my-lg-0" method="POST">
+                        {{-- <form class="form-inline my-2 my-lg-0" method="POST" >
                            @csrf
                            <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
                            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-                         </form> 
+                         </form>  --}}
+      
+                         
 
                     </div>
-                  
+                    <div class="btn_1 d-none d-lg-block" style="margin-right: 30px">
+                    <a href="/Properties" style="margin-right: 2%">
+                     <i class="fas fa-search"></i>
+                   </a>
+                    </div>
+               
+
 
                     <div class="btn_1 d-none d-lg-block" style="margin-right: 30px">
       
@@ -240,8 +248,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
      <script src="{{asset('js/custom.js')}}"></script>
      <script src="{{asset('js/test.js')}}"></script>
      <script src="{{asset('js/gallery.js')}}"></script>
-     <!------------------lightbox----------------->
-
+     <!------------------form----------------->
+     <script type="text/javascript">
+   
+      $('#regForm').submit(function(){
+          $("#sub", this)
+            .html("Please Wait...")
+            .attr('disabled', 'disabled');
+          return true;
+      });
+         
+      </script>
 
      
 

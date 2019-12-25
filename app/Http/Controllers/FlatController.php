@@ -11,6 +11,10 @@ use App\user;
 use App\homeslider;
 use App\establish_company;
 use App\residence;
+use App\contactus;
+use App\aboutus;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\message;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Image;
@@ -599,6 +603,64 @@ public function EditHomeSliderPage($id)
 
        }
    }
+   //////////////////////////////////////////////////////////////////////
+   ////////////////contact us///////////////////////////////////////////
+   /////////////////////////////////////////////////////////////////////
+   public function MessagesPage()
+   {
+       $messages=DB::table("contactuses")->where('reply',0)->get();
+       return view("admin.AllMessages")->with('messages',$messages);
+   }
+   // reply message page
+   public function ReplyMessagesPage($id)
+   {
+    $messages=DB::table("contactuses")->where('id',$id)->first();
+      return view("admin.ReplyMessage")->with('messages',$messages);
+   }
+   //reply fun
+   public function ReplyMessages($id ,Request $request )
+   {
+       $message= contactus::find($id);
+       $message->message_reply=$request->reply;
+       $message->reply=1;
+      
+       
+    //    dd($message->email);
+       Mail::to($message->email)->send(new message($request->reply));
+       $message->save();
+       return redirect("/messages")->with('success-message', 'Reply Sent!');
+   }
+   //About
+   public function About(Request $request , $ln)
+   {
+    $aboutus=DB::table('aboutuses')->first();
+    ///1 - check if my table have any data because i used only 1 row
+
+////if have a data i will edit
+    if($aboutus==NULL){
+    $aboutus=new aboutus;
+}
+else {
+    $aboutus=aboutus::find($aboutus->id);
+
+}
+
+    if($ln=="ar"){
+
+        $aboutus->p_ar=$request->Page_ar;
+        $aboutus->ar_state=1;
+        $aboutus->save();
+        return redirect("/pages")->with('success-message', 'Done');
+       }
+       else if($ln=="en"){
+
+        $aboutus->p_en=$request->page_en;
+        $aboutus->en_state=1;
+        $aboutus->save();
+        return redirect("/pages")->with('success-message', 'Done');
+
+       }
+}
 
 
 

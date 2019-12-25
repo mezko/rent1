@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
  use DB;
+ use App\contactus;
 class PageOfUsers extends Controller
 {
     //////////////////show Properties page
@@ -36,10 +38,12 @@ class PageOfUsers extends Controller
     ////////////////////////////SearchFlat
     public function SearchFlat(Request $request)
     {
+        
      $range=explode(";",$request->my_range);
     //  dd($range);
      $flats=DB::table('flats')->where('city',$request->city)
      ->whereBetween('price',[$range[0],[$range[1]]])->get();
+    //  dd($flats);
      $cities=DB::table('cities')->get();
 
     //
@@ -74,7 +78,9 @@ class PageOfUsers extends Controller
     public function nav_search(Request $request)
     {
        
-         $cities=DB::table('cities')->where('city','like',$request->search.'%')->orwhere('city_en','like',$request->search.'%')->first();
+         $cities=DB::table('cities')->where('city','like',$request->search.'%')
+         ->orwhere('city_en','like',$request->search.'%')
+         ->first();
          if($cities !=null){
             $flats=DB::table('flats')->where('city',$cities->id)->get();
 
@@ -85,17 +91,54 @@ class PageOfUsers extends Controller
         // dd($flats);
         $city=DB::table('cities')->get();
 
-          return view('SearchProperty')->with('flats',$flats)->with('cities',$city);
+          return redirect('Properties')->with('flats',$flats)->with('cities',$city);
 
      
 
     }
     ////////////////////////////////////////////////////////////////////
- 
+    public function residence()
+    {
+        $residences=DB::table("residences")->first();
+        return view("residences")->with('residences',$residences);
+    }
+    ///////////////////////////////////////////////////////////////////
+    public function AboutUS()
+    {
+        $aboutus=DB::table("aboutuses")->first();
+        return view("aboutus")->with('aboutus',$aboutus);
+    }
     ////////////////////////////////////////////////////////////////////
     public function Establishing()
     {
         $Establishing=DB::table("establish_companies")->first();
         return view("Establishing")->with('Establishing',$Establishing);
+    }
+    ////////////////////////////////////////////////////////////////////
+    ////////////////////Contact us//////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
+    public function ContactUsPage()
+    {
+        return view("ContactUs");
+    }
+    //function of ContactUs//////////////
+    public function ContactUs(Request $request)
+    {
+        /////validation////
+        $this->validate($request, [
+            'email' => 'email',
+        ]);
+       //////////////////// 
+      $con=new contactus();
+      $con->username=$request->username;
+      $con->email=$request->email;
+      $con->message=$request->message;
+      $con->save();
+      if(App::getLocale()=="en"){
+      return back()->with('success-message', 'Done');
+    }
+    else{
+        return back()->with('success-message', 'تم الارسال بنجاح'); 
+        }
     }
 }

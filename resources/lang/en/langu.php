@@ -12,5 +12,9 @@ return [
 'Services'=>'Our Services',
 'Establishing companies'=>'Establishing companies',
 'Residence and nationality'=>'Residence and nationality',
+'YourName'=>'Your Name',
+'YourEmail'=>'Your Email',
+'YourMessage'=>'Your Message',
+'submit'=>'send',
 ];
 ?>

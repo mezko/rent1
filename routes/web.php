@@ -26,6 +26,16 @@ Route::get('/Blog/{id}/{lang?}','PageOfUsers@show_blog');
 Route::get('/flatnum/{id}/{lang?}','PageOfUsers@show_ur_flat');
 /////////////////////Establish company page
 Route::get('/Establish company/{lang?}','PageOfUsers@Establishing');
+////////////////////AboutUS
+Route::get('/About US/{lang?}','PageOfUsers@AboutUS');
+////////////////////residences
+Route::get('/residences/{lang?}','PageOfUsers@residence');
+///////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////contact us/////////////////////////////////////
+Route::get('/Contact US/{lang?}','PageOfUsers@ContactUsPage');
+//ContactUs
+Route::post('/Contact US/{lang?}','PageOfUsers@ContactUs');
 
 //////////////////////////////////////////////////////////////////////////////search bar
 // Route::post('/Searchfor','FlatController@all_search_table');
@@ -100,6 +110,11 @@ Route::post('/Establish/{ln}','FlatController@establish_company');
 Route::get('/Residence_&_nationality/{ln}','FlatController@edit_page');
 //Residence
 Route::post('/Residence_&_nationality/{ln}','FlatController@Residence');
+//about
+Route::get('/About/{ln}','FlatController@edit_page');
+Route::post('/About/{ln}','FlatController@About');
+
+
 
 
 /////////////////////////////////////////////////////////
@@ -119,6 +134,14 @@ Route::get('/DeleteSlider/{id}','FlatController@DeleteSlider');
 Route::get('/ShowHomeFlat','FlatController@ShowHomeFlat');
 //FunHomeFlat
 Route::post('/ShowHomeFlat','FlatController@FunHomeFlat');
+///////////////////////////////////////////////////////////////
+///////messages//
+Route::get('/messages','FlatController@MessagesPage');
+//////replay message
+Route::get('/replymessage/{id}','FlatController@ReplyMessagesPage');
+//ReplyMessages
+Route::post('/replymessage/{id}','FlatController@ReplyMessages');
+
 
 
 
