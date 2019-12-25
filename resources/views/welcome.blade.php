@@ -146,53 +146,49 @@
        <div class="row">
           <div class="col-lg-5">
              <div class="section_tittle">
-                <h1>Our Passion is <br>
-                   People What’s Yours?</h1>
+                @if (App::getlocale()=="ar")
+                   <h1 class="text-right">
+                  {{__('langu.Services')}}
+                   </h1>
+                   @else
+                   <h1 class="text-left">
+                     {{__('langu.Services')}}
+                      </h1>
+                   @endif
              </div>
           </div>
        </div>
        <div class="row">
-          <div class="col-md-6 col-lg-3">
+          <div class="col">
              <div class="single_passion">
                 <div class="single_passion_item">
                    <a href="#" class="passion_icon"> <i class="flaticon-compass"></i> </a>
-                   <h4>bulliding Design</h4>
+                <h4>{{__('langu.Our Services')}}</h4>
                    <p>Hac facilisi ac vitae consec tetu commod vel magna suspen disse on senectus
                       pharetra magnfauc bed</p>
-                   <a href="#" class="btn_2">Read More <span class="ti-arrow-right"></span></a>
+                   <a href="/Properties/{{App::getlocale()}}" class="btn_2">Read More <span class="ti-arrow-right"></span></a>
                 </div>
              </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col">
              <div class="single_passion">
                 <div class="single_passion_item">
                    <a href="#" class="passion_icon"> <i class="flaticon-desk"></i> </a>
-                   <h4>Experience Style</h4>
+                   <h4>{{__('langu.Establishing companies')}}</h4>
                    <p>Hac facilisi ac vitae consec tetu commod vel magna suspen disse on senectus
                       pharetra magnfauc bed</p>
-                   <a href="#" class="btn_2">Read More <span class="ti-arrow-right"></span></a>
+                   <a href="/Establish company/{{App::getlocale()}}" class="btn_2">Read More <span class="ti-arrow-right"></span></a>
                 </div>
              </div>
           </div>
-          <div class="col-md-6 col-lg-3">
-             <div class="single_passion">
-                <div class="single_passion_item">
-                   <a href="#" class="passion_icon"> <i class="flaticon-bathroom"></i> </a>
-                   <h4>Product Research</h4>
-                   <p>Hac facilisi ac vitae consec tetu commod vel magna suspen disse on senectus
-                      pharetra magnfauc bed</p>
-                   <a href="#" class="btn_2">Read More <span class="ti-arrow-right"></span></a>
-                </div>
-             </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col">
              <div class="single_passion">
                 <div class="single_passion_item">
                    <a href="#" class="passion_icon"> <i class="flaticon-beach"></i> </a>
-                   <h4>Affordable Price</h4>
+                   <h4>{{__('langu.Residence and nationality')}}</h4>
                    <p>Hac facilisi ac vitae consec tetu commod vel magna suspen disse on senectus
                       pharetra magnfauc bed</p>
-                   <a href="#" class="btn_2">Read More <span class="ti-arrow-right"></span></a>
+                   <a href="/residences/{{App::getlocale()}}" class="btn_2">Read More <span class="ti-arrow-right"></span></a>
                 </div>
              </div>
           </div>
@@ -214,7 +210,7 @@
                <div class="cta_iner">
                   <h1>Are You Ready For Move? </h1>
                   <p>Lights had saw moving saw female blessed</p>
-                  <a href="#" class="cta_btn">Sing Up</a>
+               <a href="/Contact US/{{App::getlocale()}}" class="cta_btn">{{__('langu.Contact us')}}</a>
                </div>
             </div>
          </div>

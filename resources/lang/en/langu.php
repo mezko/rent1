@@ -16,5 +16,6 @@ return [
 'YourEmail'=>'Your Email',
 'YourMessage'=>'Your Message',
 'submit'=>'send',
+
 ];
 ?>

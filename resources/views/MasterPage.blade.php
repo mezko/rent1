@@ -60,14 +60,14 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                   <!-- Search form -->
                   
-                    <a class="navbar-brand" href="/index"  style="padding-left: 30px"> <img src="{{asset('img/logo.png')}}" alt="logo"> </a>
+                <a class="navbar-brand" href="/index/{{App::getLocale()}}"  style="padding-left: 30px"> <img src="{{asset('img/logo.png')}}" alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                       </button>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/index">{{ __('langu.Home') }}<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="/index/{{App::getLocale()}}">{{ __('langu.Home') }}<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -100,7 +100,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">{{ __('langu.Contact us')}}</a>
+                                <a class="nav-link" href="/Contact US/{{App::getlocale()}}">{{ __('langu.Contact us')}}</a>
                             </li>
                         </ul>
                          
@@ -125,11 +125,11 @@
       
                         @if (App::getLocale()=="ar")
                         
-                    <a href="{{str_replace('ar', 'en', url()->current())}}" class="float-right"  >{{ __('langu.lang')}}</a>
+                    <a href="{{str_replace('/ar', '/en', url()->current())}}" class="float-right">{{ __('langu.lang')}}</a>
                     @else
-                    
-                  
-                    <a href="{{str_replace('en', 'ar', url()->current())}}" class="float-right" >{{ __('langu.lang')}}</a>
+   
+      
+                    <a href="{{str_replace('/en', '/ar', url()->current())}}" class="float-right">{{ __('langu.lang')}}</a>
                     @endif
                 </div>
 
