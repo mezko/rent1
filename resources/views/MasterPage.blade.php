@@ -60,14 +60,14 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                   <!-- Search form -->
                   
-                <a class="navbar-brand" href="/{{App::getLocale()}}"  style="padding-left: 30px"> <img src="{{asset('img/logo.png')}}" alt="logo"> </a>
+                <a class="navbar-brand" href="/index/{{App::getLocale()}}"  style="padding-left: 30px"> <img src="{{asset('img/logo.png')}}" alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                       </button>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/{{App::getLocale()}}">{{ __('langu.Home') }}<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="/index/{{App::getLocale()}}">{{ __('langu.Home') }}<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -156,7 +156,7 @@
              <div class="single_footer_part">
                 <h4>About Us</h4>
                 <p>Heaven fruitful doesn't over lesser days appear creeping seasons so behold bearing days open</p>
-                <a href="/{{App::getlocale()}}" class="footer_logo"> <img src="{{asset('img/footer_logo.png')}}" alt="#"> </a>
+                <a href="/index/{{App::getlocale()}}" class="footer_logo"> <img src="{{asset('img/footer_logo.png')}}" alt="#"> </a>
              </div>
           </div>
           <div class="col-sm-6 col-lg-3">

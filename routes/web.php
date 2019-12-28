@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('//{lang?}', 'PageOfUsers@welcome');
+// Route::get('//{lang?}', 'PageOfUsers@welcome');
 
-// Route::get('/index/{lang?}', 'PageOfUsers@welcome');
+Route::get('/index/{lang?}', 'PageOfUsers@welcome');
 //nav_search
 // Route::post('/index/{lang?}', 'PageOfUsers@nav_search');
 
