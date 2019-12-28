@@ -20,7 +20,8 @@ class PageOfUsers extends Controller
     ////////////////////////////////vip flats
     public function show_flat_vip()
     {
-        $flats=DB::table('flats')->where('vip','1')->join('cities', 'flats.city', '=', 'cities.id')->get();
+        $flats=DB::table('flats')->where('vip','1')->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities','flats.city','cities.id')->get();
         $cities=DB::table('cities')->get();
 
        return view('Property')->with('flats',$flats)->with('cities',$cities);
@@ -30,7 +31,9 @@ class PageOfUsers extends Controller
     public function show_ur_flat($id)
     {
         // dd(str_replace('en', 'ar', url()->current()));/
-        $flats=DB::table('flats')->where('f_id',$id)->first();
+        $flats=DB::table('flats')->where('f_id',$id)
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->first();
         $city=DB::table('cities')->where('id',$flats->city)->first();
         $sliders=DB::table('sliders')->where('flat_id',$id)->get();
        return view('FlatPage')->with('flat',$flats)->with('sliders',$sliders)->with('city',$city);
@@ -40,16 +43,27 @@ class PageOfUsers extends Controller
     {
         
      $range=explode(";",$request->my_range);
-    //  dd($range);
-     $flats=DB::table('flats')->where('city',$request->city)
-     ->whereBetween('price',[$range[0],[$range[1]]])->get();
-    //  dd($flats);
-     $cities=DB::table('cities')->get();
+      $test =$range[1];
+    //   dd($test);
+     if($test=='0'){
+       
+        $flats=DB::table('flats')
+        ->where('city',$request->city)
+        ->get();
+        
 
-    //
-     ////////////->where('city',$request->city)->where('type',$request->type)
-    //  dd($flats);
-    return view('SearchProperty')->with('flats',$flats)->with('cities',$cities);
+     }else{
+//   dd($range);
+     $flats=DB::table('flats')
+     ->where('city',$request->city)
+     ->whereBetween('price',[$range[0],[$range[1]]])
+     ->get();
+    }
+    $city=DB::table('cities')->where('id',$request->city)->first();
+
+     $cities=DB::table('cities')->get();
+    
+    return view('SearchProperty')->with('flats',$flats)->with('cities',$cities)->with('ci',$city);
 
     }
     //////////Blog Page
@@ -141,4 +155,70 @@ class PageOfUsers extends Controller
         return back()->with('success-message', 'تم الارسال بنجاح'); 
         }
     }
+    ////////////////////searchflats
+    public function searchflats()
+    {
+        $flats=DB::table('flats')->join('cities', 'flats.city', '=', 'cities.id')->get();
+        $distinics=DB::table('distinics')->get();
+
+       return view('searchflats')->with('flats',$flats)->with('distinics',$distinics);
+    }
+    ////fun of searchflat
+    public function SearchFlats_fun(Request $request)
+    {
+    
+        
+        $distinics=DB::table('distinics')->get();
+    //    dd($request->name); 
+        if($request->name ==null and $request->dis==0){
+            $flats=DB::table('flats')->join('cities', 'flats.city', '=', 'cities.id')->get();
+            
+
+         
+        }
+
+        elseif($request->dis==0 and $request->name != null)
+        {
+            $flats=DB::table('flats')
+            ->where('ar_name','LIKE','%'.$request->name.'%')
+            ->orwhere('en_name','LIKE','%'.$request->name.'%')
+            ->join('cities', 'flats.city', '=', 'cities.id')->get();            
+        } else{
+            
+            $flats=DB::table('flats')
+            ->where('distinc_id',$request->dis)
+            ->where('ar_name','LIKE','%'.$request->name.'%')
+            ->orwhere('en_name','LIKE','%'.$request->name.'%')
+            ->join('cities', 'flats.city', '=', 'cities.id')->get();
+            
+
+
+        }
+       
+        if($flats !=null){
+
+            return view('searchflats')->with('flats',$flats)->with('distinics',$distinics);
+        }
+        else{
+            if(App::getLocale()=="en"){
+            return back()->with('delete-message', 'Not Found');
+        }
+        else{
+            return back()->with('delete-message', 'لا يوجد');
+
+        }
+
+        }
+
+
+    }
+ 
+    //////////////////////blog page
+    public function blogPage()
+    {
+        $blogs=DB::table('news')->orderBy('created_at', 'desc')->get();
+       return view("allblogs")->with('blogs',$blogs);
+    }
+
+
 }

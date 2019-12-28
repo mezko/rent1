@@ -108,6 +108,24 @@
           @endif
 
           @if(Auth::user()->premission==1)
+  
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsedis" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-globe-americas"></i>
+              <span>distinics</span>
+            </a>
+            <div id="collapsedis" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header" href="buttons.html">distinics:</h6>
+                <a class="collapse-item" href="/all_distinics">All distinics</a>
+                <a class="collapse-item" href="/dis">Add City</a>
+              </div>
+            </div>
+          </li>
+
+
+
+
       <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsfour" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-user"></i>
@@ -223,6 +241,7 @@
                 </form>
               </div>
             </li>
+
 
             <!-- Nav Item - Alerts -->
 

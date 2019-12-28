@@ -9,29 +9,43 @@
             <h3> Fliter Your Flat </h3>
                 <div class="row  border rounded" style="border-width : 100px" >
                   <div class="col-sm">
-
+                     <div class="form-group">
                         <br>
-                        <div class="form-group">
+                        @if (App::getLocale()=="en")
+                        <h5>{{__('langu.city')}}:</h5>
 
-                        <input type="text" class="js-range-slider" name="my_range" value=""
-                        data-type="double"
-                        data-min="0"
-                        data-max="1000000"
-                        data-from="0"
-                        data-to="0"
-                        data-grid="true"
-                    />
+                        @else
+                       
+                        <h5 class="text-right">{{__('langu.city')}}:</h5>
+
+                        @endif
+                        <div class="input-group">
+                           <input type="text" class="form-control" name="name" >
+                        </div>
+                       
+                      
                   </div>
                   </div>
 
 
                   <div class="col-sm">
                         <div class="form-group">
-                                <label for="exampleFormControlSelect1">City:</label>
-
-                                <select class="form-control" id="exampleFormControlSelect1" name="city">
-                                    @foreach ($cities as $city)
-                                    <option value="{{$city->id}}">{{$city->city_en}}</option>
+                           <br>
+                           @if (App::getLocale()=="en")
+                           <h5>{{__('langu.location')}}:</h5>
+                           @else
+                           <h5 class="text-right">{{__('langu.location')}}:</h5>
+   
+                           @endif
+                                <select class="form-control" id="exampleFormControlSelect1" name="dis">
+                                <option value="0">{{__('langu.all')}}</option>
+                                    @foreach ($distinics as $distinic)
+                                    @if (App::getLocale()=="en")
+                                    <option value="{{$distinic->dis_id}}">{{$distinic->dis_en}}</option>
+                                    @else
+                                    <option value="{{$distinic->dis_id}}">{{$distinic->dis_ar}}</option>
+                                    @endif
+                                    
                                     @endforeach
 
 
@@ -40,15 +54,36 @@
                               </div>
 
                   </div>
-                  <input type="submit">
+               <input type="submit" value="{{__('langu.submit')}}">
                 </form>
                 </div>
 
               </div>
+ 
+              @if (Session::has('delete-message'))
+        <div class="alert alert-danger">
+            <button type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-hidden="true">&times;</button>
+            {!! session()->get('delete-message') !!}
+        </div>
+</div>
+</div>
+
+
+      
+                  
+              @else
+                  
+       
+
+
+
 
             <h4 class="border-bottom border-dark p-2"></h4>
                  <div class="col-lg-12 text-center my-2">
-                    <h4 class="border-bottom border-dark p-2">flats</h4>
+                 <h4 class="border-bottom border-dark p-2">{{__('langu.flats')}}</h4>
                 </div>
        <div class="row">
    @foreach ($flats as $flat)
@@ -84,10 +119,13 @@
 </div>
 </div>
 </div>
+
 <style>
     .border-3 {
     border-width:15px !important;
 }
     </style>
  <!--::apartment_part end::-->
+ @endif
+
 @endsection

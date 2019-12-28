@@ -94,13 +94,13 @@
                             <td><i class="fas fa-city"></i> </td>
                             <td>{{$city->city_en}}</td>
                         <td><i class="fas fa-city"></i> </td>
-                        <td>{{$flat->distinic}}</td>
+                        <td>{{$flat->dis_id}}</td>
 
                      @else
                         <td><i class="fas fa-city"></i> </td>
                         <td>{{$city->city}}</td>
                         <td><i class="fas fa-city"></i> </td>
-                        <td>{{$flat->area_ar}}</td>
+                        <td>{{$flat->area}}</td>
                         @endif
 
 
@@ -108,12 +108,12 @@
                       <tr>
                             @if (App::getLocale()=="en")
                             <td><span class="fas fa-city"></span></td>
-                            <td>{{$flat->address}}</td>
+                            <td>{{$flat->dis_en}}</td>
                             <td><span class="flaticon-frame"> </span></td>
                             <td>{{$flat->area}}</td>
                             @else
                             <td><span class="fas fa-city"></span></td>
-                            <td>{{$flat->address_ar}}</td>
+                            <td>{{$flat->dis_ar}}</td>
                             <td><span class="flaticon-frame"> </span></td>
                             <td>{{$flat->area}}</td>
 

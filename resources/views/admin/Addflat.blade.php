@@ -21,23 +21,28 @@
 
           </select>
           </p>
+          <p>
+            <select name="distinics" value="{{ old('Distinic') }}" class="form-control custom-select" >
+              <!-----------------here yalla-------------->     
+              @foreach ($distinics as $distinic)
+            <option value="{{$distinic->dis_id}}">{{$distinic->dis_ar}}</option> 
+              @endforeach
+              
+                 
+            </select>
+      </p>
 
-          <p><input placeholder="Distinic" required oninput="this.className = ''"class="form-control" value="{{ old('distinic') }}" name="distinic"></p>
-          <p><input placeholder="Address" required oninput="this.className = ''"class="form-control" value="{{ old('address') }}" name="address"></p>
+          {{-- <p><input placeholder="Distinic" required oninput="this.className = ''"class="form-control" value="{{ old('distinic') }}" name="distinic"></p> --}}
+          {{-- <p><input placeholder="Address" required oninput="this.className = ''"class="form-control" value="{{ old('address') }}" name="address"></p> --}}
          <!-------------ar----------------------------->
-          <p><input placeholder="الحى" required oninput="this.className = ''"class="form-control" value="{{ old('area_ar') }}"  name="area_ar"></p>
-          <p><input placeholder="العنوان" required oninput="this.className = ''"class="form-control"  value="{{ old('address_ar') }}" name="address_ar"></p>
+          {{-- <p><input placeholder="الحى" required oninput="this.className = ''"class="form-control" value="{{ old('area_ar') }}"  name="area_ar"></p> --}}
+          {{-- <p><input placeholder="العنوان" required oninput="this.className = ''"class="form-control"  value="{{ old('address_ar') }}" name="address_ar"></p> --}}
 
           <p><input type="number"  min="0" required placeholder="Price" oninput="this.className = ''"class="form-control" value="{{ old('Price') }}"    name="Price"></p>
         </div>
 
-        <div class="tab">type:
-          <p>
-                <select name="type" value="{{ old('type') }}" class="form-control custom-select" >
-                        <option value="Hire">Hire</option>
-                        <option value="Buy">Buy</option>
-                </select>
-          </p>
+        <div class="tab">Distinic:
+     
           <p><input type="file" value="{{ old('file') }}" placeholder="upload image" required oninput="this.className = ''" class="form-control" name="img"></p>
         </div>
 

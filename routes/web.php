@@ -10,16 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('//{lang?}', 'PageOfUsers@welcome');
 
-Route::get('/index/{lang?}', 'PageOfUsers@welcome');
+// Route::get('/index/{lang?}', 'PageOfUsers@welcome');
 //nav_search
-Route::post('/index/{lang?}', 'PageOfUsers@nav_search');
+// Route::post('/index/{lang?}', 'PageOfUsers@nav_search');
 
 ///////////flat///////////////
 Route::get('/Properties/{lang?}','PageOfUsers@show_flat');
 Route::post('/Properties/{lang?}','PageOfUsers@SearchFlat');
 /////////////////////////vip
 Route::get('/PropertiesVip/{lang?}','PageOfUsers@show_flat_vip');
+///////////////////////////////////////////////////
+///allblogs
+Route::get('/ourblogs/{lang?}','PageOfUsers@blogPage');
+
 /////////////////////////blog page
 Route::get('/Blog/{id}/{lang?}','PageOfUsers@show_blog');
 ///////////////////////////////////////////////////////
@@ -36,10 +41,45 @@ Route::get('/residences/{lang?}','PageOfUsers@residence');
 Route::get('/Contact US/{lang?}','PageOfUsers@ContactUsPage');
 //ContactUs
 Route::post('/Contact US/{lang?}','PageOfUsers@ContactUs');
+///////////////////////////////////////////////////////////
+////searchfor
+Route::get('/searchflats/{lang?}','PageOfUsers@searchflats');
+//SearchFlats_fun
+Route::post('/searchflats/{lang?}','PageOfUsers@SearchFlats_fun');
+////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////search bar
 // Route::post('/Searchfor','FlatController@all_search_table');
 Auth::routes();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////// Admin panel links/////////////////////////////////////////////////////////////
 Route::get('/home/{lang?}', 'HomeController@index')->name('home');
 ////////////////////////////////////middleware for premission
@@ -61,7 +101,21 @@ Route::post('/UploadSlider/{id}', 'FlatController@Upload_fun_Slider');
 /////////////////////////delete slider////////////////////////////////////////////////////////////////////////////////
 Route::get('/delet/slider/{id}','FlatController@deletslider');
 Route::get('/delet/slide/{id}','FlatController@deletslide');
-////////////////////////////////////////////test route
+/////////////////////////////////////////////////////////////////////////////////////
+
+////**************************************************************************/////////// */
+////////////////////////////////////////////distinics
+////add
+/////////////////////////////Add City ////////////////////////////////////////////////////////////////////////////////
+Route::get('/dis','FlatController@show_dis');
+Route::post('/dis','FlatController@Adddis');
+//////////////
+Route::get('/all_distinics','FlatController@all_distinics');
+///Upload/dis
+Route::get('/Upload/dis/{id}','FlatController@show_update_dis');
+Route::post('/Upload/dis/{id}','FlatController@update_dis');
+////////////////////////////deletcity////////////////////////////////////////////////////////////////////////////////
+Route::get('/delet/dis/{id}','FlatController@deletedis');
 
 /////////////////////////////Add City ////////////////////////////////////////////////////////////////////////////////
 Route::get('/city','FlatController@show_city');

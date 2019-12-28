@@ -16,6 +16,14 @@ return [
 'YourEmail'=>'Your Email',
 'YourMessage'=>'Your Message',
 'submit'=>'send',
+'more'=>'more',
+'Blog'=>'Our Blogs',
+'all'=>'all',
+'city'=>'city',
+'location'=>'location',
+'flats'=>'projrcts',
+'submit'=>'submit',
+'ourblogs'=>' Our Blogs:',
 
 ];
 ?>

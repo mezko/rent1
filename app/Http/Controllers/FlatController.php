@@ -13,6 +13,7 @@ use App\establish_company;
 use App\residence;
 use App\contactus;
 use App\aboutus;
+use App\distinic;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\message;
 use Illuminate\Support\Facades\Hash;
@@ -30,33 +31,29 @@ class FlatController extends Controller
     public function add_flat_page()
     {
         $cities=DB::table('cities')->get();
-
-        return view('admin.Addflat')->with('cities',$cities);
+        $distinics=DB::table('distinics')->get();
+        return view('admin.Addflat')->with('cities',$cities)->with('distinics',$distinics);
     }
     ///////////////////////////add_flat_function///////////////
    public function add_flat(Request $request)
    {
-    //    dd(count($request.length));
-    // if(count($request->all())>1){
-    //     return back()->with('delete-message', 'You ordered More Requestes And That’s Not Allowed !')->withInput(Input::all());
     
-    // }
-    // else{
-    //    dd($request->img);
+    // dd($request->distinics);
+  
     $flat=new flat();
     $flat->city=$request->city;
     $flat->ar_name=$request->ar_name;
     $flat->en_name=$request->en_name;
     $flat->price=$request->Price;
-    $flat->address=$request->address;
-    $flat->address_ar=$request->address_ar;
+    // $flat->address=$request->address;
+    // $flat->address_ar=$request->address_ar;
     $flat->info=$request->info;
     $flat->info_ar=$request->info_ar;
     $flat->area=$request->area;
     //distinic
-    $flat->distinic=$request->distinic;
-    $flat->area_ar=$request->area_ar;
-    $flat->type=$request->type;
+    $flat->distinc_id=$request->distinics;
+    // $flat->area_ar=$request->area_ar;
+    // $flat->type=$request->type;
     $flat->room=$request->room;
     $flat->bath=$request->bath;
     if($request->vip==null){
@@ -93,7 +90,10 @@ class FlatController extends Controller
     ////////////////////////////////////////// Show All flats in admin panel ////////////////////////////////////////
     public function all_flats_table()
     {
-        $flats=DB::table('flats')->paginate(7);
+        $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities','flats.city','cities.id')
+        ->paginate(7);
         return view('admin.AllFlats')->with('flats',$flats);
     }
          //////////////////////////////////////////////////End Flat table ///////////////////////////////////////////////////////////////////////////
@@ -128,28 +128,31 @@ class FlatController extends Controller
     ///////////////////////////////Edit Flat page
     public function Edit_flat_page($id)
     {
-        $flats=DB::table('flats')->where('f_id',$id)->first();
+        $flats=DB::table('flats')->where('f_id',$id)
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities','flats.city','cities.id')
+        ->first();
+        // dd($flats);
         $cities=DB::table('cities')->get();
-        return view('admin.EditFlat')->with('flats',$flats)->with('cities',$cities);
+        $distinics=DB::table('distinics')->get();
+        return view('admin.EditFlat')->with('flats',$flats)->with('cities',$cities)
+        ->with('distinics',$distinics);
     }
     ////////////////////////////////////////Edit Flat
     public function Edit_flat($id ,Request $request)
     {
     $flat=flat::find($id);
+    $flat->city=$request->city;
     $flat->ar_name=$request->ar_name;
     $flat->en_name=$request->en_name;
-    $flat->city=$request->city;
-    $flat->address=$request->address;
-    $flat->address_ar=$request->address_ar;
+    $flat->price=$request->Price;
     $flat->info=$request->info;
     $flat->info_ar=$request->info_ar;
     $flat->area=$request->area;
-    $flat->area_ar=$request->area_ar;
-    $flat->distinic=$request->distinic;
-    $flat->type=$request->type;
+    //distinic
+    $flat->distinc_id=$request->distinics;
     $flat->room=$request->room;
-    $flat->bath=$request->bath;
-    if($request->vip==null){
+    $flat->bath=$request->bath;    if($request->vip==null){
         $flat->vip=0;
     }else{
         $flat->vip=1;
@@ -660,6 +663,57 @@ else {
         return redirect("/pages")->with('success-message', 'Done');
 
        }
+}
+////////////////////////////distinics
+ public function all_distinics()
+ {
+     $cities=DB::table('distinics')->get();
+     return view('admin.Alldistinics')->with('cities',$cities);
+ }
+ ////////////////
+ public function show_update_dis($dis_id)
+ {
+     $city=distinic::find($dis_id);
+     $cities=DB::table("cities")->get();
+     return view('admin.Updatedis')->with('city',$city)->with('cities',$cities);
+
+ }
+ ////////upload
+ public function update_dis($dis_id,Request $request)
+ {
+    $dis=distinic::find($dis_id);
+     $dis->dis_ar=$request->name_ar;
+     $dis->dis_en=$request->name_en;
+     $dis->city_id=$request->city;
+     $dis->save();
+     return redirect('all_distinics')->with('success-message', 'distinic updated');
+ }
+ ///////////////////////delete
+ public function deletedis($dis_id)
+{
+    // dd(city::find($dis_id));
+    distinic::find($dis_id)->delete();
+
+    return back()->with('delete-message', 'city Removed');
+}
+
+////////////////////add dis
+public function show_dis()
+{
+    $cities=DB::table("cities")->get();
+    return view('admin.Adddis')->with('cities',$cities);
+}
+///add dis function
+
+public function Adddis(Request $request)
+{
+  $dis=new distinic();
+  $dis->dis_ar=$request->name_ar;
+  $dis->dis_en=$request->name_en;
+  $dis->city_id=$request->city;
+  $dis->save();
+  return redirect("/all_distinics")->with('success-message', 'Distinics Added');
+
 }
 
 

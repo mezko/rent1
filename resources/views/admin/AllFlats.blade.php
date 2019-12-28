@@ -16,8 +16,8 @@
         @foreach ($flats as $flat)
         <tr>
                 <th scope="row"><img src="/flat/{{$flat->img}}" alt="" height="50px" width="50px" ></th>
-                <td>{{$flat->address}}, {{$flat->city}}</td>
-                <td>{{$flat->type}}</td>
+                <td>{{$flat->dis_en}}</td>
+                <td> {{$flat->city}}</td>
                 <td> <a href="Edit/{{$flat->f_id}}"?>
                     <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
                 </a>

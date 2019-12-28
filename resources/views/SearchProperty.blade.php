@@ -59,13 +59,22 @@
                 <img src="/flat/{{$flat->img}}" alt="" >
                    <div class="single_appartment_text">
                       <h3>${{$flat->price}}</h3>
-                   <p><span class="ti-location-pin"></span>{{$flat->address}}</p>
+                      @if (App::getLocale()=="en")
+                      <p><span class="ti-location-pin"></span>{{$ci->city_en}}</p>
+                      @else
+                      <p><span class="ti-location-pin"></span>{{$ci->city}}</p>
+                      @endif
+                   
                    </div>
                 </div>
                 <div class="single_appartment_content">
                    {{-- <a href="" class="love_us"> <span class="ti-heart"></span> </a> --}}
-                   <p>Home, {{$flat->type}}</p>
-                   <a href="flatnum/{{$flat->f_id}}"><h4>{{$flat->en_name}}</h4></a>
+                   <p></p>
+                   @if (App::getLocale()=="en")
+                   <a href="/flatnum/{{$flat->f_id}}/{{App::getLocale()}}"><h4>{{$flat->en_name}}</h4></a>
+                   @else
+                   <a href="/flatnum/{{$flat->f_id}}/{{App::getLocale()}}"><h4>{{$flat->ar_name}}</h4></a>
+                   @endif
                    <ul class="list-unstyled">
                       <li><a href=""><span class="flaticon-bath"></span></a> {{$flat->bath}}</li>
                       <li><a href=""><span class="flaticon-bed"></span></a> {{$flat->room}}</li>

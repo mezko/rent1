@@ -130,8 +130,28 @@
                  </div>
               </div>
               </div>
-
+       
   @endforeach
+</div>
+    <br>
+    <br>
+  <div class="col">
+  
+   <div class="container">
+
+
+      <div class="row justify-content-center">
+      
+       
+            <a href="/Properties/{{App::getlocale()}}" class="btn-lg">{{__('langu.more')}}</a>
+            
+      
+      </div>
+   </div>
+
+
+   </div>
+
  </div>
  </div>
  </div>
@@ -159,7 +179,7 @@
           </div>
        </div>
        <div class="row">
-          <div class="col">
+          <div class="col-sm">
              <div class="single_passion">
                 <div class="single_passion_item">
                    <a href="#" class="passion_icon"> <i class="flaticon-compass"></i> </a>
@@ -170,7 +190,7 @@
                 </div>
              </div>
           </div>
-          <div class="col">
+          <div class="col-sm">
              <div class="single_passion">
                 <div class="single_passion_item">
                    <a href="#" class="passion_icon"> <i class="flaticon-desk"></i> </a>
@@ -181,7 +201,7 @@
                 </div>
              </div>
           </div>
-          <div class="col">
+          <div class="col-sm">
              <div class="single_passion">
                 <div class="single_passion_item">
                    <a href="#" class="passion_icon"> <i class="flaticon-beach"></i> </a>
@@ -222,10 +242,9 @@
    <div class="blog_part">
       <div class="container">
          <div class="row">
-            <div class="col-sm-8 col-lg-5">
+            <div class="col-12">
                <div class="section_tittle">
-                  <h1>Read Latest
-                     News From Our Blog</h1>
+               <h1>{{__('langu.Blog')}}</h1>
                </div>
             </div>
          </div>
@@ -238,13 +257,14 @@
                   </div>
                   <div class="single_appartment_content">
 
-                     <a href="/Blog/{{$blog->id}}">
+                     <a href="/Blog/{{$blog->id}}/{{App::getLocale()}}">
                      <h4>{{$blog->heading_en}}</h4>
                      </a>
 
                   </div>
                </div>
                </div>
+               
 
 
 
@@ -256,7 +276,7 @@
                         <img    src="/news pic/{{$blog->img}}"  width="195" height="182"    class=" mr-3 " alt="...">
                         <div class="media-body align-self-center">
                            <p><a href="#">blog</a></p>
-                           <a href="/Blog/{{$blog->id}}">
+                        <a href="/Blog/{{$blog->id}}/{{App::getLocale()}}">
                                 @if (App::getLocale()=="en")
                               <h5 class="mt-0 ">{{$blog->heading_en}}</h5>
                               @else
@@ -268,6 +288,7 @@
                      </div>
                   </div>
                   @endforeach
+               </div>
                      </div>
                   </div>
                </div>
