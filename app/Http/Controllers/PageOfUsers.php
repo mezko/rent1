@@ -12,7 +12,10 @@ class PageOfUsers extends Controller
     public function show_flat()
     {
         
-        $flats=DB::table('flats')->where('vip','0')->join('cities', 'flats.city', '=', 'cities.id')->get();
+        $flats=DB::table('flats')->where('vip','0')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')->get();
+        // dd($flats);
         $cities=DB::table('cities')->get();
 
        return view('Property')->with('flats',$flats)->with('cities',$cities);

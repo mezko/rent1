@@ -12,4 +12,9 @@ class flat extends Model
     {
         return $this->hasMany('App\slider');
     }
+
+    public function distinic()
+    {
+        return $this->belongsTo('App\distinic');
+    }
 }

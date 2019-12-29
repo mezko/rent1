@@ -59,7 +59,12 @@
                 <img src="/flat/{{$flat->img}}" alt="" >
                    <div class="single_appartment_text">
                       <h3>${{$flat->price}}</h3>
-                   <p><span class="ti-location-pin"></span> {{$flat->city_en}}</p>
+                      @if (App::getLocale()=="en")
+                   <p><span class="ti-location-pin"></span> {{$flat->city_en}} , {{$flat->dis_en}}</p>
+                   @else
+                   <p><span class="ti-location-pin"></span> {{$flat->city}}, {{$flat->dis_ar}}</p>
+                   @endif
+               
                    </div>
                 </div>
                 <div class="single_appartment_content">
