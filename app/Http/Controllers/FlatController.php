@@ -67,7 +67,8 @@ class FlatController extends Controller
       $name=time().$file->getClientOriginalName();
       $path= base_path() . '/public/flat/'.$name;
     //upload
-   Image::make($file->getRealPath())->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+    //->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)
+   Image::make($file->getRealPath())->save($path);
    $flat->img=$name;
     ///////////////////////////////
     //save to DB
@@ -166,7 +167,8 @@ class FlatController extends Controller
       $name=time().$file->getClientOriginalName();
       $path= base_path() . '/public/flat/'.$name;
     //upload
-   Image::make($file->getRealPath())->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+    //->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)
+   Image::make($file->getRealPath())->save($path);
 //    ->resize(361, 436)
    $flat->img=$name;
  
@@ -211,7 +213,8 @@ class FlatController extends Controller
             $slider->flat_id=$id;
             $name=time().$file->getClientOriginalName();
             $path=public_path('/upload pic/'.$name);
-            Image::make($file->getRealPath())->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+            //->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)
+            Image::make($file->getRealPath())->save($path);
             $slider->name=$name;
             $slider->save();
         }
@@ -304,7 +307,8 @@ public function addBlogfun(Request $request)
    $file=$request->file('img');
     $name=time().$file->getClientOriginalName();
     $path=public_path('/news pic/'.$name);
-    Image::make($file->getRealPath())->resize(653, 367)->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+    //->resize(653, 367)->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)
+    Image::make($file->getRealPath())->save($path);
     $blog->img=$name;
     $blog->save();
     return back()->with('success-message', 'Blog Added');
@@ -340,7 +344,8 @@ public function addBlogfun(Request $request)
    $file=$request->file('img');
     $name=time().$file->getClientOriginalName();
     $path=public_path('/news pic/'.$name);
-    Image::make($file->getRealPath())->resize(653, 367)->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+    //->resize(653, 367)->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)
+    Image::make($file->getRealPath())->save($path);
     $blog->img=$name;
     $blog->save();
     return back()->with('success-message', 'Blog Added');
@@ -613,7 +618,9 @@ public function EditHomeSliderPage($id)
    /////////////////////////////////////////////////////////////////////
    public function MessagesPage()
    {
-       $messages=DB::table("contactuses")->where('reply',0)->get();
+       $messages=DB::table("contactuses")->where('reply',0)
+       ->orderBy('id','desc')
+       ->get();
        return view("admin.AllMessages")->with('messages',$messages);
    }
    // reply message page
@@ -716,6 +723,22 @@ public function Adddis(Request $request)
   $dis->save();
   return redirect("/all_distinics")->with('success-message', 'Distinics Added');
 
+}
+//////////////////////////Replied
+public function RepliedPage()
+{
+    $messages=DB::table("contactuses")->where('reply',1)
+    ->orderBy('id','desc')
+    ->get();
+    return view("admin.AllReplied")->with('messages',$messages);
+}
+
+//////////////////////ShowReplied
+public function ShowReplied($id)
+{
+    $messages=contactus::find($id);
+   
+    return view("admin.ShowReplied")->with('messages',$messages);
 }
 
 

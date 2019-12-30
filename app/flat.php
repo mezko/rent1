@@ -17,4 +17,9 @@ class flat extends Model
     {
         return $this->belongsTo('App\distinic');
     }
+
+    public function city()
+    {
+        return $this->belongsTo('App\city');
+    }
 }

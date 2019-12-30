@@ -42,7 +42,6 @@
         @else
         <form method="POST" id="regform" class="text-left" >
         @endif
-      
             @csrf 
             <div class="form-group">
             <p class="h5">{{__('langu.YourName')}}</p>
@@ -55,7 +54,7 @@
             <div class="form-group">
                 <p class="h5">{{__('langu.YourMessage')}}</h4>
           
-                <textarea class="form-control" name="message"></textarea>
+                <textarea class="form-control" name="message" rows="8px"></textarea>
             </div>
         <input type="submit" class="btn btn-block btn-light" value="{{__('langu.submit')}}">
         </form>

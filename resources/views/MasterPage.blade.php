@@ -5,7 +5,8 @@
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title>Real_state || Home</title>
+   <meta name="csrf-token" content="{{ csrf_token() }}">
+   <title>Shield || Home</title>
    <link rel="icon" href="{{asset('img/favicon.png')}}">
    <!-- Bootstrap CSS -->
 
@@ -66,7 +67,7 @@
                       </button>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                         <ul class="navbar-nav font-weight-bold">
-                            <li class="nav-item   active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/index/{{App::getLocale()}}">{{ __('langu.Home') }}<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown  ">
@@ -109,11 +110,7 @@
                          
 
                     </div>
-                    <div class="btn_1 d-none d-lg-block" style="margin-right: 30px">
-                    <a href="/searchflats/{{App::getLocale()}}" style="margin-right: 2%">
-                     <i class="fas fa-search"></i>
-                   </a>
-                    </div>
+                 
                
 
 
@@ -148,45 +145,39 @@
    <footer class="footer_part">
     <div class="container">
        <div class="row">
-          <div class="col-sm-6 col-lg-3">
+          <div class="col-sm-6 col-lg-4">
              <div class="single_footer_part">
-                <h4>About Us</h4>
-                <p>Heaven fruitful doesn't over lesser days appear creeping seasons so behold bearing days open</p>
+
+                <h4 >{{__('langu.About US')}}</h4>
+             <p>{{__('langu.aboutus_footer')}}</p>
                 <a href="/index/{{App::getlocale()}}" class="footer_logo"> <img src="{{asset('img/footer_logo.png')}}" alt="#"> </a>
              </div>
           </div>
-          <div class="col-sm-6 col-lg-3">
+          <div class="col-sm-6 col-lg-4">
              <div class="single_footer_part">
-                <h4>Contact Info</h4>
-                <p>Address :Your address goes
-                   here, your demo address.</p>
-                <p>Phone : +8880 44338899</p>
-                <p>Email : info@colorlib.com</p>
+             <h4>{{__('langu.Contact Info')}}</h4>
+                
+                
+                <p>Address: Mecidiyekoy Mah.Lati Lokum SK. </p>
+               <p> Fidan APT NO:7 IC, KAPI NO: 7 ŞİŞLİ,</p>
+               <p>ISTANBUL -TURKEY</p>
+                <p>Phone : 00905444400875</p>
+                <p>Email : support@shieldgro.com</p>
              </div>
           </div>
-          <div class="col-sm-6 col-lg-3">
+          <div class="col-sm-6 col-lg-4">
              <div class="single_footer_part">
-                <h4>Important Link</h4>
+               <h4>{{__('langu.Important Link')}}</h4>  
                 <ul class="list-unstyled">
-                   <li><a href=""> WHMCS-bridge</a></li>
-                   <li><a href="">Search Domain</a></li>
-                   <li><a href="">My Account</a></li>
-                   <li><a href="">Shopping Cart</a></li>
-                   <li><a href="">Our Shop</a> Our Shop</li>
+                <li><a href="/Properties/{{App::getlocale()}}"> {{__('langu.Our Services')}}</a></li>
+                <li><a href="/PropertiesVip/{{App::getlocale()}}">{{__('langu.Property Consulting')}}</a></li>
+                <li><a href="/ourblogs/{{App::getlocale()}}">{{__('langu.News')}}</a></li>
+                <li><a href="/Contact US/{{App::getlocale()}}">{{__('langu.Contact us')}}</a></li>
+              
                 </ul>
              </div>
           </div>
-          <div class="col-sm-6 col-lg-3">
-             <div class="single_footer_part">
-                <h4>Newsletter</h4>
-                <p>Heaven fruitful doesn't over lesser in days. Appear creeping seasons deve behold bearing days open
-                </p>
-                <div class="mail_part">
-                   <input type="text" placeholder="Email Address" class="placeholder hide-on-focus">
-                   <a href="" class="email_icon"><i class="far fa-paper-plane"></i></a>
-                </div>
-             </div>
-          </div>
+          
        </div>
        <hr>
        <div class="row">
@@ -197,30 +188,37 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
              </div> --}}
           </div>
+          @if (App::getlocale()=="en")
           <div class="col-sm-6 col-lg-6">
+          @else
+          <div class="col-sm-6 col-lg-7">
+          @endif
+         
              <div class="footer_icon">
                 <ul class="list-unstyled">
-                   <li><a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
-                   <li><a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
-                   <li><a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
-                   <li><a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a></li>
+                   <li><a href="https://www.facebook.com/shieldgro/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                   <li><a href="https://twitter.com/Shieldgro"  target="_blank"><i class="fab fa-twitter"></i></a></li>
+                   <li><a href="https://www.instagram.com/shieldgro/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                   <li><a href="https://www.youtube.com/channel/UCez1egupb-j6GJca9iOH_Mw?view_as=subscriber" target="_blank"><i class="fab fa-youtube"></i></a></li>
                 </ul>
              </div>
           </div>
+       </div>
+       <div class="copyright text-center my-auto">
+         <span style="color: white;opacity: 0.5">{{__('langu.copyright')}} </span>
        </div>
     </div>
  </footer>
  <!--::footer_part end::-->
  <!-- jquery plugins here-->
+ 
  <script src="{{asset('js/app.js')}}"></script>
 <!--lightbox-->
  <script src="{{asset('js/lightbox-plus-jquery.min.js')}}"></script>
  <!-- jquery -->
  <script src="{{asset('js/jquery-1.12.1.min.js')}}"></script>
- <!-- popper js -->
- <script src="{{asset('js/popper.min.js')}}"></script>
- <!-- bootstrap js -->
- <script src="{{asset('js/bootstrap.min.js')}}"></script>
+ {{-- <!-- bootstrap js -->
+ <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
  <!-- easing js -->
  {{-- <script src="{{asset('js/jquery.magnific-popup.js')}}"></script> --}}
  <!-- particles js -->
@@ -231,19 +229,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> --}}
                <!--End bootstrap js-->
      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
      <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js"></script>
      <script src="{{asset('js/slider/slider.js')}}"></script>
-
-
-     <script src="{{asset('js/custom.js')}}"></script>
-     <script src="{{asset('js/test.js')}}"></script>
-     <script src="{{asset('js/gallery.js')}}"></script>
+     {{-- <script src="{{asset('js/custom.js')}}"></script> --}}
+     {{-- <script src="{{asset('js/test.js')}}"></script> --}}
+     {{-- <script src="{{asset('js/gallery.js')}}"></script> --}}
      <!------------------form----------------->
      <script type="text/javascript">
    

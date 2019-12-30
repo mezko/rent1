@@ -171,13 +171,18 @@
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapssex" aria-expanded="true" aria-controls="collapseTwo">
                       <i class="fas fa-comment-dots"></i>
-                <span>Messages</span>
+                <span>Messages    
+                  <span  class="border border-danger" style="border-radius: 15px">{{Session::get('noti_message')}}
+                  </span>
+                </span>
+               
+            
               </a>
               <div id="collapssex" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header" href="buttons.html">Messages:</h6>
-                  <a class="collapse-item" href="/messages">Replied Messages</a>
-                  <a class="collapse-item" href="#">Not Replied Messages</a>
+                  <a class="collapse-item" href="/AllRepliedMessage">Replied Messages</a>
+                  <a class="collapse-item" href="/messages">Not Replied Messages</a>
                 </div>
               </div>
             </li>
@@ -322,7 +327,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Shield 2019</span>
           </div>
         </div>
       </footer>

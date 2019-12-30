@@ -6,41 +6,92 @@
     <div class="container">
         <form method="POST">
             @csrf
-            <h3> Fliter Your Flat </h3>
+            {{-- <h3> Fliter Your Flat </h3> --}}
                 <div class="row  border rounded" style="border-width : 100px" >
                   <div class="col-sm">
-
+                     <div class="form-group">
                         <br>
-                        <div class="form-group">
+                        @if (App::getLocale()=="en")
+                         
+                     <h5 >{{__('langu.name')}}</h5>
+                     @else
+                     <h5 class="text-right">{{__('langu.name')}}</h5>
+                     @endif
+                        <input type="text" class="form-control" name="name" >
+                     </div>
+                  </div>
 
-                        <input type="text" class="js-range-slider" name="my_range" value=""
-                        data-type="double"
-                        data-min="0"
-                        data-max="1000000"
-                        data-from="0"
-                        data-to="0"
-                        data-grid="true"
-                    />
+
+                  <div class="col-sm">
+                       
+                        
+                        <div class="form-group" style="margin-top: 10px">
+                        <br>
+                       @if (App::getlocale()=="en")
+                       <input type="text" class="js-range-slider" name="my_range" value=""
+                       data-type="double"
+                       data-min="0"
+                       data-max="1000000"
+                       data-from="0"
+                       data-to="0"
+                       data-grid="true"
+                        />
+                       @else
+                       <input type="text" class="js-range-slider" name="my_range" value=""
+                       data-type="double"
+                       data-min="0"
+                       data-max="1000000"
+                       data-from="0"
+                       data-to="0"
+                       data-grid="true"
+                        />
+                       @endif
                   </div>
                   </div>
 
 
                   <div class="col-sm">
                         <div class="form-group">
-                                <label for="exampleFormControlSelect1">City:</label>
-
+                           <br>
+                           @if (App::getLocale()=="en")
+                            
+                        <h5 >{{__('langu.city')}}</h5>
+                        @else
+                        <h5 class="text-right">{{__('langu.city')}}</h5>
+                        @endif
                                 <select class="form-control" id="exampleFormControlSelect1" name="city">
+                                <option value="0">{{__('langu.all')}}</option>
                                     @foreach ($cities as $city)
+                                     @if (App::getLocale()=="en")
+                                     <!---langu =english-->
                                     <option value="{{$city->id}}">{{$city->city_en}}</option>
+                                    @else
+                                    <!---langu =arabic-->
+                                    <option value="{{$city->id}}">{{$city->city}}</option>
+                                    @endif
                                     @endforeach
 
 
 
                                 </select>
-                              </div>
-
+                              </div>    
                   </div>
-                  <input type="submit">
+                  
+                  <div class="col-sm">
+                     <div class="form-group">
+                        <br>
+                     @if (App::getLocale()=="en")
+                     <h5>{{__('langu.Neighborhood')}}</h5>
+                        @else
+                        <h5 class="text-right">{{__('langu.Neighborhood')}}</h5>
+                        @endif
+                 
+                        <input type="text" class="form-control" name="neighborhood" >
+                     </div>
+                  </div>
+
+
+                  <input type="submit"  value="{{__('langu.Submit')}}">
                 </form>
                 </div>
 
@@ -48,7 +99,7 @@
 
             <h4 class="border-bottom border-dark p-2"></h4>
                  <div class="col-lg-12 text-center my-2">
-                    <h4 class="border-bottom border-dark p-2">flats</h4>
+                 <h4 class="border-bottom border-dark p-2" style="font-weight: bold">{{__('langu.flats')}}</h4>
                 </div>
        <div class="row">
    @foreach ($flats as $flat)

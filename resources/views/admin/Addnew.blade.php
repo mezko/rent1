@@ -50,7 +50,7 @@
     </p>
 
                           <hr>
-                          <input type="submit" id="sub">
+  <input type="submit" id="sub">
             </div>
             </div>
                    </div>

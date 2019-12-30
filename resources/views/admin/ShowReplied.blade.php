@@ -12,21 +12,21 @@
             <div class="card">
                 <div class="card-header">
                     @php
-                    // dd($messages->message);
                     echo nl2br($messages->message);
                  @endphp
                 </div>
             </div>
             <hr>
-            
-            <h3>Reply</h3>
-            <textarea id="summernote"required class = "form-control" rows = "3" name="reply"></textarea>
-           <hr>
-         
-
-             <input type="submit" id="sub">
-
+            <h3>Your Reply :</h3>
+            <div class="card-body">
+            @php
+            echo nl2br($messages->message_reply);
+         @endphp
+            </div>
         </div>
+        
+       
+
 
 
 

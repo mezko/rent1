@@ -9,7 +9,7 @@
             @if (Auth::user()->premission==1)
                 <div class="info-box col-sm" >
                         <!-- Apply any bg-* class to to the icon to color it -->
-                        <span class="info-box-icon " style="background-color: white ;color: #CFB579"><i class="fas fa-user fas-2x"></i></span>
+                        <span class="info-box-icon " style="background-color: white ;color: #0f4d81"><i class="fas fa-user fas-2x"></i></span>
                         <div class="info-box-content">
                           <span class="info-box-text">Users</span>
                         <span class="info-box-number">{{$users}}</span>
@@ -23,7 +23,7 @@
                       @if (Auth::user()->premission==1 or Auth::user()->premission==2)
                       <div class="info-box col-sm">
                             <!-- Apply any bg-* class to to the icon to color it -->
-                            <span class="info-box-icon " style="background-color: #CFB579 ;color: white"><i class="fas fa-building"></i></span>
+                            <span class="info-box-icon " style="background-color: #0f4d81 ;color: white"><i class="fas fa-building"></i></span>
                             <div class="info-box-content">
                               <span class="info-box-text">Projects</span>
                             <span class="info-box-number">{{$flat}}</span>
@@ -38,7 +38,7 @@
                       
                       <div class="info-box col-sm">
                             <!-- Apply any bg-* class to to the icon to color it -->
-                            <span class="info-box-icon " style="background-color: white ;color: #CFB579"><i class="far fa-newspaper"></i></span>
+                            <span class="info-box-icon " style="background-color: white ;color: #0f4d81"><i class="far fa-newspaper"></i></span>
                             <div class="info-box-content">
                               <span class="info-box-text">Blogs</span>
                               <span class="info-box-number">{{$blog}}</span>

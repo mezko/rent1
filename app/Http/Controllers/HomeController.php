@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Session;
 class HomeController extends Controller
 {
     /**
@@ -26,7 +27,12 @@ class HomeController extends Controller
         $users=DB::table('users')->count();
         $flat=DB::table('flats')->count();
         $blog=DB::table('news')->count();
-        return view('home')->with('users',$users)->with('flat',$flat)->with('blog',$blog);
+        $noti_message=DB::table('contactuses')->where('reply',0)->count();
+       
+        Session::put('noti_message',$noti_message);
+     
+        return view('home')->with('users',$users)->with('flat',$flat)
+        ->with('blog',$blog);
     }
 
 }

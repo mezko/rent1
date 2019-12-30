@@ -21,6 +21,7 @@ Route::get('/Properties/{lang?}','PageOfUsers@show_flat');
 Route::post('/Properties/{lang?}','PageOfUsers@SearchFlat');
 /////////////////////////vip
 Route::get('/PropertiesVip/{lang?}','PageOfUsers@show_flat_vip');
+Route::post('/PropertiesVip/{lang?}','PageOfUsers@SearchFlatVIP');
 ///////////////////////////////////////////////////
 ///allblogs
 Route::get('/ourblogs/{lang?}','PageOfUsers@blogPage');
@@ -195,6 +196,11 @@ Route::get('/messages','FlatController@MessagesPage');
 Route::get('/replymessage/{id}','FlatController@ReplyMessagesPage');
 //ReplyMessages
 Route::post('/replymessage/{id}','FlatController@ReplyMessages');
+/////RepliedPage
+Route::get('/AllRepliedMessage','FlatController@RepliedPage');
+/////////////ShowReplied
+Route::get('/ShowReplied/{id}','FlatController@ShowReplied');
+
 
 
 

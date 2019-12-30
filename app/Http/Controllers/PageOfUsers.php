@@ -26,7 +26,7 @@ class PageOfUsers extends Controller
     {
         $flats=DB::table('flats')->where('vip','1')->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
         ->join('cities','flats.city','cities.id') 
-        ->orderBy('f_id','desc')->get();
+         ->orderBy('f_id','desc')->get();
         $cities=DB::table('cities')->get();
 
        return view('Property')->with('flats',$flats)->with('cities',$cities);
@@ -49,19 +49,168 @@ class PageOfUsers extends Controller
         
      $range=explode(";",$request->my_range);
       $test =$range[1];
-    //   dd($test);
-     if($test=='0'){
-       
-        $flats=DB::table('flats')
-        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
-        ->where('city',$request->city)
-        ->get();
-     }else{
+        ////if not enter any data
+        if($request->name ==null and $request->neighborhood==null and $test=='0'){
+            ////if select city
+            if($request->city !=0){            
+            $flats=DB::table('flats')
+            ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+            ->join('cities', 'flats.city', '=', 'cities.id')
+            ->where('flats.city',$request->city)
+            ->orderBy('f_id','desc')->get();
+            // dd($flats);
+        }else{
+           ////if not select city
+            $flats=DB::table('flats')
+            ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+            ->join('cities', 'flats.city', '=', 'cities.id')
+            ->orderBy('f_id','desc')->get();
+
+        }
+
+           
+
+
+        } 
+
+          ////if not enter data but select range
+        elseif($request->name ==null and $request->neighborhood==null and $test!='0'){
+        ////if select city
+            if($request->city !=0){
+            $flats=DB::table('flats')
+          ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+          ->join('cities', 'flats.city', '=', 'cities.id')
+          ->where('flats.city',$request->city)
+          ->orwhereBetween('price',[$range[0],[$test]])
+          ->get();
+            }
+              ////if not select city
+            else{
+                $flats=DB::table('flats')
+                ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+                ->join('cities', 'flats.city', '=', 'cities.id')
+                ->orwhereBetween('price',[$range[0],[$test]])
+                ->get();
+
+            }
+          
+
+           
+        }
+          ////if not enter name
+        elseif($request->name==null){
+            $distinics=DB::table('distinics')->where('dis_ar','like',$request->neighborhood.'%')
+            ->orwhere('dis_en','like',$request->neighborhood.'%')
+            ->first();
+        //  dd($distinics);
+      
+      if($distinics!=null){
+
+          ////if select city
+        if($request->city !=0){ 
+            $flats=DB::table('flats')
+            ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+            ->join('cities', 'flats.city', '=', 'cities.id')
+            ->where('distinc_id',$distinics->dis_id)
+            ->where('flats.city',$request->city)
+            ->orwhereBetween('price',[$range[0],[$test]])
+            ->get();
+        }
+          ////if not select city
+         else{
+            $flats=DB::table('flats')
+            ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+            ->join('cities', 'flats.city', '=', 'cities.id')
+            ->where('distinc_id',$distinics->dis_id)
+            ->orwhereBetween('price',[$range[0],[$test]])
+            ->get();
+
+         }
+          
+        }
+        else{
+            if(App::getlocale()=="en")
+            {
+            return back()->with('delete-message', 'Not Found');
+            }
+            else{
+            return back()->with('delete-message', 'لايوجد');
+                }
+        }
+        }
+          ////if not select distinc
+
+        elseif($request->neighborhood==null){
+              ////if select city
+            if($request->city !=0){ 
+          $flats=DB::table('flats')
+            ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+            ->join('cities', 'flats.city', '=', 'cities.id')
+            ->where('flats.city',$request->city)
+            ->orwhereBetween('price',[$range[0],[$test]])
+            ->where('ar_name','like',$request->name.'%')
+            ->orwhere('en_name','like',$request->name.'%')
+            ->get();
+            // dd($flats);
+            }
+              ////if not select city
+            else{
+              if($test !=0){
+                $flats=DB::table('flats')
+                ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+                ->join('cities', 'flats.city', '=', 'cities.id')
+                ->orwhereBetween('price',[$range[0],[$test]])
+                ->where('ar_name','like',$request->name.'%')
+                ->orwhere('en_name','like',$request->name.'%')
+                ->get();
+              }
+              ////////////name with no money
+              else{
+                $flats=DB::table('flats')
+                ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+                ->join('cities', 'flats.city', '=', 'cities.id')
+                ->where('ar_name','like',$request->name.'%')
+                ->orwhere('en_name','like',$request->name.'%')
+                ->get();
+
+              }
+                
+
+            }
+
+        }
+      ////////////////fill all data in input
+     else{
+      
+        $distinics=DB::table('distinics')->where('dis_ar','like',$request->neighborhood.'%')
+        ->orwhere('dis_en','like',$request->neighborhood.'%')
+        ->first();
+        ////if select city
+        if($request->city !=0){ 
+        if($distinics!=null){  
      $flats=DB::table('flats')
      ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
-     ->where('city',$request->city)
-     ->whereBetween('price',[$range[0],[$range[1]]])
+     ->join('cities', 'flats.city', '=', 'cities.id')
+     ->where('flats.city',$request->city)
+     ->where('distinc_id',$distinics->dis_id)
+     ->orwhereBetween('price',[$range[0],[$range[1]]])
+     ->where('ar_name','like',$request->name.'%')
+     ->orwhere('en_name','like',$request->name.'%')
      ->get();
+        }
+    }
+      ////if not select city
+    else{
+
+        $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')
+        ->where('distinc_id',$distinics->dis_id)
+        ->orwhereBetween('price',[$range[0],[$range[1]]])
+        ->where('ar_name','like',$request->name.'%')
+        ->orwhere('en_name','like',$request->name.'%')
+        ->get();
+    }
 
     }
     // dd($flats);
@@ -231,5 +380,180 @@ class PageOfUsers extends Controller
        return view("allblogs")->with('blogs',$blogs);
     }
 
+/////////////////////////////////search vip flats///////////////////////////////////////
+public function SearchFlatVIP(Request $request)
+{
+    
+ $range=explode(";",$request->my_range);
+  $test =$range[1];
+    ////if not enter any data
+    if($request->name ==null and $request->neighborhood==null and $test=='0'){
+        ////if select city
+        if($request->city !=0){            
+        $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')
+        ->where('flats.city',$request->city)
+        ->where('flats.vip',1)
+        ->orderBy('f_id','desc')->get();
+        // dd($flats);
+    }else{
+       ////if not select city
+        $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')
+        ->where('flats.vip',1)
+        ->orderBy('f_id','desc')->get();
+
+    }
+
+       
+
+
+    } 
+
+      ////if not enter data but select range
+    elseif($request->name ==null and $request->neighborhood==null and $test!='0'){
+    ////if select city
+        if($request->city !=0){
+        $flats=DB::table('flats')
+      ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+      ->join('cities', 'flats.city', '=', 'cities.id')
+      ->where('flats.city',$request->city)
+      ->whereBetween('price',[$range[0],[$test]])
+      ->where('flats.vip',1)
+      ->get();
+        }
+          ////if not select city
+        else{
+            $flats=DB::table('flats')
+            ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+            ->join('cities', 'flats.city', '=', 'cities.id')
+            ->whereBetween('price',[$range[0],[$test]])
+            ->where('flats.vip',1)
+            ->get();
+
+        }
+      
+
+       
+    }
+      ////if not enter name
+    elseif($request->name==null){
+        $distinics=DB::table('distinics')->where('dis_ar','like',$request->neighborhood.'%')
+        ->orwhere('dis_en','like',$request->neighborhood.'%')
+        ->first();
+    //  dd($distinics);
+  
+  if($distinics!=null){
+
+      ////if select city
+    if($request->city !=0){ 
+        $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')
+        ->where('distinc_id',$distinics->dis_id)
+        ->where('flats.city',$request->city)
+        ->whereBetween('price',[$range[0],[$test]])
+        ->where('flats.vip',1)
+        ->get();
+    }
+      ////if not select city
+     else{
+        $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')
+        ->where('distinc_id',$distinics->dis_id)
+        ->whereBetween('price',[$range[0],[$test]])
+        ->where('flats.vip',1)
+        ->get();
+
+     }
+      
+    }
+    else{
+        if(App::getlocale()=="en")
+        {
+        return back()->with('delete-message', 'Not Found');
+        }
+        else{
+        return back()->with('delete-message', 'لايوجد');
+            }
+    }
+    }
+      ////if not select distinc
+
+    elseif($request->neighborhood==null){
+          ////if select city
+        if($request->city !=0){ 
+      $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')
+        ->where('flats.city',$request->city)
+        ->whereBetween('price',[$range[0],[$test]])
+        ->where('ar_name','like',$request->name.'%')
+        ->orwhere('en_name','like',$request->name.'%')
+        ->where('flats.vip',1)
+        ->get();
+        // dd($flats);
+        }
+          ////if not select city
+        else{
+            $flats=DB::table('flats')
+            ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+            ->join('cities', 'flats.city', '=', 'cities.id')
+            ->whereBetween('price',[$range[0],[$test]])
+            ->where('ar_name','like',$request->name.'%')
+            ->orwhere('en_name','like',$request->name.'%')
+            ->where('flats.vip',1)
+            ->get();
+
+        }
+
+    }
+  ////////////////fill all data in input
+ else{
+  
+    $distinics=DB::table('distinics')->where('dis_ar','like',$request->neighborhood.'%')
+    ->orwhere('dis_en','like',$request->neighborhood.'%')
+    ->first();
+    ////if select city
+    if($request->city !=0){ 
+    if($distinics!=null){  
+ $flats=DB::table('flats')
+ ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+ ->join('cities', 'flats.city', '=', 'cities.id')
+ ->where('flats.city',$request->city)
+ ->where('distinc_id',$distinics->dis_id)
+ ->whereBetween('price',[$range[0],[$range[1]]])
+ ->where('ar_name','like',$request->name.'%')
+ ->orwhere('en_name','like',$request->name.'%')
+ ->where('flats.vip',1)
+ ->get();
+    }
+}
+  ////if not select city
+else{
+
+    $flats=DB::table('flats')
+    ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+    ->join('cities', 'flats.city', '=', 'cities.id')
+    ->where('distinc_id',$distinics->dis_id)
+    ->whereBetween('price',[$range[0],[$range[1]]])
+    ->where('ar_name','like',$request->name.'%')
+    ->orwhere('en_name','like',$request->name.'%')
+    ->where('flats.vip',1)
+    ->get();
+}
+
+}
+// dd($flats);
+$city=DB::table('cities')->where('id',$request->city)->first();
+
+ $cities=DB::table('cities')->get();
+
+return view('SearchProperty')->with('flats',$flats)->with('cities',$cities)->with('ci',$city);
+
+}
 
 }

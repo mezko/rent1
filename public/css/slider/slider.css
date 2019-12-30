@@ -6,13 +6,13 @@
     width: 2px;
     height: 100%;
     margin-left: -1px;
-    background-color: #EBC47F;
+    background-color: #0f4d81;
 }
 /* bar color*/
 .irs--flat .irs-bar {
     top: 25px;
     height: 12px;
-    background-color: #EBC47F;
+    background-color: #0f4d81;
 }
 /*number background*/
 .irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
@@ -21,6 +21,6 @@
     line-height: 1.333;
     text-shadow: none;
     padding: 1px 5px;
-    background-color: #EBC47F;
+    background-color: #0f4d81;
     border-radius: 4px;
 }

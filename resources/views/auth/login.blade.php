@@ -66,7 +66,7 @@
 							Login
 						</button>
 					</div>
-
+{{-- 
 					<div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
@@ -74,7 +74,7 @@
 						<a class="txt2" href="#">
 							Username / Password?
 						</a>
-					</div>
+					</div> --}}
 
 				</form>
 			</div>
