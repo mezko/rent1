@@ -238,8 +238,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
      <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js"></script>
      <script src="{{asset('js/slider/slider.js')}}"></script>
      {{-- <script src="{{asset('js/custom.js')}}"></script> --}}
-     {{-- <script src="{{asset('js/test.js')}}"></script> --}}
-     {{-- <script src="{{asset('js/gallery.js')}}"></script> --}}
+     <script src="{{asset('js/test.js')}}"></script>
+     <script src="{{asset('js/gallery.js')}}"></script>
      <!------------------form----------------->
      <script type="text/javascript">
    
