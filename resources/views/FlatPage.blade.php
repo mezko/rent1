@@ -10,7 +10,8 @@
                 <div class="row">
 
 
-                                      <img  class="mx-auto d-block" alt="Responsive image" src="/flat/{{$flat->img}}"  alt="" style="width:320px; height 320px;">
+         <img  class="mx-auto d-block" alt="Responsive image" src="/flat/{{$flat->img}}"  alt="" 
+        width="100%" height="100%">
 
                    <div class="col-lg-12 text-center my-2">
                         @if (App::getLocale()=="en")
@@ -44,11 +45,14 @@
 
                 @foreach ($sliders as $slider)
 <!---->
-                <div class="item {{$slider->catagory}} col-lg-3 col-md-4 col-6 col-sm">
-                  
-                           <a href="/upload pic/{{$slider->name}}" class="image-link example-image-link" data-lightbox="example-1" >
-                        <img class="image-popup-vertical-fit"  src="/upload pic/{{$slider->name}}"alt="">
+                <div class="item {{$slider->catagory}} col-lg-3 col-md-4 col-6 col-sm-12">
+
+                            <a href="/upload pic/{{$slider->name}}" class="image-link example-image-link" data-lightbox="example-1" >
+                        <!--resize(247, 165)-->
+                              <img class="image-popup-vertical-fit img-fluid"  src="/upload pic/{{$slider->name}}"alt="">
                         </a>
+                  
+
                  
                                              
                             {{-- <a class="example-image-link" href="/upload pic/{{$slider->name}}" >
@@ -129,13 +133,14 @@
                                 @if (App::getLocale()=="en")
                                 <td><span class="flaticon-bed"> </span></td>
                                 <td><span>{{$flat->room}}</span></td>
-                                <td><span class="flaticon-bath"> </span></td>
-                                <td><span>{{$flat->bath}}</span></td>
+                                <td><!--nothing--></td>
+                                <td><!--nothing--></td>
+                                
                                 @else
                                 <td><span>{{$flat->room}}</span></td>
                                 <td><span class="flaticon-bed"> </span></td>
-                                <td><span>{{$flat->bath}}</span></td>
-                                <td><span class="flaticon-bath"> </span></td>
+                                 <td><!--nothing--></td>
+                                 <td><!--nothing--></td>
 
                                 @endif
 

@@ -56,7 +56,7 @@
           <div class="col-md-4 col-lg-4">
              <div class="single_appartment_part">
                 <div class="appartment_img">
-                <img src="/flat/{{$flat->img}}" alt="" >
+                <img src="/flat/{{$flat->img}}" height="436px" width="100%" alt="" >
                    <div class="single_appartment_text">
                       <h3>${{$flat->price}}</h3>
                       @if (App::getLocale()=="en")
@@ -69,18 +69,18 @@
                 </div>
                 <div class="single_appartment_content">
                    {{-- <a href="" class="love_us"> <span class="ti-heart"></span> </a> --}}
-                   <p>Home</p>
+                   
                    @if (App::getLocale()=="en")
                    <a href="/flatnum/{{$flat->f_id}}/{{App::getLocale()}}"><h4>{{$flat->en_name}}</h4></a>
                    @else
                    <a href="/flatnum/{{$flat->f_id}}/{{App::getLocale()}}"><h4>{{$flat->ar_name}}</h4></a>
                    @endif
-               
-                   <ul class="list-unstyled">
-                      <li><a href=""><span class="flaticon-bath"></span></a> {{$flat->bath}}</li>
-                      <li><a href=""><span class="flaticon-bed"></span></a> {{$flat->room}}</li>
-                      <li><a href=""><span class="flaticon-frame"></span></a>  {{$flat->area}} sqft</li>
-                   </ul>
+                   {{-- <ul class="list-unstyled">
+                     <li><a href=""><span class="flaticon-bath"></span></a> {{$flat->bath}}</li>
+                     <li><a href=""><span class="flaticon-bed"></span></a> {{$flat->room}}</li>
+                     <li><a href=""><span class="flaticon-frame"></span></a>  {{$flat->area}} sqft</li>
+                  </ul> --}}
+             
                 </div>
              </div>
              </div>

@@ -60,7 +60,7 @@
      <div class="container">
          <form method="POST" action="/Properties">
              @csrf
-             <h3> Fliter Your Flat </h3>
+            
                  <div class="row  border rounded" style="border-width : 100px" >
 
             
@@ -104,7 +104,7 @@
 
              <h4 class="border-bottom border-dark p-2"></h4>
                   <div class="col-lg-12 text-center my-2">
-                     <h4 class="border-bottom border-dark p-2">flats</h4>
+                  <h2 class="border-bottom border-dark p-2">{{__('langu.flats')}}</h2>
                  </div>
         <div class="row">
     @foreach ($flats as $flat)
@@ -112,21 +112,31 @@
            <div class="col-md-4 col-lg-4">
               <div class="single_appartment_part">
                  <div class="appartment_img">
-                 <img src="/flat/{{$flat->img}}" alt="" >
-                    <div class="single_appartment_text">
+                  <img src="/flat/{{$flat->img}}" height="436px" width="100%" alt="" >
+                  <div class="single_appartment_text">
                        <h3>${{$flat->price}}</h3>
-                    <p><span class="ti-location-pin"></span>{{$flat->address}}, {{$flat->city_en}}</p>
+         
+                       @if (App::getLocale()=="en")
+                       <p><span class="ti-location-pin"></span> {{$flat->city_en}} , {{$flat->dis_en}}</p>
+                       @else
+                       <p><span class="ti-location-pin"></span> {{$flat->city}}, {{$flat->dis_ar}}</p>
+                       @endif
+
                     </div>
                  </div>
                  <div class="single_appartment_content">
                     {{-- <a href="" class="love_us"> <span class="ti-heart"></span> </a> --}}
-                    <p>Home, {{$flat->type}}</p>
+                    
+                    @if (App::getLocale()=="en")
                     <a href="/flatnum/{{$flat->f_id}}/{{App::getLocale()}}"><h4>{{$flat->en_name}}</h4></a>
-                    <ul class="list-unstyled">
+                    @else
+                    <a href="/flatnum/{{$flat->f_id}}/{{App::getLocale()}}"><h4>{{$flat->ar_name}}</h4></a>
+                    @endif 
+                      {{-- <ul class="list-unstyled">
                        <li><a href=""><span class="flaticon-bath"></span></a> {{$flat->bath}}</li>
                        <li><a href=""><span class="flaticon-bed"></span></a> {{$flat->room}}</li>
                        <li><a href=""><span class="flaticon-frame"></span></a>  {{$flat->area}} sqft</li>
-                    </ul>
+                    </ul> --}}
                  </div>
               </div>
               </div>

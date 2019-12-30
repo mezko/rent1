@@ -6,7 +6,7 @@ return [
 'Reception & Real Estate Tours'=>'Reception & Real Estate Tours',
 'Property Consulting'=>'Property Consulting',
 'About US'=>'About US',
-'News'=>'News',
+'News'=>'Blogs',
 'Contact us'=>'Contact us',
 'lang'=>'عربى',
 'Services'=>'Our Services',
@@ -21,7 +21,7 @@ return [
 'all'=>'all',
 'city'=>'city',
 'location'=>'location',
-'flats'=>'projrcts',
+'flats'=>'Projects',
 'submit'=>'submit',
 'ourblogs'=>' Our Blogs:',
 

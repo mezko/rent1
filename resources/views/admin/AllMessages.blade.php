@@ -5,6 +5,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">User Name</th>
+        <th scope="col">Email</th>
         <th scope="col">Reply</th>
 
       </tr>
@@ -15,6 +16,7 @@
         <th scope="row">{{$message->id}}</th>
         <!-----------username----------------->
                 <td>{{$message->username}}</td>
+                <td>{{$message->email}}</td>
                 <!--------reply button--->
                 <td>  
                   <a class="btn btn-primary"  href="/replymessage/{{$message->id}}">

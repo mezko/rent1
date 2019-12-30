@@ -9,7 +9,7 @@
    <link rel="icon" href="{{asset('img/favicon.png')}}">
    <!-- Bootstrap CSS -->
 
-   <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+   <link rel="stylesheet" href="{{asset('css/app.css')}}">
    <!-- animate CSS -->
    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
    <!-- owl carousel CSS -->
@@ -19,7 +19,7 @@
    <!-- flaticon CSS -->
    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
    <!-- magnific-popup CSS -->
-   <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+   {{-- <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}"> --}}
    <!-- font awesome CSS -->
    <link rel="stylesheet" href="{{asset('fontawesome/css/all.min.css')}}">
    <link rel="stylesheet" href="{{asset('css/gallery.css')}}">
@@ -33,13 +33,13 @@
     <!------------------------lightbox---------------------------->
     <link rel="stylesheet" href="{{asset('css/lightbox.min.css')}}">
 <!-------------------------------------------------------------------------------------->
-   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   {{-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
    <!------ Include the above in your HEAD tag ---------->
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" /> --}}
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+   {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script> --}}
 
    <!-- style CSS -->
 
@@ -65,11 +65,11 @@
                         <span class="navbar-toggler-icon"></span>
                       </button>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
+                        <ul class="navbar-nav font-weight-bold">
+                            <li class="nav-item   active">
                                 <a class="nav-link" href="/index/{{App::getLocale()}}">{{ __('langu.Home') }}<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown  ">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ __('langu.Our Services')}}
@@ -80,7 +80,7 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown  ">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ __('langu.Services')}}
@@ -91,24 +91,20 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item  ">
                                 <a class="nav-link page-scroll" href="/ourblogs/{{App::getLocale()}}">{{ __('langu.News')}}</a>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item  ">
                                 <a class="nav-link" href="/About US/{{App::getLocale()}}">{{ __('langu.About US')}}</a>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item  ">
                                 <a class="nav-link" href="/Contact US/{{App::getlocale()}}">{{ __('langu.Contact us')}}</a>
                             </li>
                         </ul>
                          
-                        {{-- <form class="form-inline my-2 my-lg-0" method="POST" >
-                           @csrf
-                           <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
-                           <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-                         </form>  --}}
+                     
       
                          
 
@@ -226,7 +222,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
  <!-- bootstrap js -->
  <script src="{{asset('js/bootstrap.min.js')}}"></script>
  <!-- easing js -->
- <script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
+ {{-- <script src="{{asset('js/jquery.magnific-popup.js')}}"></script> --}}
  <!-- particles js -->
  <script src="{{asset('js/owl.carousel.min.js')}}"></script>
  <!-- easing js -->
@@ -259,6 +255,35 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       });
          
       </script>
+      
+        <script>
+         $(".nav a").on("click", function(){
+     $(".nav").find(".active").removeClass("active");
+     $(this).parent().addClass("active");
+  });
+        </script>
+
+
+<!------------------>
+<style>
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+    font-size: 18px !important;
+}
+
+   
+   
+   </style>
+   
+ 
 
      
 

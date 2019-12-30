@@ -14,7 +14,8 @@ class PageOfUsers extends Controller
         
         $flats=DB::table('flats')->where('vip','0')
         ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
-        ->join('cities', 'flats.city', '=', 'cities.id')->get();
+        ->join('cities', 'flats.city', '=', 'cities.id')
+        ->orderBy('f_id','desc')->get();
         // dd($flats);
         $cities=DB::table('cities')->get();
 
@@ -24,7 +25,8 @@ class PageOfUsers extends Controller
     public function show_flat_vip()
     {
         $flats=DB::table('flats')->where('vip','1')->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
-        ->join('cities','flats.city','cities.id')->get();
+        ->join('cities','flats.city','cities.id') 
+        ->orderBy('f_id','desc')->get();
         $cities=DB::table('cities')->get();
 
        return view('Property')->with('flats',$flats)->with('cities',$cities);
@@ -51,17 +53,18 @@ class PageOfUsers extends Controller
      if($test=='0'){
        
         $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
         ->where('city',$request->city)
         ->get();
-        
-
      }else{
-//   dd($range);
      $flats=DB::table('flats')
+     ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
      ->where('city',$request->city)
      ->whereBetween('price',[$range[0],[$range[1]]])
      ->get();
+
     }
+    // dd($flats);
     $city=DB::table('cities')->where('id',$request->city)->first();
 
      $cities=DB::table('cities')->get();
@@ -78,7 +81,12 @@ class PageOfUsers extends Controller
     ////////////////////////////////////////////////////////welcome page //////////////////
     public function welcome()
     {
-        $flats=DB::table('flats')->where('home_state','1')->join('cities', 'flats.city', '=', 'cities.id')->get();
+        $flats=DB::table('flats')
+        ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')
+        ->where('home_state','1')
+        ->get();
+        // dd($flats);
         $cities=DB::table('cities')->get();
         $blog=DB::table('news')->orderBy('created_at', 'desc')->first();
         $blogs=DB::table('news')->orderBy('created_at', 'desc')->skip(1)->take(3)->get();

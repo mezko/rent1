@@ -3,7 +3,7 @@
 <!-- Horizontal Steppers -->
 <form id="regForm" action="" method="POST" enctype="multipart/form-data">
 @csrf
-        <h1>Flat:</h1>
+        <h1>Project:</h1>
 
         <!-- One "tab" for each step in the form: -->
 

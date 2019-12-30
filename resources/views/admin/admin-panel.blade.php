@@ -36,7 +36,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
         <div class="sidebar-brand-icon rotate-n-15">
         </div>
       <div class="sidebar-brand-text mx-3">Admin:{{Auth::user()->name}}</div>
@@ -47,7 +47,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="home">
+        <a class="nav-link" href="/home">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -99,9 +99,9 @@
             </a>
             <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header" href="buttons.html">Messages:</h6>
-                <a class="collapse-item" href="/All/blog">Not Replied Messages</a>
-                <a class="collapse-item" href="/Add/blog">Replied Messages</a>
+                <h6 class="collapse-header" href="buttons.html">Blogs:</h6>
+                <a class="collapse-item" href="/All/blog">All Blogs</a>
+                <a class="collapse-item" href="/Add/blog">Add Blog</a>
               </div>
             </div>
           </li>
@@ -111,14 +111,14 @@
   
           <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsedis" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-globe-americas"></i>
-              <span>distinics</span>
+                <i class="fas fa-city"></i>
+              <span>belediye</span>
             </a>
             <div id="collapsedis" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header" href="buttons.html">distinics:</h6>
-                <a class="collapse-item" href="/all_distinics">All distinics</a>
-                <a class="collapse-item" href="/dis">Add City</a>
+                <h6 class="collapse-header" href="buttons.html">belediye:</h6>
+                <a class="collapse-item" href="/all_distinics">All belediye</a>
+                <a class="collapse-item" href="/dis">Add belediye</a>
               </div>
             </div>
           </li>
@@ -177,7 +177,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header" href="buttons.html">Messages:</h6>
                   <a class="collapse-item" href="/messages">Replied Messages</a>
-                  <a class="collapse-item" href="/Add/user">Not Replied Messages</a>
+                  <a class="collapse-item" href="#">Not Replied Messages</a>
                 </div>
               </div>
             </li>

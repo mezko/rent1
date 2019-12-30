@@ -25,7 +25,7 @@
                             <!-- Apply any bg-* class to to the icon to color it -->
                             <span class="info-box-icon " style="background-color: #CFB579 ;color: white"><i class="fas fa-building"></i></span>
                             <div class="info-box-content">
-                              <span class="info-box-text">flat</span>
+                              <span class="info-box-text">Projects</span>
                             <span class="info-box-number">{{$flat}}</span>
                             </div>
                             <!-- /.info-box-content -->
@@ -40,7 +40,7 @@
                             <!-- Apply any bg-* class to to the icon to color it -->
                             <span class="info-box-icon " style="background-color: white ;color: #CFB579"><i class="far fa-newspaper"></i></span>
                             <div class="info-box-content">
-                              <span class="info-box-text">Blog</span>
+                              <span class="info-box-text">Blogs</span>
                               <span class="info-box-number">{{$blog}}</span>
                             </div>
                             <!-- /.info-box-content -->

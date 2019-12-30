@@ -31,7 +31,7 @@
                     </td>
 
             <td> <a href="UploadSlider/{{$flat->f_id}}"?>
-                <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i></button>
             </a>
            </td>
 

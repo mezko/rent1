@@ -56,14 +56,14 @@
           <div class="col-md-4 col-lg-4">
              <div class="single_appartment_part">
                 <div class="appartment_img">
-                <img src="/flat/{{$flat->img}}" alt="" >
+                <img src="/flat/{{$flat->img}}" alt="">
                    <div class="single_appartment_text">
                       <h3>${{$flat->price}}</h3>
-                      @if (App::getLocale()=="en")
-                      <p><span class="ti-location-pin"></span>{{$ci->city_en}}</p>
-                      @else
-                      <p><span class="ti-location-pin"></span>{{$ci->city}}</p>
-                      @endif
+                       @if (App::getLocale()=="en")
+                   <p><span class="ti-location-pin"></span> {{$ci->city_en}} , {{$flat->dis_en}}</p>
+                   @else
+                   <p><span class="ti-location-pin"></span> {{$ci->city}}, {{$flat->dis_ar}}</p>
+                   @endif
                    
                    </div>
                 </div>

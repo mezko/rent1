@@ -67,7 +67,7 @@ class FlatController extends Controller
       $name=time().$file->getClientOriginalName();
       $path= base_path() . '/public/flat/'.$name;
     //upload
-   Image::make($file->getRealPath())->resize(361, 436)->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+   Image::make($file->getRealPath())->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
    $flat->img=$name;
     ///////////////////////////////
     //save to DB
@@ -93,6 +93,7 @@ class FlatController extends Controller
         $flats=DB::table('flats')
         ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
         ->join('cities','flats.city','cities.id')
+        ->orderBy('f_id','desc')
         ->paginate(7);
         return view('admin.AllFlats')->with('flats',$flats);
     }
@@ -165,7 +166,8 @@ class FlatController extends Controller
       $name=time().$file->getClientOriginalName();
       $path= base_path() . '/public/flat/'.$name;
     //upload
-   Image::make($file->getRealPath())->resize(361, 436)->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+   Image::make($file->getRealPath())->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+//    ->resize(361, 436)
    $flat->img=$name;
  
     /////////////////////
@@ -209,7 +211,7 @@ class FlatController extends Controller
             $slider->flat_id=$id;
             $name=time().$file->getClientOriginalName();
             $path=public_path('/upload pic/'.$name);
-            Image::make($file->getRealPath())->resize(247, 165)->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
+            Image::make($file->getRealPath())->insert(public_path('watermark/so.png'),'bottom-right', 10, 10)->save($path);
             $slider->name=$name;
             $slider->save();
         }
