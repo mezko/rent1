@@ -22,7 +22,7 @@
 
             <div class="tab">type:
 
-              <p><input type="file" placeholder="upload image" oninput="this.className = ''" class="form-control file" name="img[]" multiple></p>
+              <p><input type="file" placeholder="upload image" oninput="this.className = ''" class="form-control file" name="img[]" multiple required></p>
               <input type="submit" id="sub">
             </div>
 

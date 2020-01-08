@@ -35,13 +35,17 @@ class PageOfUsers extends Controller
     ////////////////////show flat page //////////////////////
     public function show_ur_flat($id)
     {
+
         // dd(str_replace('en', 'ar', url()->current()));/
         $flats=DB::table('flats')->where('f_id',$id)
         ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
+        ->join('cities', 'flats.city', '=', 'cities.id')
         ->first();
-        $city=DB::table('cities')->where('id',$flats->city)->first();
+        // $city=DB::table('cities')->where('id',$flats->city)->first();
         $sliders=DB::table('sliders')->where('flat_id',$id)->get();
-       return view('FlatPage')->with('flat',$flats)->with('sliders',$sliders)->with('city',$city);
+        // dd($flats);
+       return view('FlatPage')->with('flat',$flats)->with('sliders',$sliders);
+     
     }
     ////////////////////////////SearchFlat
     public function SearchFlat(Request $request)
@@ -81,7 +85,7 @@ class PageOfUsers extends Controller
           ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
           ->join('cities', 'flats.city', '=', 'cities.id')
           ->where('flats.city',$request->city)
-          ->orwhereBetween('price',[$range[0],[$test]])
+          ->whereBetween('price',[$range[0],[$test]])
           ->get();
             }
               ////if not select city
@@ -89,7 +93,7 @@ class PageOfUsers extends Controller
                 $flats=DB::table('flats')
                 ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
                 ->join('cities', 'flats.city', '=', 'cities.id')
-                ->orwhereBetween('price',[$range[0],[$test]])
+                ->whereBetween('price',[$range[0],[$test]])
                 ->get();
 
             }
@@ -100,7 +104,7 @@ class PageOfUsers extends Controller
           ////if not enter name
         elseif($request->name==null){
             $distinics=DB::table('distinics')->where('dis_ar','like',$request->neighborhood.'%')
-            ->orwhere('dis_en','like',$request->neighborhood.'%')
+            ->where('dis_en','like',$request->neighborhood.'%')
             ->first();
         //  dd($distinics);
       
@@ -108,12 +112,13 @@ class PageOfUsers extends Controller
 
           ////if select city
         if($request->city !=0){ 
+          
             $flats=DB::table('flats')
             ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
             ->join('cities', 'flats.city', '=', 'cities.id')
             ->where('distinc_id',$distinics->dis_id)
             ->where('flats.city',$request->city)
-            ->orwhereBetween('price',[$range[0],[$test]])
+            ->whereBetween('price',[$range[0],[$test]])
             ->get();
         }
           ////if not select city
@@ -122,7 +127,7 @@ class PageOfUsers extends Controller
             ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
             ->join('cities', 'flats.city', '=', 'cities.id')
             ->where('distinc_id',$distinics->dis_id)
-            ->orwhereBetween('price',[$range[0],[$test]])
+            ->whereBetween('price',[$range[0],[$test]])
             ->get();
 
          }
@@ -146,10 +151,10 @@ class PageOfUsers extends Controller
           $flats=DB::table('flats')
             ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
             ->join('cities', 'flats.city', '=', 'cities.id')
-            ->where('flats.city',$request->city)
-            ->orwhereBetween('price',[$range[0],[$test]])
             ->where('ar_name','like',$request->name.'%')
             ->orwhere('en_name','like',$request->name.'%')
+            ->where('flats.city',$request->city)
+            ->whereBetween('price',[$range[0],[$test]])
             ->get();
             // dd($flats);
             }
@@ -159,9 +164,9 @@ class PageOfUsers extends Controller
                 $flats=DB::table('flats')
                 ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
                 ->join('cities', 'flats.city', '=', 'cities.id')
-                ->orwhereBetween('price',[$range[0],[$test]])
                 ->where('ar_name','like',$request->name.'%')
                 ->orwhere('en_name','like',$request->name.'%')
+                ->whereBetween('price',[$range[0],[$test]])
                 ->get();
               }
               ////////////name with no money
@@ -181,21 +186,21 @@ class PageOfUsers extends Controller
         }
       ////////////////fill all data in input
      else{
-      
         $distinics=DB::table('distinics')->where('dis_ar','like',$request->neighborhood.'%')
         ->orwhere('dis_en','like',$request->neighborhood.'%')
         ->first();
+        // dd($distinics);
         ////if select city
         if($request->city !=0){ 
         if($distinics!=null){  
      $flats=DB::table('flats')
      ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
      ->join('cities', 'flats.city', '=', 'cities.id')
-     ->where('flats.city',$request->city)
-     ->where('distinc_id',$distinics->dis_id)
-     ->orwhereBetween('price',[$range[0],[$range[1]]])
      ->where('ar_name','like',$request->name.'%')
      ->orwhere('en_name','like',$request->name.'%')
+     ->where('flats.city',$request->city)
+     ->where('distinc_id',$distinics->dis_id)
+     ->whereBetween('price',[$range[0],[$range[1]]])
      ->get();
         }
     }
@@ -205,10 +210,10 @@ class PageOfUsers extends Controller
         $flats=DB::table('flats')
         ->leftjoin('distinics','flats.distinc_id','=','distinics.dis_id')
         ->join('cities', 'flats.city', '=', 'cities.id')
-        ->where('distinc_id',$distinics->dis_id)
-        ->orwhereBetween('price',[$range[0],[$range[1]]])
         ->where('ar_name','like',$request->name.'%')
         ->orwhere('en_name','like',$request->name.'%')
+        ->where('distinc_id',$distinics->dis_id)
+        ->orwhereBetween('price',[$range[0],[$range[1]]])
         ->get();
     }
 

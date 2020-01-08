@@ -41,6 +41,7 @@ return [
 'Important Link'=>'روابط هامة',
 'Contact Info'=>'معلومات التواصل',
 'copyright'=>'  جميع الصور والنصوص والمعلومات محفوظة لدي  2019:Shield Group Real Estate©',
+'Plus Information'=>'معلومات أضافية',
 
 ];
 

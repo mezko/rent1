@@ -275,6 +275,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     font-size: 18px !important;
 }
 
+.subbtn{
+
+   background-color: #0f4d81; 
+   color: #fff; 
+   border:none; 
+}
+
+.subbtn:hover{
+
+background-color: #fff; 
+color: #0f4d81; 
+border:none; 
+}
    
    
    </style>

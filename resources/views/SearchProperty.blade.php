@@ -80,7 +80,7 @@
                </div>
 
 
-               <input type="submit"  value="{{__('langu.Submit')}}">
+               <input type="submit"  value="{{__('langu.Submit')}}" class="subbtn">
              </form> 
             
             </div>
@@ -94,7 +94,7 @@
        <div class="row">
    @foreach ($flats as $flat)
 
-          <div class="col-md-4 col-lg-4">
+          <div class="col-md-4 col-lg-4" style="margin-bottom: 10px;">
              <div class="single_appartment_part">
                 <div class="appartment_img">
                 <img src="/flat/{{$flat->img}}" height="436px" width="100%" alt="">
@@ -121,6 +121,16 @@
                       <li><a href=""><span class="flaticon-bed"></span></a> {{$flat->room}}</li>
                       <li><a href=""><span class="flaticon-frame"></span></a>  {{$flat->area}} sqft</li>
                    </ul> --}}
+                   <ul class="list-unstyled">
+                     <li>
+                        @if ($flat->vip==1)
+                     <span class="badge badge-primary">{{__('langu.Property Consulting')}}</span>
+                        @else
+                        <span class="badge badge-primary">{{__('langu.Reception & Real Estate Tours')}}</span>
+                        @endif
+                        
+                     </li>
+                   </ul> 
                 </div>
              </div>
              </div>

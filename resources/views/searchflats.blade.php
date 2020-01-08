@@ -54,7 +54,7 @@
                               </div>
 
                   </div>
-               <input type="submit" value="{{__('langu.submit')}}">
+               <input type="submit" value="{{__('langu.submit')}}" class="subbtn">
                 </form>
                 </div>
 

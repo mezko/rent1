@@ -68,11 +68,7 @@
              <h4 class="border-bottom border-dark p-2"></h4>
              <!-------------------------------------------Data Of Flat --------------------------------------->
              <div class="col-lg-12 text-center my-2">
-               @if (App::getLocale()=="en")
-                    <h4 class="border-bottom border-dark p-2">Flat</h4>
-                    @else
-                    <h4 class="border-bottom border-dark p-2">مشروع</h4>
-                    @endif
+               <h3 class="border-bottom border-dark p-2" style="font-weight: bold;">{{__('langu.flats')}}</h3>
                  </div>
              <!----------------------------------------------------table Which Have The Data ------------------------------------------->
              <table class="table">
@@ -80,74 +76,47 @@
                       <tr>
                             @if (App::getLocale()=="en")
                         <th scope="col">Details</th>
+                        <th scope="col"></th>
                         <th scope="col">Details</th>
-                        <th scope="col">Details</th>
-                        <th scope="col">Details</th>
+                        <th scope="col"></th>
                         @else
                         <th scope="col">التفاصيل</th>
+                        <th scope="col"></th>
                         <th scope="col">التفاصيل</th>
-                        <th scope="col">التفاصيل</th>
-                        <th scope="col">التفاصيل</th>
+                        <th scope="col"></th>
                         @endif
 
                       </tr>
                     </thead>
-                    <tbody>
+                    @if (App::getlocale()=="ar")
+                    <tbody class="text-right">
+                    @else
+                    <tbody class="text-left">
+                    @endif
+                  
                       <tr>
                             @if (App::getLocale()=="en")
-                            <td><i class="fas fa-city"></i> </td>
-                            <td>{{$city->city_en}}</td>
-                        <td><i class="fas fa-city"></i> </td>
-                        <td>{{$flat->dis_id}}</td>
+                            <td><i class="fas fa-map-marker-alt"></i> </td>
+                            <td>{{$flat->city_en}}</td>
+                        <td><i class="fas  fa-map-marked-alt"></i> </td>
+                        <td>{{$flat->dis_en}}</td>
 
                      @else
-                        <td><i class="fas fa-city"></i> </td>
-                        <td>{{$city->city}}</td>
-                        <td><i class="fas fa-city"></i> </td>
+                        <td><i class="fas fa-map-marker-alt"></i> </td>
+                        <td>{{$flat->city}}</td>
+                        <td><i class="fas  fa-map-marked-alt"></i> </td>
                         <td>{{$flat->area}}</td>
                         @endif
 
 
                       </tr>
                       <tr>
-                            @if (App::getLocale()=="en")
-                            <td><span class="fas fa-city"></span></td>
-                            <td>{{$flat->dis_en}}</td>
+                  
+                            <td><span class="flaticon-bed"> </span></td>
+                            <td><span>{{$flat->room}}</span></td>
                             <td><span class="flaticon-frame"> </span></td>
                             <td>{{$flat->area}}</td>
-                            @else
-                            <td><span class="fas fa-city"></span></td>
-                            <td>{{$flat->dis_ar}}</td>
-                            <td><span class="flaticon-frame"> </span></td>
-                            <td>{{$flat->area}}</td>
-
-                            @endif
-
-
-
-
                           </tr>
-
-
-                          <tr>
-                                @if (App::getLocale()=="en")
-                                <td><span class="flaticon-bed"> </span></td>
-                                <td><span>{{$flat->room}}</span></td>
-                                <td><!--nothing--></td>
-                                <td><!--nothing--></td>
-                                
-                                @else
-                                <td><span>{{$flat->room}}</span></td>
-                                <td><span class="flaticon-bed"> </span></td>
-                                 <td><!--nothing--></td>
-                                 <td><!--nothing--></td>
-
-                                @endif
-
-                              </tr>
-
-
-
                     </tbody>
                   </table>
 
@@ -159,17 +128,20 @@
 <h4 class="border-bottom border-dark p-2"></h4>
 <!-------------------------------------------Data Of Flat --------------------------------------->
 <div class="col-lg-12 text-center my-2">
-   @if (App::getLocale()=="en")
-       <h4 class="border-bottom border-dark p-2">Plus Information</h4>
-       @else
-       <h4 class="border-bottom border-dark p-2">معلومات اضافية</h4>
-
-      @endif 
+   
+       <h3 class="border-bottom border-dark p-2" style="font-weight: bold;">{{__('langu.Plus Information')}}</h3>
+     
       </div>
 <!----------------------------------------------------table Which Have The Data ------------------------------------------->
 <div class="blog_details">
-        <h2>Extra Information About The Flat
-        </h2>
+   @if (App::getlocale()=="en")
+   <h2>{{__('langu.Plus Information')}}
+   </h2>
+   @else
+   <h2 style="text-right">{{__('langu.Plus Information')}}
+   </h2>
+   @endif
+      
 
         <p class="excert">
                 <h3>
