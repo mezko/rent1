@@ -1,0 +1,33 @@
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+    font-size: 18px !important;
+}
+
+.subbtn{
+
+   background-color: #0f4d81; 
+   color: #fff; 
+   border:none; 
+}
+
+.subbtn:hover{
+
+background-color: #fff; 
+color: #0f4d81; 
+border:none; 
+}
+   
+   
+   
+ 
+
+ 

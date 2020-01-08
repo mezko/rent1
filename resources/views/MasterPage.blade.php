@@ -43,7 +43,9 @@
    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script> --}}
 
    <!-- style CSS -->
+   <link rel="stylesheet" href="{{asset('css/mystyle.css')}}">
 
+   <!---end style---------------->
    @if (App::getLocale()=="ar")
    <link rel="stylesheet" href="{{asset('css/ar.css')}}">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-flipped.css">
@@ -261,43 +263,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <!------------------>
-<style>
-.navbar-nav {
-    float:none;
-    margin:0 auto;
-    display: block;
-    text-align: center;
-}
-
-.navbar-nav > li {
-    display: inline-block;
-    float:none;
-    font-size: 18px !important;
-}
-
-.subbtn{
-
-   background-color: #0f4d81; 
-   color: #fff; 
-   border:none; 
-}
-
-.subbtn:hover{
-
-background-color: #fff; 
-color: #0f4d81; 
-border:none; 
-}
-   
-   
-   </style>
-   
- 
-
-     
-
-
-
 </body>
 
 </html>
