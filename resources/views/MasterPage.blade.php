@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="en">
+@if (App::getlocale()=="ar")
+<html lang="ar" dir="rtl">  
+@else
+<html lang="en" dir="ltr">
+@endif
+
 
 <head>
    <!-- Required meta tags -->
@@ -47,8 +52,9 @@
 
    <!---end style---------------->
    @if (App::getLocale()=="ar")
+   <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.0.0/css/bootstrap.min.css">
    <link rel="stylesheet" href="{{asset('css/ar.css')}}">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-flipped.css">
+   
    @else
    <link rel="stylesheet" href="{{asset('css/style.css')}}">
    <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -105,7 +111,20 @@
                             <li class="nav-item  ">
                                 <a class="nav-link" href="/Contact US/{{App::getlocale()}}">{{ __('langu.Contact us')}}</a>
                             </li>
+
+                            <li class="nav-item test">
+                              @if (App::getLocale()=="ar")
+                              <a href="{{str_replace('/ar', '/en', url()->current())}}" class="navlang" >{{ __('langu.lang')}}</a>
+                              @else
+                              <a href="{{str_replace('/en', '/ar', url()->current())}}" class="navlang" >{{ __('langu.lang')}}</a>
+                              @endif
+                          </li>
+                           
+                        
+                           
+
                         </ul>
+                   
                          
                      
       
@@ -116,15 +135,15 @@
                
 
 
-                    <div class="btn_1 d-none d-lg-block" style="margin-right: 30px">
+                    <div class="btn_1 d-none d-lg-block" >
       
                         @if (App::getLocale()=="ar")
                         
-                    <a href="{{str_replace('/ar', '/en', url()->current())}}" class="float-right">{{ __('langu.lang')}}</a>
+                    <a href="{{str_replace('/ar', '/en', url()->current())}}" class="lang" >{{ __('langu.lang')}}</a>
                     @else
    
       
-                    <a href="{{str_replace('/en', '/ar', url()->current())}}" class="float-right">{{ __('langu.lang')}}</a>
+                    <a href="{{str_replace('/en', '/ar', url()->current())}}" class="lang" >{{ __('langu.lang')}}</a>
                     @endif
                 </div>
 
@@ -213,6 +232,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
  </footer>
  <!--::footer_part end::-->
  <!-- jquery plugins here-->
+ {{-- https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js --}}
+
  
  <script src="{{asset('js/app.js')}}"></script>
 <!--lightbox-->

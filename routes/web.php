@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('//{lang?}', 'PageOfUsers@welcome');
+Route::get('/', 'PageOfUsers@redirect');
 
 Route::get('/index/{lang?}', 'PageOfUsers@welcome');
 //nav_search

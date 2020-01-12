@@ -1,10 +1,11 @@
 @extends('MasterPage')
 @section('content')
+
 <div class="apartment_part">
-<div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="row">    
         @if (App::getLocale()=="en")
-        <p class="excert ">
+        <p class="excert">
                @php
                echo nl2br($Establishing->p_en);
             @endphp
@@ -16,7 +17,7 @@
             @endphp
         </p>
         @endif
-
+      </div>
     </div>
 </div>
 </div>

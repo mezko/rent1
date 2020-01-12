@@ -130,7 +130,7 @@ a {
 
 /* line 56, E:/161 Real estate/161_Real_state_html/sass/_common.scss */
 a:hover {
-  color: #cfb579;
+  color: #0f4d81;
   -webkit-transition: 0.5s;
 
   transition: 0.5s;
@@ -435,7 +435,7 @@ ul {
   .main_menu .navbar .main-menu-item .navbar-nav {
     margin-left: 0%;
   
-    background-color: #bd9f5a;
+    background-color: #f8f9fa;
 
     
   }
@@ -447,7 +447,7 @@ ul {
   .main_menu .navbar .main-menu-item .navbar-nav {
     margin-left: 0%;
   
-    background-color: #bd9f5a;
+    background-color: #f8f9fa;
 
     
   }
@@ -459,7 +459,7 @@ ul {
   .main_menu .navbar .main-menu-item .navbar-nav {
     margin-left: 0%;
   
-    background-color: #bd9f5a;
+    background-color: #f8f9fa;
 
     
   }
@@ -479,16 +479,16 @@ ul {
 /* line 31, E:/161 Real estate/161_Real_state_html/sass/_menu.scss */
 .main_menu .navbar .main-menu-item .navbar-nav a:hover {
 
-  color: #cfb579;
+  color: #0f4d81;
 
 }
 
 @media (max-width: 576px) {
   /* line 26, E:/161 Real estate/161_Real_state_html/sass/_menu.scss */
   .main_menu .navbar .main-menu-item .navbar-nav a {
-    padding: 10px 22px;
+    /* padding: 10px 22px; */
     color: #fff;
-    background-color: #bd9c50;
+    background-color: #0f4d81;
   
     margin-bottom: 2px;
 
@@ -500,9 +500,9 @@ ul {
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   /* line 26, E:/161 Real estate/161_Real_state_html/sass/_menu.scss */
   .main_menu .navbar .main-menu-item .navbar-nav a {
-    padding: 15px 22px;
+    /* padding: 15px 22px; */
     color: #fff;
-    background-color: #bd9c50;
+    background-color: #f8f9fa;
   
     margin-bottom: 2px;
 
@@ -514,9 +514,9 @@ ul {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* line 26, E:/161 Real estate/161_Real_state_html/sass/_menu.scss */
   .main_menu .navbar .main-menu-item .navbar-nav a {
-    padding: 15px 22px;
+    /* padding: 15px 22px; */
     color: #fff;
-    background-color: #bd9c50;
+    background-color: #f8f9fa;
   
     margin-bottom: 2px;
 
@@ -601,7 +601,7 @@ ul {
     position: absolute;
     left: 0;
     top: 71px;
-  
+  background-color: #fff;
     width: 100%;
   
   }
@@ -657,7 +657,7 @@ ul {
     position: absolute;
     left: 0;
     top: 71px;
-  
+     background-color: #fff;
     width: 100%;
   
   }
@@ -699,7 +699,7 @@ ul {
     position: absolute;
     left: 0;
     top: 71px;
-  
+     background-color: #fff;
     width: 100%;
   
   }
@@ -1132,14 +1132,14 @@ ul {
   font-size: 7px;
   margin: 0px 10px 0px 20px;
 
-  color: #cfb579;
+  color: #0f4d81;
 
 }
 
 /* line 184, E:/161 Real estate/161_Real_state_html/sass/_banner.scss */
 .banner_part .banner_social_icon a:hover {
 
-  color: #cfb579 !important;
+  color: #0f4d81 !important;
 
 }
 
@@ -2241,7 +2241,7 @@ ul {
   /* line 180, E:/161 Real estate/161_Real_state_html/sass/_apartment.scss */
   .apartment_part .view_more_btn a:hover {
   
-    color: #cfb579;
+    color: #0f4d81;
 
     
   }
@@ -2258,7 +2258,7 @@ ul {
 /* line 187, E:/161 Real estate/161_Real_state_html/sass/_apartment.scss */
 .apartment_part .view_more_btn a:hover {
 
-  color: #cfb579;
+  color: #0f4d81;
 
 }
 
@@ -4097,7 +4097,7 @@ ul {
 /* line 144, E:/161 Real estate/161_Real_state_html/sass/_footer.scss */
 .footer_part .copyright_text p a:hover {
 
-  color: #cfb579;
+  color: #0f4d81;
 
 }
 
@@ -6522,7 +6522,7 @@ h6 {
 /* line 466, E:/161 Real estate/161_Real_state_html/sass/_blog.scss */
 .blog_details a:hover {
 
-  color: #cfb579;
+  color: #0f4d81;
 
 }
 
@@ -6841,7 +6841,7 @@ h6 {
 /* line 703, E:/161 Real estate/161_Real_state_html/sass/_blog.scss */
 .blog_right_sidebar .popular_post_widget .post_item .media-body a:hover {
 
-  color: #cfb579;
+  color: #0f4d81;
 
 }
 
@@ -6885,7 +6885,7 @@ h6 {
 
 /* line 734, E:/161 Real estate/161_Real_state_html/sass/_blog.scss */
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
-  background: #cfb579;
+  background: #0f4d81;
 
   color: #fff;
 
@@ -7206,7 +7206,7 @@ h6 {
 /* line 1078, E:/161 Real estate/161_Real_state_html/sass/_blog.scss */
 .single-post-area .blog-author a:hover {
 
-  color: #cfb579;
+  color: #0f4d81;
 
 }
 
@@ -7883,7 +7883,7 @@ h6 {
 /* line 22, E:/161 Real estate/161_Real_state_html/sass/_contact.scss */
 .contact-info .media-body h3 a:hover {
 
-  color: #cfb579;
+  color: #0f4d81;
 
 }
 
@@ -8010,5 +8010,52 @@ h6 {
   display: block;
 
 }
+/* .navbar-light {
 
+  background-color: #fff;
+} */
+
+/* .navbar-light .navbar-nav .nav-link{
+background-color: #fff;
+
+} */
+
+.navbar-nav > li .test{
+
+  display: none;
+}
+.navlang{
+
+  display: none;
+}
+
+@media (max-width: 867px) {
+.navbar-light .navbar-nav .nav-link{
+  width: 100%;
+background-color: #f8f9fa;
+
+}
+.navbar{
+  width: 100%;
+background-color: #f8f9fa;
+
+}
+.dropdown-item{
+  background-color: #f8f9fa;
+
+}
+
+.navbar-nav > li .test{
+  background-color: #f8f9fa;
+  display: block;
+}
+.navlang{
+  background-color: #f8f9fa;
+  display: block;
+  padding-bottom: 10px;
+}
+
+
+
+}
 /*# sourceMappingURL=style.css.map */

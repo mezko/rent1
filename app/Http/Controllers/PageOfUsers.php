@@ -8,6 +8,12 @@ use App;
  use App\contactus;
 class PageOfUsers extends Controller
 {
+  /////////rediect page
+    public function redirect()
+    {
+      return redirect("index/en");
+    }
+
     //////////////////show Properties page
     public function show_flat()
     {
