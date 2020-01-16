@@ -62,10 +62,8 @@
                   {{ old('info_ar') }}
                 </textarea>
                <hr>
-               <h6>English</h6>
-               <textarea id="froala-editor"required  name="info">
-                {{ old('info') }}
-               </textarea>
+           
+               
                 <input type="submit" id="sub">
 
         </div>

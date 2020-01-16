@@ -6,6 +6,7 @@
         <th scope="col">ID</th>
         <th scope="col">User Name</th>
         <th scope="col">Email</th>
+        <th scope="col">phone</th>
         <th scope="col">Show</th>
 
       </tr>
@@ -17,6 +18,7 @@
         <!-----------username----------------->
                 <td>{{$message->username}}</td>
                 <td>{{$message->email}}</td>
+                <td>{{$message->phone}}</td>
                 <!--------reply button--->
                 <td>  
                   <a class="btn btn-primary"  href="/ShowReplied/{{$message->id}}">
@@ -31,7 +33,7 @@
 
     </tbody>
   </table>
-
+  {{ $messages->links() }}
 
 
 

@@ -31,14 +31,14 @@
 
 
                         <div class="tab">Image:
-                        <p> <input type="file" placeholder="image"  class="form-control file" name="img">
+                        <p> <input type="file" placeholder="image"  class="form-control file" name="img" required>
                                 </p>
 
                 <!-------------Arabic------------------>
-                <div class="tab-pane fade show active" id="Arabic" role="tabpanel" aria-labelledby="Arabic-tab">
+                <div class="tab-pane fade show active" id="Arabic" role="tabpanel" aria-labelledby="Arabic-tab" required>
 
                         <h5>Arabic Blog:</h5>
-                <p> <input type="text" placeholder="heading_ar"  value="{{$blog->heading_ar}}" class="form-control file" name="heading_ar">
+                <p> <input type="text" placeholder="heading_ar"  value="{{$blog->heading_ar}}" class="form-control file" name="heading_ar" required>
                         </p>
                         <div class="summernote">
                     <p>
@@ -51,25 +51,10 @@
               <!--------------------English---------------------->
 
 
-                 <p>
-                      English Blog:
-            </p>
-             <p> <input type="text" placeholder="heading_en" value="{{$blog->heading_en}}"  class="form-control file" name="heading_en">
-             </p>
-
-             <p>
-                 {{-- <textarea name="p_en"  id="froala-editor" id="editor" ></textarea> --}}
-                 <textarea  id="froala-editor"name="p_en">
-                    {{$blog->p_en}}
-                 </textarea>
-                 {{-- <textarea id="summernote" name="p_en"></textarea> --}}
-
-
-
-                </p>
+           
 
                                       <hr>
-                                      <input type="submit">
+                                      <input type="submit" id="sub">
                         </div>
                         </div>
                                </div>

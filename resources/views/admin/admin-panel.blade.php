@@ -107,6 +107,8 @@
           </li>
           @endif
 
+       
+
           @if(Auth::user()->premission==1)
   
           <li class="nav-item">
@@ -126,19 +128,7 @@
 
 
 
-      <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsfour" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-user"></i>
-              <span>Users</span>
-            </a>
-            <div id="collapsfour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header" href="buttons.html">Blogs:</h6>
-                <a class="collapse-item" href="/All/user">All Users</a>
-                <a class="collapse-item" href="/Add/user">Add users</a>
-              </div>
-            </div>
-          </li>
+      
           <!--------home slider------->
           <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsfive" aria-expanded="true" aria-controls="collapseTwo">
@@ -167,27 +157,51 @@
                 <span>HomeFlat</span>
               </a>
             </li>
-            <!-----------------------messages---------------------->
+            <!----------------------users-------------------------------------------------------->
             <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapssex" aria-expanded="true" aria-controls="collapseTwo">
-                      <i class="fas fa-comment-dots"></i>
-                <span>Messages    
-                  <span  class="border border-danger" style="border-radius: 15px">{{Session::get('noti_message')}}
-                  </span>
-                </span>
-               
-            
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsfour" aria-expanded="true" aria-controls="collapseTwo">
+                      <i class="fas fa-user"></i>
+                <span>Users</span>
               </a>
-              <div id="collapssex" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+              <div id="collapsfour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                  <h6 class="collapse-header" href="buttons.html">Messages:</h6>
-                  <a class="collapse-item" href="/AllRepliedMessage">Replied Messages</a>
-                  <a class="collapse-item" href="/messages">Not Replied Messages</a>
+                  <h6 class="collapse-header" href="buttons.html">Blogs:</h6>
+                  <a class="collapse-item" href="/All/user">All Users</a>
+                  <a class="collapse-item" href="/Add/user">Add users</a>
                 </div>
               </div>
-            </li>
-        
+            </li> 
+          
           @endif
+
+    
+          @if(Auth::user()->premission==1 or Auth::user()->premission==4)
+       <!-----------------------messages---------------------->
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapssex" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-comment-dots"></i>
+          <span>Messages    
+            <span  class="border border-danger" style="border-radius: 15px">{{Session::get('noti_message')}}
+            </span>
+          </span>
+         
+      
+        </a>
+        <div id="collapssex" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" href="buttons.html">Messages:</h6>
+            <a class="collapse-item" href="/AllRepliedMessage">Replied Messages</a>
+            <a class="collapse-item" href="/messages">Not Replied Messages</a>
+          </div>
+        </div>
+      </li>
+  
+          @endif
+          <!--------------------------------------------------------------------------------------------------------------->
+
+
+
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

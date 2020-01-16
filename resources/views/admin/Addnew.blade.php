@@ -31,23 +31,7 @@
 
         </p>
             </div>
-  <!--------------------English---------------------->
-
-
-     <p>
-          English Blog:
-</p>
- <p> <input type="text" placeholder="heading_en"  class="form-control file" name="heading_en">
- </p>
-
- <p>
-     {{-- <textarea name="p_en" id="editor" ></textarea> --}}
-     <textarea id="froala-editor" name="p_en"></textarea>
-     {{-- <textarea id="summernote" name="p_en"></textarea> --}}
-
-
-
-    </p>
+  
 
                           <hr>
   <input type="submit" id="sub">

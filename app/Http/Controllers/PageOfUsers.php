@@ -317,6 +317,7 @@ class PageOfUsers extends Controller
       $con=new contactus();
       $con->username=$request->username;
       $con->email=$request->email;
+      $con->phone=$request->phone;
       $con->message=$request->message;
       $con->save();
       if(App::getLocale()=="en"){

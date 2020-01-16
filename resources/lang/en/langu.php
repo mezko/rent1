@@ -43,7 +43,7 @@ And surely you will find what suits you best',
 'Contact Info'=>'Contact Info',
 'copyright'=>'©shield Group Real Estate, 2019: All images, texts and informations are reserved.',
 'Plus Information'=>'Plus Information',
-
+'YourPhone'=>'YourPhone',
 
 ];
 ?>

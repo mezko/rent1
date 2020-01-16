@@ -20,7 +20,7 @@
              <h2>{{$blogs->heading_en}}
              </h2>
              @else
-             <h2 class="text-right">{{$blogs->heading_ar}}
+             <h2>{{$blogs->heading_ar}}
                 </h2>
                 @endif
                 <!-------------------------------------- paragraph ------------------------->
@@ -31,7 +31,7 @@
                  @endphp
              </p>
              @else
-             <p class="excert text-right">
+             <p class="excert">
                     @php
                     echo nl2br($blogs->p_ar);
                  @endphp

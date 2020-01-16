@@ -6,6 +6,7 @@
         <th scope="col">ID</th>
         <th scope="col">User Name</th>
         <th scope="col">Email</th>
+        <th scope="col">Phone</th>
         <th scope="col">Reply</th>
 
       </tr>
@@ -17,6 +18,7 @@
         <!-----------username----------------->
                 <td>{{$message->username}}</td>
                 <td>{{$message->email}}</td>
+                <td>{{$message->phone}}</td>
                 <!--------reply button--->
                 <td>  
                   <a class="btn btn-primary"  href="/replymessage/{{$message->id}}">
@@ -25,13 +27,13 @@
 </td>
 
         @endforeach
-        
+       
       </div>
 
 
     </tbody>
   </table>
-
+  {{ $messages->links() }}
 
 
 

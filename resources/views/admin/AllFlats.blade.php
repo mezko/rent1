@@ -3,7 +3,10 @@
 <table class="table">
     <thead class="thead-dark">
       <tr>
+        
         <th scope="col">Image</th>
+        <th scope="col">Arabic Name</th>
+        <th scope="col">English Name</th>
         <th scope="col">Address</th>
         <th scope="col">Type</th>
         <th scope="col">Edit</th>
@@ -15,7 +18,10 @@
     <tbody>
         @foreach ($flats as $flat)
         <tr>
+       
                 <th scope="row"><img src="/flat/{{$flat->img}}" alt="" height="50px" width="50px" ></th>
+                <th scope="row">{{$flat->ar_name}}</th>
+                <th scope="row">{{$flat->en_name}}</th>
                 <td>{{$flat->dis_en}}</td>
                 <td> {{$flat->city}}</td>
                 <td> <a href="Edit/{{$flat->f_id}}"?>

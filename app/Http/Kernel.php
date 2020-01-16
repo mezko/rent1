@@ -64,7 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'blogpremission'=>\App\Http\Middleware\blogwriter::class,
         'offerswriter'=>\App\Http\Middleware\offerswriter::class,
-         'useradmin'=>\App\Http\Middleware\useradmin::class
+         'useradmin'=>\App\Http\Middleware\useradmin::class,
+         'messagesender'=>\App\Http\Middleware\messagesender::class
     ];
 
 

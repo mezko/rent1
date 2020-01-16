@@ -47,7 +47,7 @@ class FlatController extends Controller
     $flat->price=$request->Price;
     // $flat->address=$request->address;
     // $flat->address_ar=$request->address_ar;
-    $flat->info=$request->info;
+    // $flat->info=$request->info;
     $flat->info_ar=$request->info_ar;
     $flat->area=$request->area;
     //distinic
@@ -73,7 +73,10 @@ class FlatController extends Controller
     ///////////////////////////////
     //save to DB
    $flat->save();
-    return back()->with('success-message', 'Done');
+     $newflat=DB::table('flats')->where('img',$name)->first();
+    //  dd($newflat->f_id);  
+    // return back()->with('success-message', 'Done');
+    return redirect('/add/en/flat/'.$newflat->f_id);
 
    }
    //////////////////////////////////////////////////End Add Flat ///////////////////////////////////////////////////////////////////////////
@@ -154,7 +157,8 @@ class FlatController extends Controller
     //distinic
     $flat->distinc_id=$request->distinics;
     $flat->room=$request->room;
-    $flat->bath=$request->bath;    if($request->vip==null){
+    $flat->bath=$request->bath;  
+      if($request->vip==null){
         $flat->vip=0;
     }else{
         $flat->vip=1;
@@ -175,7 +179,10 @@ class FlatController extends Controller
     /////////////////////
     //save to DB
    $flat->save();
-    return back()->with('success-message', 'Edit Done');
+   $newflat=DB::table('flats')->where('img',$name)->first();
+//    dd($newflat->f_id);  
+    // return back()->with('success-message', 'Edit Done');
+    return redirect('/add/en/flat/'.$newflat->f_id);
 
     }
     //////////////////////////////Show Search Page
@@ -311,7 +318,11 @@ public function addBlogfun(Request $request)
     Image::make($file->getRealPath())->save($path);
     $blog->img=$name;
     $blog->save();
-    return back()->with('success-message', 'Blog Added');
+    // dd($name);
+    $newblog=DB::table('news')->where('img',$name)->first();
+    // dd($newblog->id);
+    // return back()->with('success-message', 'Blog Added');
+    return redirect('add/en/blog/'.$newblog->id);
  }
  /////////////////////////////////////all Blogs
  public function Blogs()
@@ -337,9 +348,9 @@ public function addBlogfun(Request $request)
  {
     $blog=blog::find($id);
     $blog->heading_ar=$request->heading_ar;
-    // $blog->p_ar=$request->p_ar;
+    $blog->p_ar=$request->p_ar;
     $blog->heading_en=$request->heading_en;
-    // $blog->p_en=$request->p_en;
+     $blog->p_en=$request->p_en;
     ///////////////////////image
    $file=$request->file('img');
     $name=time().$file->getClientOriginalName();
@@ -348,7 +359,9 @@ public function addBlogfun(Request $request)
     Image::make($file->getRealPath())->save($path);
     $blog->img=$name;
     $blog->save();
-    return back()->with('success-message', 'Blog Added');
+    $newblog=DB::table('news')->where('img',$name)->first();
+    // return back()->with('success-message', 'Blog Added');
+    return redirect('edit/en/blog/'.$newblog->id);
  }
 
  /////////////////////////////////////////////////////////users///////////////////////////////////
@@ -475,6 +488,7 @@ else {
 public function Residence(Request $request , $ln)
 {
     $residence=DB::table('residences')->first();
+    // dd($residence->id);
     ///1 - check if my table have any data because i used only 1 row
 
 ////if have a data i will edit
@@ -487,9 +501,10 @@ else {
 }
 
     if($ln=="ar"){
-
+   
         $residence->p_ar=$request->Page_ar;
         $residence->ar_state=1;
+        // dd($residence->p_ar);
         $residence->save();
         return redirect("/pages")->with('success-message', 'Done');
        }
@@ -620,7 +635,7 @@ public function EditHomeSliderPage($id)
    {
        $messages=DB::table("contactuses")->where('reply',0)
        ->orderBy('id','desc')
-       ->get();
+       ->paginate(10);
        return view("admin.AllMessages")->with('messages',$messages);
    }
    // reply message page
@@ -729,7 +744,7 @@ public function RepliedPage()
 {
     $messages=DB::table("contactuses")->where('reply',1)
     ->orderBy('id','desc')
-    ->get();
+    ->paginate(10);
     return view("admin.AllReplied")->with('messages',$messages);
 }
 
@@ -740,6 +755,48 @@ public function ShowReplied($id)
    
     return view("admin.ShowReplied")->with('messages',$messages);
 }
+
+
+///////////////////english textarea
+
+public function EnglishText($id)
+{
+    return view("admin.EnglishTextArea");
+}
+
+
+public function EnglishTextFun($id,request $request)
+{
+   $blog=blog::find($id);
+    $blog->heading_en=$request->heading_en;
+     $blog->p_en=$request->p_en;
+     $blog->save();
+     return redirect('/All/blog')->with('success-message', 'Blog Edited');
+}
+
+
+//////flat english
+
+public function English($id)
+{
+    $flat=DB::table('flats')->where('f_id',$id)->first();
+    return view("admin.EnglishText")->with('flat',$flat);
+    
+}
+
+
+public function EditEnglishFlat($id,Request $request)
+{
+   
+    $flat=flat::find($id);
+    // dd($flat->f_id);
+    $flat->info=$request->info;
+    // dd($flat->info);
+    $flat->save();
+    return redirect('/Allflats')->with('success-message', 'Blog Edited');
+}
+
+
 
 
 

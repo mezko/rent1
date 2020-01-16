@@ -87,6 +87,10 @@ Route::get('/home/{lang?}', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'offerswriter'], function () {
 Route::get('/add/flat/{lang?}', 'FlatController@add_flat_page');
 Route::post('/add/flat/{lang?}','FlatController@add_flat');
+
+/////
+Route::get('/add/en/flat/{lang?}', 'FlatController@English');
+Route::post('/add/en/flat/{lang?}','FlatController@EditEnglishFlat');
 //////////////////////////flat table//////////////////////////////////////////////////////////////
 Route::get('/Allflats/{lang?}', 'FlatController@all_flats_table');
 ////////////////////////delete flat//////////////////////////////////////////////////////////////
@@ -135,6 +139,10 @@ Route::group(['middleware' => 'blogpremission'], function () {
 ////////////addblog////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/Add/blog/{lang?}','FlatController@addBlog');
 Route::post('/Add/blog/{lang?}','FlatController@addBlogfun');
+
+//eng
+Route::get('/add/en/blog/{id}','FlatController@EnglishText');
+Route::post('/add/en/blog/{id}','FlatController@EnglishTextFun');
 ///////////////////////////////all blog///////////////////////////////////////////////////////////////////////////
 Route::get('/All/blog/{lang?}','FlatController@Blogs');///////////////////////////////////////////////////////////
 /////////////////////////////////////delet/blog///////////////////////////////////////////////////////////////////
@@ -142,9 +150,28 @@ Route::get('/delet/blog/{id}','FlatController@delet_Blog');
 //////////////////////////////////////////edit_blog/////////////////////////////////////////////////////////////
 Route::get('/edit/blog/{id}','FlatController@edit_blog');
 Route::post('/edit/blog/{id}','FlatController@edit_blog_fun');
+
+/////////
+Route::get('/edit/en/blog/{id}','FlatController@EnglishText');
+Route::post('/edit/en/blog/{id}','FlatController@EnglishTextFun');
+
 });//////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////add user///////////////////////////////////////////////////////////
+Route::group(['middleware' => 'messagesender'], function () {
+
+    ///////messages//
+Route::get('/messages','FlatController@MessagesPage');
+//////replay message
+Route::get('/replymessage/{id}','FlatController@ReplyMessagesPage');
+//ReplyMessages
+Route::post('/replymessage/{id}','FlatController@ReplyMessages');
+/////RepliedPage
+Route::get('/AllRepliedMessage','FlatController@RepliedPage');
+/////////////ShowReplied
+Route::get('/ShowReplied/{id}','FlatController@ShowReplied');
+});
+////////////////////////////////////////////////////////
 Route::group(['middleware' => 'useradmin'], function () {
 Route::get('/Add/user','FlatController@AddUserPage');
 Route::post('/Add/user','FlatController@Adduser');
@@ -168,10 +195,6 @@ Route::post('/Residence_&_nationality/{ln}','FlatController@Residence');
 //about
 Route::get('/About/{ln}','FlatController@edit_page');
 Route::post('/About/{ln}','FlatController@About');
-
-
-
-
 /////////////////////////////////////////////////////////
 ///home slider
 //homeslider page
@@ -190,27 +213,6 @@ Route::get('/ShowHomeFlat','FlatController@ShowHomeFlat');
 //FunHomeFlat
 Route::post('/ShowHomeFlat','FlatController@FunHomeFlat');
 ///////////////////////////////////////////////////////////////
-///////messages//
-Route::get('/messages','FlatController@MessagesPage');
-//////replay message
-Route::get('/replymessage/{id}','FlatController@ReplyMessagesPage');
-//ReplyMessages
-Route::post('/replymessage/{id}','FlatController@ReplyMessages');
-/////RepliedPage
-Route::get('/AllRepliedMessage','FlatController@RepliedPage');
-/////////////ShowReplied
-Route::get('/ShowReplied/{id}','FlatController@ShowReplied');
-
-
-
-
-
-
-
-
-
-
-
 });
 ///////////////////logout
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
