@@ -227,15 +227,11 @@
        <div class="row">
           <div class="col-lg-5">
              <div class="section_tittle">
-                @if (App::getlocale()=="ar")
-                   <h1 class="text-right">
-                  {{__('langu.Services')}}
-                   </h1>
-                   @else
-                   <h1 class="text-left">
+              
+                   <h1 >
                      {{__('langu.Services')}}
                       </h1>
-                   @endif
+                   
              </div>
           </div>
        </div>
